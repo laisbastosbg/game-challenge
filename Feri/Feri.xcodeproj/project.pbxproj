@@ -8,25 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		29A4458A29DAFE3300576D1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4458929DAFE3300576D1C /* AppDelegate.swift */; };
-		29A4458C29DAFE3300576D1C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 29A4458B29DAFE3300576D1C /* GameScene.sks */; };
-		29A4458E29DAFE3300576D1C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 29A4458D29DAFE3300576D1C /* Actions.sks */; };
 		29A4459029DAFE3300576D1C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4458F29DAFE3300576D1C /* GameScene.swift */; };
 		29A4459229DAFE3300576D1C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4459129DAFE3300576D1C /* GameViewController.swift */; };
 		29A4459529DAFE3300576D1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29A4459329DAFE3300576D1C /* Main.storyboard */; };
 		29A4459729DAFE3300576D1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29A4459629DAFE3300576D1C /* Assets.xcassets */; };
 		29A4459A29DAFE3300576D1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29A4459829DAFE3300576D1C /* LaunchScreen.storyboard */; };
+		29A445A329DB016100576D1C /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A445A229DB016100576D1C /* Hero.swift */; };
+		29A445A529DB035D00576D1C /* levelMapProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A445A429DB035D00576D1C /* levelMapProtocol.swift */; };
+		29A445A729DB08B800576D1C /* sampleLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A445A629DB08B800576D1C /* sampleLevel.swift */; };
+		29A445A929DB178E00576D1C /* IsoTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 29A445A829DB178E00576D1C /* IsoTileSet.sks */; };
+		29A445AB29DB198C00576D1C /* TouchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A445AA29DB198C00576D1C /* TouchState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		29A4458629DAFE3300576D1C /* Feri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Feri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29A4458929DAFE3300576D1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		29A4458B29DAFE3300576D1C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		29A4458D29DAFE3300576D1C /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		29A4458F29DAFE3300576D1C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		29A4459129DAFE3300576D1C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		29A4459429DAFE3300576D1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		29A4459629DAFE3300576D1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29A4459929DAFE3300576D1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		29A445A229DB016100576D1C /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		29A445A429DB035D00576D1C /* levelMapProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = levelMapProtocol.swift; sourceTree = "<group>"; };
+		29A445A629DB08B800576D1C /* sampleLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sampleLevel.swift; sourceTree = "<group>"; };
+		29A445A829DB178E00576D1C /* IsoTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = IsoTileSet.sks; sourceTree = "<group>"; };
+		29A445AA29DB198C00576D1C /* TouchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,13 +66,16 @@
 			isa = PBXGroup;
 			children = (
 				29A4458929DAFE3300576D1C /* AppDelegate.swift */,
-				29A4458B29DAFE3300576D1C /* GameScene.sks */,
-				29A4458D29DAFE3300576D1C /* Actions.sks */,
 				29A4458F29DAFE3300576D1C /* GameScene.swift */,
 				29A4459129DAFE3300576D1C /* GameViewController.swift */,
 				29A4459329DAFE3300576D1C /* Main.storyboard */,
 				29A4459629DAFE3300576D1C /* Assets.xcassets */,
 				29A4459829DAFE3300576D1C /* LaunchScreen.storyboard */,
+				29A445A229DB016100576D1C /* Hero.swift */,
+				29A445A429DB035D00576D1C /* levelMapProtocol.swift */,
+				29A445A629DB08B800576D1C /* sampleLevel.swift */,
+				29A445A829DB178E00576D1C /* IsoTileSet.sks */,
+				29A445AA29DB198C00576D1C /* TouchState.swift */,
 			);
 			path = Feri;
 			sourceTree = "<group>";
@@ -130,10 +139,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				29A4459529DAFE3300576D1C /* Main.storyboard in Resources */,
-				29A4458C29DAFE3300576D1C /* GameScene.sks in Resources */,
 				29A4459729DAFE3300576D1C /* Assets.xcassets in Resources */,
+				29A445A929DB178E00576D1C /* IsoTileSet.sks in Resources */,
 				29A4459A29DAFE3300576D1C /* LaunchScreen.storyboard in Resources */,
-				29A4458E29DAFE3300576D1C /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +154,11 @@
 			files = (
 				29A4459029DAFE3300576D1C /* GameScene.swift in Sources */,
 				29A4459229DAFE3300576D1C /* GameViewController.swift in Sources */,
+				29A445AB29DB198C00576D1C /* TouchState.swift in Sources */,
+				29A445A729DB08B800576D1C /* sampleLevel.swift in Sources */,
+				29A445A529DB035D00576D1C /* levelMapProtocol.swift in Sources */,
 				29A4458A29DAFE3300576D1C /* AppDelegate.swift in Sources */,
+				29A445A329DB016100576D1C /* Hero.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
