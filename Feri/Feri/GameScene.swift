@@ -29,7 +29,6 @@ class GameScene: SKScene {
         hero.xScale = 0.3
         hero.yScale = 0.3
         addChild(hero)
-        print(level.floor.centerOfTile(atColumn: hero.currentPosition.y, row: hero.currentPosition.x))
         hero.position = level.floor.centerOfTile(atColumn: hero.currentPosition.y, row: hero.currentPosition.x)
         myCamera.position = hero.position
         myCamera.setScale(1)
@@ -47,27 +46,27 @@ class GameScene: SKScene {
             if hero.currentPosition.y > 0 {
                 hero.currentPosition.y -= 1
             }
-            hero.moveOnGrid(to: hero.currentPosition, on: level.floor)
+            hero.moveOnGrid(to: hero.currentPosition, on: level.floor, direction: self.touchLocation)
         } else if location.x > CGRectGetMidX(myCamera.frame) && location.y > CGRectGetMidY(myCamera.frame) {
             self.touchLocation = .TopRight
             if hero.currentPosition.x < level.numOfRows {
                 hero.currentPosition.x += 1
             }
-            hero.moveOnGrid(to: hero.currentPosition, on: level.floor)
+            hero.moveOnGrid(to: hero.currentPosition, on: level.floor, direction: self.touchLocation)
             print("UpRight")
         } else if location.x < CGRectGetMidX(myCamera.frame) && location.y < CGRectGetMidY(myCamera.frame) {
             self.touchLocation = .DownLeft
             if hero.currentPosition.x > 0 {
                 hero.currentPosition.x -= 1
             }
-            hero.moveOnGrid(to: hero.currentPosition, on: level.floor)
+            hero.moveOnGrid(to: hero.currentPosition, on: level.floor, direction: self.touchLocation)
             print("DownLeft")
         } else if location.x > CGRectGetMidX(myCamera.frame) && location.y < CGRectGetMidY(myCamera.frame) {
             self.touchLocation = .DownRight
             if hero.currentPosition.y < level.numOfColumns {
                 hero.currentPosition.y += 1
             }
-            hero.moveOnGrid(to: hero.currentPosition, on: level.floor)
+            hero.moveOnGrid(to: hero.currentPosition, on: level.floor, direction: self.touchLocation)
             print("DownRight")
 
         }
