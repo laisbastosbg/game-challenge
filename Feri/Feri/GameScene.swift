@@ -44,22 +44,29 @@ class GameScene: SKScene {
         if location.x < CGRectGetMidX(myCamera.frame) && location.y > CGRectGetMidY(myCamera.frame) {
             self.touchLocation = .TopLeft
             print("UpLeft")
-            hero.currentPosition.y -= 1
-            print(hero.currentPosition)
+            if hero.currentPosition.y > 0 {
+                hero.currentPosition.y -= 1
+            }
             hero.moveOnGrid(to: hero.currentPosition, on: level.floor)
         } else if location.x > CGRectGetMidX(myCamera.frame) && location.y > CGRectGetMidY(myCamera.frame) {
             self.touchLocation = .TopRight
-            hero.currentPosition.x += 1
+            if hero.currentPosition.x < level.numOfRows {
+                hero.currentPosition.x += 1
+            }
             hero.moveOnGrid(to: hero.currentPosition, on: level.floor)
             print("UpRight")
         } else if location.x < CGRectGetMidX(myCamera.frame) && location.y < CGRectGetMidY(myCamera.frame) {
             self.touchLocation = .DownLeft
-            hero.currentPosition.x -= 1
+            if hero.currentPosition.x > 0 {
+                hero.currentPosition.x -= 1
+            }
             hero.moveOnGrid(to: hero.currentPosition, on: level.floor)
             print("DownLeft")
         } else if location.x > CGRectGetMidX(myCamera.frame) && location.y < CGRectGetMidY(myCamera.frame) {
             self.touchLocation = .DownRight
-            hero.currentPosition.y += 1
+            if hero.currentPosition.y < level.numOfColumns {
+                hero.currentPosition.y += 1
+            }
             hero.moveOnGrid(to: hero.currentPosition, on: level.floor)
             print("DownRight")
 

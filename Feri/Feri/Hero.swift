@@ -17,7 +17,7 @@ class Hero: SKSpriteNode {
     var hitbox: CGSize
     init(currentPosition: Point) {
         self.currentPosition = currentPosition
-        let git  = CGSize(width: atlas.textureNamed(atlas.textureNames.first!).size().width/3, height: atlas.textureNamed(atlas.textureNames.first!).size().height/3)
+        self.hitbox = CGSize(width: atlas.textureNamed(atlas.textureNames.first!).size().width/3, height: atlas.textureNamed(atlas.textureNames.first!).size().height/3)
         super.init(texture: atlas.textureNamed(atlas.textureNames.first!), color: .clear, size: atlas.textureNamed(atlas.textureNames.first!).size())
     }
     
@@ -33,6 +33,5 @@ class Hero: SKSpriteNode {
         let animateAction = SKAction.animate(with: atlas.textureNames.map(SKTexture.init(imageNamed:)), timePerFrame: 0.2)
         self.run(moveAction)
         self.run(animateAction)
-        
     }
 }
