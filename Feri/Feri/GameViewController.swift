@@ -16,23 +16,21 @@ class GameViewController: UIViewController {
         
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
-         let scene = GameScene()
-            
-                
-                
-                // Set the scale mode to scale to fit the window
-            scene.scaleMode = .resizeFill
-                
-                // Present the scene
-                if let view = self.view as! SKView? {
-                    view.presentScene(scene)
-                    
-                    view.ignoresSiblingOrder = true
-                    
-                    view.showsFPS = true
-                    view.showsNodeCount = true
-                }
-            }
+        let scene = GameScene()
+        
+        // Set the scale mode to scale to fit the window
+        scene.scaleMode = .resizeFill
+
+        // Present the scene
+        if let view = self.view as! SKView? {
+            view.presentScene(scene)
+
+            view.ignoresSiblingOrder = true
+
+            view.showsFPS = true
+            view.showsNodeCount = true
+        }
+    }
     
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
