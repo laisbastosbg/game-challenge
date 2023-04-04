@@ -17,7 +17,7 @@ struct sampleLevel: levelMapProtocol {
     var floor: SKTileMapNode = SKTileMapNode()
     var leftWall: SKTileMapNode = SKTileMapNode()
     var rightWall: SKTileMapNode = SKTileMapNode()
-    var heroInitialPosition: SIMD2<Int>
+    var heroInitialPosition: (x:Int,y:Int)
 
     func configLevel() {
         map.xScale = 1

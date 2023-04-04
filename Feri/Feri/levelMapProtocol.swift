@@ -16,7 +16,7 @@ protocol levelMapProtocol {
     var floor: SKTileMapNode { get }
     var leftWall: SKTileMapNode { get }
     var rightWall: SKTileMapNode { get }
-    var heroInitialPosition: SIMD2<Int> { get }
+    var heroInitialPosition: (x: Int, y: Int) { get }
     
     func configLevel()
 }

@@ -12,28 +12,27 @@ class GameScene: SKScene {
     
     var touchLocation: TouchState = .None
 
-    let level = sampleLevel(numOfRows: 10, numOfColumns: 10, heroInitialPosition: SIMD2<Int>.init(x: 3, y: 3))
+    let level = sampleLevel(numOfRows: 10, numOfColumns: 10, heroInitialPosition: (x: 3, y: 3))
     
-    var hero: Hero {
-        return Hero(positition: level.heroInitialPosition)
-    }
+    lazy var hero: Hero = Hero(currentPosition: self.level.heroInitialPosition)
+    
     var myCamera = SKCameraNode()
     
     override func didMove(to view: SKView) {
 
         addChild(level.map)
         level.configLevel()
-        level.map.xScale = 2
-        level.map.yScale = 2
-        level.map.scene?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        level.map.xScale = 1
+        level.map.yScale = 1
+        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
-        hero.xScale = 0.5
-        hero.yScale = 0.5
+        hero.xScale = 0.3
+        hero.yScale = 0.3
         addChild(hero)
-        print(level.floor.centerOfTile(atColumn: hero.positition.y, row: hero.positition.x))
-        hero.position = level.floor.centerOfTile(atColumn: hero.positition.y, row: hero.positition.x)
+        print(level.floor.centerOfTile(atColumn: hero.currentPosition.y, row: hero.currentPosition.x))
+        hero.position = level.floor.centerOfTile(atColumn: hero.currentPosition.y, row: hero.currentPosition.x)
         myCamera.position = hero.position
-        myCamera.setScale(2)
+        myCamera.setScale(1)
         addChild(myCamera)
         camera = myCamera
 
@@ -42,22 +41,27 @@ class GameScene: SKScene {
     
     func touchDown(atPoint pos : CGPoint) {
         let location = pos
-        if location.x < CGRectGetMidX(self.frame) && location.y > CGRectGetMidY(self.frame) {
+        if location.x < CGRectGetMidX(myCamera.frame) && location.y > CGRectGetMidY(myCamera.frame) {
             self.touchLocation = .TopLeft
             print("UpLeft")
-        } else if location.x > CGRectGetMidX(self.frame) && location.y > CGRectGetMidY(self.frame) {
+            hero.currentPosition.y -= 1
+            print(hero.currentPosition)
+            hero.moveOnGrid(to: hero.currentPosition, on: level.floor)
+        } else if location.x > CGRectGetMidX(myCamera.frame) && location.y > CGRectGetMidY(myCamera.frame) {
             self.touchLocation = .TopRight
+            hero.currentPosition.x += 1
+            hero.moveOnGrid(to: hero.currentPosition, on: level.floor)
             print("UpRight")
-        } else if location.x < CGRectGetMidX(self.frame) && location.y < CGRectGetMidY(self.frame) {
+        } else if location.x < CGRectGetMidX(myCamera.frame) && location.y < CGRectGetMidY(myCamera.frame) {
             self.touchLocation = .DownLeft
+            hero.currentPosition.x -= 1
+            hero.moveOnGrid(to: hero.currentPosition, on: level.floor)
             print("DownLeft")
-            let zoomInAction = SKAction.scale(to: 2, duration: 1)
-            myCamera.run(zoomInAction)
-        } else if location.x > CGRectGetMidX(self.frame) && location.y < CGRectGetMidY(self.frame) {
+        } else if location.x > CGRectGetMidX(myCamera.frame) && location.y < CGRectGetMidY(myCamera.frame) {
             self.touchLocation = .DownRight
+            hero.currentPosition.y += 1
+            hero.moveOnGrid(to: hero.currentPosition, on: level.floor)
             print("DownRight")
-            let zoomInAction = SKAction.scale(to: 0.5, duration: 1)
-            myCamera.run(zoomInAction)
 
         }
     }
@@ -67,7 +71,7 @@ class GameScene: SKScene {
     }
     
     func touchUp(atPoint pos : CGPoint) {
-
+        self.touchLocation = .None
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
