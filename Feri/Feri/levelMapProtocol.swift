@@ -14,6 +14,7 @@ protocol levelMapProtocol {
     var grid: [[String]]? { get set }
     var map: SKNode { get }
     var floor: SKTileMapNode { get }
+    var furnitureLayer: SKTileMapNode { get }
     var leftWall: SKTileMapNode { get }
     var rightWall: SKTileMapNode { get }
     var heroInitialPosition: (x: Int, y: Int) { get }
