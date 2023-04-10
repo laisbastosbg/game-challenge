@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BC136A629DC627200D535CD /* PickableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC136A529DC627200D535CD /* PickableItem.swift */; };
+		0BC136A829DC660B00D535CD /* InteractibleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC136A729DC660B00D535CD /* InteractibleItem.swift */; };
+		0BC136AF29DC6D9B00D535CD /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC136AE29DC6D9B00D535CD /* Inventory.swift */; };
 		29A4458A29DAFE3300576D1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4458929DAFE3300576D1C /* AppDelegate.swift */; };
 		29A4459029DAFE3300576D1C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4458F29DAFE3300576D1C /* GameScene.swift */; };
 		29A4459229DAFE3300576D1C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4459129DAFE3300576D1C /* GameViewController.swift */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0BC136A529DC627200D535CD /* PickableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickableItem.swift; sourceTree = "<group>"; };
+		0BC136A729DC660B00D535CD /* InteractibleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractibleItem.swift; sourceTree = "<group>"; };
+		0BC136AE29DC6D9B00D535CD /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		29A4458629DAFE3300576D1C /* Feri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Feri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29A4458929DAFE3300576D1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29A4458F29DAFE3300576D1C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -46,6 +52,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BC136A929DC6B2800D535CD /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				29A445A229DB016100576D1C /* Hero.swift */,
+				0BC136A529DC627200D535CD /* PickableItem.swift */,
+				0BC136A729DC660B00D535CD /* InteractibleItem.swift */,
+				29A445A629DB08B800576D1C /* sampleLevel.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		0BC136AA29DC6BD400D535CD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				29A445A429DB035D00576D1C /* levelMapProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		0BC136AB29DC6BEA00D535CD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				29A445A829DB178E00576D1C /* IsoTileSet.sks */,
+				29A4459629DAFE3300576D1C /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0BC136AD29DC6C0600D535CD /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				29A445AA29DB198C00576D1C /* TouchState.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		0BC136B029DC709D00D535CD /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				0BC136AE29DC6D9B00D535CD /* Inventory.swift */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
 		29A4457D29DAFE3200576D1C = {
 			isa = PBXGroup;
 			children = (
@@ -65,17 +115,16 @@
 		29A4458829DAFE3300576D1C /* Feri */ = {
 			isa = PBXGroup;
 			children = (
+				0BC136B029DC709D00D535CD /* Global */,
+				0BC136AD29DC6C0600D535CD /* Enums */,
+				0BC136AB29DC6BEA00D535CD /* Resources */,
+				0BC136AA29DC6BD400D535CD /* Protocols */,
+				0BC136A929DC6B2800D535CD /* Nodes */,
 				29A4458929DAFE3300576D1C /* AppDelegate.swift */,
 				29A4458F29DAFE3300576D1C /* GameScene.swift */,
 				29A4459129DAFE3300576D1C /* GameViewController.swift */,
 				29A4459329DAFE3300576D1C /* Main.storyboard */,
-				29A4459629DAFE3300576D1C /* Assets.xcassets */,
 				29A4459829DAFE3300576D1C /* LaunchScreen.storyboard */,
-				29A445A229DB016100576D1C /* Hero.swift */,
-				29A445A429DB035D00576D1C /* levelMapProtocol.swift */,
-				29A445A629DB08B800576D1C /* sampleLevel.swift */,
-				29A445A829DB178E00576D1C /* IsoTileSet.sks */,
-				29A445AA29DB198C00576D1C /* TouchState.swift */,
 			);
 			path = Feri;
 			sourceTree = "<group>";
@@ -154,11 +203,14 @@
 			files = (
 				29A4459029DAFE3300576D1C /* GameScene.swift in Sources */,
 				29A4459229DAFE3300576D1C /* GameViewController.swift in Sources */,
+				0BC136AF29DC6D9B00D535CD /* Inventory.swift in Sources */,
 				29A445AB29DB198C00576D1C /* TouchState.swift in Sources */,
 				29A445A729DB08B800576D1C /* sampleLevel.swift in Sources */,
 				29A445A529DB035D00576D1C /* levelMapProtocol.swift in Sources */,
 				29A4458A29DAFE3300576D1C /* AppDelegate.swift in Sources */,
 				29A445A329DB016100576D1C /* Hero.swift in Sources */,
+				0BC136A629DC627200D535CD /* PickableItem.swift in Sources */,
+				0BC136A829DC660B00D535CD /* InteractibleItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
