@@ -8,17 +8,25 @@
 import Foundation
 import SpriteKit
 
-class InteractibleItem {
-    var name: String
+class InteractibleItem: SKSpriteNode{
+    
+    var identifier: String
     var compatiblePickableItems: [PickableItem]
-    var sprite: SKSpriteNode
+    private(set) var tileMapPosition: [Point] = []
 
-    init(name: String, compatiblePickItems: [PickableItem] = [], sprite: SKSpriteNode) {
-        self.name = name
+
+    init(identifier: String, compatiblePickItems: [PickableItem] = [], texture: SKTexture, position: Point) {
+        self.identifier = identifier
         self.compatiblePickableItems = compatiblePickItems
-        self.sprite = sprite
+        self.tileMapPosition.append(position)
+        super.init(texture: texture, color: .clear, size: texture.size())
+        
     }
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func interact(with itemFromInventory: PickableItem) throws {
         if compatiblePickableItems.contains(where: { element in
             element.name == itemFromInventory.name
@@ -39,6 +47,7 @@ class InteractibleItem {
             }
         }
     }
+    
 }
 
 enum InteractibleItemError: Error {

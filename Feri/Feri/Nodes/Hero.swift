@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-typealias Point = (x: Int, y: Int)
+
 
 class Hero: SKSpriteNode {
     
@@ -29,8 +29,11 @@ class Hero: SKSpriteNode {
     }
     
     func moveOnGrid(to position: Point, on map: levelMapProtocol, direction: TouchState) {
-        map.furnitureLayer.tileGroup(atColumn: position.y, row: position.x)
-        if map.furnitureLayer.tileGroup(atColumn: position.y, row: position.x) == nil {
+        let children = map.floor.children.map { child in
+            child as! InteractibleItem
+        }
+        print(children.first!.tileMapPosition)
+        if children.first(where: {$0.tileMapPosition == position}) == nil {
             var gridPosition = map.floor.centerOfTile(atColumn: position.y, row: position.x)
             gridPosition.y += self.size.height/3
             let moveAction =  SKAction.move(to: gridPosition, duration: 0.5)
@@ -62,6 +65,13 @@ class Hero: SKSpriteNode {
         }
         
 
+    }
+    
+    func interactWith(object: InteractibleItem) {
+        if object.compatiblePickableItems != nil {
+            
+        }
+            
     }
     
 }
