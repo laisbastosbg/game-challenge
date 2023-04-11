@@ -8,13 +8,17 @@
 import Foundation
 import SpriteKit
 
-class PickableItem {
+class PickableItem: Equatable {
+    static func == (lhs: PickableItem, rhs: PickableItem) -> Bool {
+        return (lhs.spriteNode == rhs.spriteNode) && (lhs.name == rhs.name)
+    }
+    
     var name: String
     
     var remainingUses: Int {
         didSet {
             if self.remainingUses <= 0 {
-                Inventory.shared.items.removeAll(where: { $0.name == self.name })
+                Inventory.shared.items.removeAll(where: { $0 == self })
             }
         }
     }

@@ -8,45 +8,87 @@
 import Foundation
 import SpriteKit
 
+
 class InteractibleItem: SKSpriteNode{
     
     var identifier: String
-    var compatiblePickableItems: [PickableItem]
-    private(set) var tileMapPosition: [Point] = []
+    var compatiblePickableItems: PickableItem?
+    var compatibleUnlockableItems: PickableItem?
+    private(set) var tileMapPosition: Point
+    private var actionType: InteractionType
+    var nextScene: GameScene?
 
 
-    init(identifier: String, compatiblePickItems: [PickableItem] = [], texture: SKTexture, position: Point) {
+    init(identifier: String, texture: SKTexture, position: Point, pickableItem: PickableItem) {
         self.identifier = identifier
-        self.compatiblePickableItems = compatiblePickItems
-        self.tileMapPosition.append(position)
+        self.tileMapPosition = position
+        self.compatiblePickableItems = pickableItem
+        self.actionType = .PickItem
         super.init(texture: texture, color: .clear, size: texture.size())
         
     }
+    
+    init(identifier: String, texture: SKTexture, position: Point, pickableItem: PickableItem, unlockableItem: PickableItem) {
+        self.identifier = identifier
+        self.tileMapPosition = position
+        self.compatiblePickableItems = pickableItem
+        self.compatibleUnlockableItems = unlockableItem
+        self.actionType = .UseItem
+        super.init(texture: texture, color: .clear, size: texture.size())
+        
+    }
+    init(identifier: String, texture: SKTexture, position: Point, nextScene: GameScene) {
+        self.identifier = identifier
+        self.tileMapPosition = position
+        self.nextScene = nextScene
+        self.actionType = .ChangeRoom
+        super.init(texture: texture, color: .clear, size: texture.size())
+        
+    }
+    init(identifier: String, texture: SKTexture, position: Point, nextScene: GameScene, unlockableItem: PickableItem) {
+        self.identifier = identifier
+        self.tileMapPosition = position
+        self.nextScene = nextScene
+        self.compatibleUnlockableItems = unlockableItem
+        self.actionType = .UseItem
+        super.init(texture: texture, color: .clear, size: texture.size())
+        
+    }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func interact(with itemFromInventory: PickableItem) throws {
-        if compatiblePickableItems.contains(where: { element in
-            element.name == itemFromInventory.name
-        }) {
-            try itemFromInventory.use()
-        } else {
-            throw InteractibleItemError.incompatibleItem
-        }
-    }
+//    func interact(with itemFromInventory: PickableItem) throws {
+//        if compatiblePickableItems.contains(where: { element in
+//            element.name == itemFromInventory.name
+//        }) {
+//            try itemFromInventory.use()
+//        } else {
+//            throw InteractibleItemError.incompatibleItem
+//        }
+//    }
 
     func interact() {
-        for item in Inventory.shared.items {
-            do {
-                try interact(with: item)
-            } catch {
-                //TODO: tratar erro
-                print("You have no items to use with this object")
+        switch actionType {
+        case .PickItem:
+                Inventory.shared.items.append(compatiblePickableItems!)
+        case .UseItem:
+            if compatibleUnlockableItems != nil && Inventory.shared.items.contains(where: {$0 == compatibleUnlockableItems}){
+                Inventory.shared.items.first(where: {$0 == compatibleUnlockableItems})!.remainingUses -= 1
+                compatibleUnlockableItems = nil
+                if compatiblePickableItems != nil {
+                    self.actionType = .PickItem
+                }else if nextScene != nil {
+                    self.actionType = .ChangeRoom
+                }
             }
+        case .ChangeRoom:
+            self.scene?.view?.presentScene(nextScene)
         }
     }
+    
     
 }
 

@@ -38,21 +38,19 @@ struct sampleLevel: levelMapProtocol {
         floor.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         floor.fill(with: blackTiles)
         
-        let vaso = InteractibleItem(identifier: "Vaso", compatiblePickItems: [], texture: SKTexture(imageNamed: "TileSet-Vaso"), position: (x:9,y:9))
+        let vaso = InteractibleItem(identifier: "Vaso", texture: SKTexture(imageNamed: "TileSet-Vaso"), position: (x:9,y:9), nextScene: GameScene())
         insertOnMap(object: vaso)
         
-        let porta = InteractibleItem(identifier: "Porta", compatiblePickItems: [], texture: SKTexture(imageNamed: "TilePorta"), position: (x:5,y:0))
+        let porta = InteractibleItem(identifier: "Porta", texture: SKTexture(imageNamed: "TilePorta"), position: (x:5,y:0), nextScene: GameScene())
         insertDoorOnMap(object: porta, isColumnWall: true)
         
-        let escada = InteractibleItem(identifier: "Stair", compatiblePickItems: [], texture: SKTexture(imageNamed: "Stair"), position: (x:9,y:5))
+        let escada = InteractibleItem(identifier: "StairEnd", texture: SKTexture(imageNamed: "StairEnd"), position: (x:7,y:5), nextScene: GameScene())
         insertOnMap(object: escada)
-        escada.xScale *= -1
         escada.zPosition = 0
     }
     
     func insertOnMap(object: InteractibleItem) {
         floor.addChild(object)
-        print((floor.children.first! as! InteractibleItem).tileMapPosition)
         object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)
         object.position.y += object.size.height/3
     }
@@ -60,8 +58,8 @@ struct sampleLevel: levelMapProtocol {
         floor.addChild(object)
         print((floor.children.first! as! InteractibleItem).tileMapPosition)
         object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)
-        object.position.y += object.size.height/3 + 12
-        object.position.x -= 32
+        object.position.y += object.size.height/3 + 8
+        object.position.x -= 26
         object.zPosition = -2
     }
     

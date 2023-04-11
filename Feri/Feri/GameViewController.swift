@@ -10,10 +10,17 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    
+    private lazy var interactButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "ActionButton"), for: .normal)
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.addSubview(interactButton)
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
         let scene = GameScene()
