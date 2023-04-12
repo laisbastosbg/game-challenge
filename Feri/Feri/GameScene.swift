@@ -45,7 +45,6 @@ class GameScene: SKScene {
         var coordinate: Point = hero.currentPosition
         if location.x < CGRectGetMidX(myCamera.frame) && location.y > CGRectGetMidY(myCamera.frame) {
             self.touchLocation = .TopLeft
-            print("UpLeft")
             if hero.currentPosition.y > 0 {
                 coordinate.y -= 1
             }
@@ -56,21 +55,19 @@ class GameScene: SKScene {
                 coordinate.x += 1
             }
             hero.moveOnGrid(to: coordinate, on: level, direction: self.touchLocation)
-            print("UpRight")
         } else if location.x < CGRectGetMidX(myCamera.frame) && location.y < CGRectGetMidY(myCamera.frame) {
             self.touchLocation = .DownLeft
             if hero.currentPosition.x > 0 {
                 coordinate.x -= 1
             }
             hero.moveOnGrid(to: coordinate, on: level, direction: self.touchLocation)
-            print("DownLeft")
         } else if location.x > CGRectGetMidX(myCamera.frame) && location.y < CGRectGetMidY(myCamera.frame) {
             self.touchLocation = .DownRight
             if hero.currentPosition.y < level.numOfColumns-1 {
                 coordinate.y += 1
             }
             hero.moveOnGrid(to: coordinate, on: level, direction: self.touchLocation)
-            print("DownRight")
+
 
         }
     }
