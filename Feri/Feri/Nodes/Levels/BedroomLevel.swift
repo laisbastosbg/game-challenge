@@ -1,17 +1,14 @@
 //
-//  sampleLevel.swift
+//  BedroomLevel.swift
 //  Feri
 //
-//  Created by Otávio Albuquerque on 03/04/23.
+//  Created by Lais Godinho on 11/04/23.
 //
 
 import Foundation
 import SpriteKit
 
-struct sampleLevel: levelMapProtocol {
-
-    
-    
+struct BedroomLevel: levelMapProtocol {
     var numOfRows: Int
     var numOfColumns: Int
     var grid: [[String]]?
@@ -25,10 +22,8 @@ struct sampleLevel: levelMapProtocol {
         map.xScale = 1
         map.yScale = 1
         let tileSet = SKTileSet(named: "Chocolate")!
-        let tilesize = CGSize(width: 128, height: 64)
-        let whiteTiles = tileSet.tileGroups.first(where: {$0.name == "WhiteChoco"})
-        let blackTiles = tileSet.tileGroups.first(where: {$0.name == "BlackChoco"})
-        let roseTiles = tileSet.tileGroups.first(where: {$0.name == "RoseChoco"})
+        let tilesize = CGSize(width: 64, height: 32)
+        let tiles = tileSet.tileGroups.first(where: {$0.name == "BlackChoco"})
 
         floor.tileSet = tileSet
         floor.numberOfColumns = numOfColumns
@@ -36,21 +31,30 @@ struct sampleLevel: levelMapProtocol {
         floor.tileSize = tilesize
         map.addChild(floor)
         floor.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        floor.fill(with: blackTiles)
+        floor.fill(with: tiles)
 
         generateFurniture()
     }
 
     func generateFurniture() {
-        let vaso = InteractibleItem(identifier: "Vaso", texture: SKTexture(imageNamed: "TileSet-Vaso"), position: (x:9,y:9), nextScene: GameScene())
-        insertOnMap(object: vaso)
+        let door1 = InteractibleItem(identifier: "door1", texture: SKTexture(imageNamed: "TilePorta"), position: (x:9,y:3), nextScene: GameScene())
+        insertDoorOnMap(object: door1, isColumnWall: false)
 
-        let porta = InteractibleItem(identifier: "Porta", texture: SKTexture(imageNamed: "TilePorta"), position: (x:5,y:0), nextScene: GameScene())
-        insertDoorOnMap(object: porta, isColumnWall: true)
+        let bedsideTable = InteractibleItem(identifier: "BedsideTable", texture: SKTexture(imageNamed: "bedside_table"), position: (x: 10, y: 0), nextScene: GameScene())
+        insertOnMap(object: bedsideTable)
 
-        let escada = InteractibleItem(identifier: "StairEnd", texture: SKTexture(imageNamed: "StairEnd"), position: (x:7,y:5), nextScene: GameScene())
-        insertOnMap(object: escada)
-        escada.zPosition = 0
+        let bed = InteractibleItem(identifier: "bed", texture: SKTexture(imageNamed: "TileSet-cama"), position: (x: 6, y: 8), nextScene: GameScene())
+        insertOnMap(object: bed)
+
+        let storage = InteractibleItem(identifier: "storage", texture: SKTexture(imageNamed: "storage"), position: (x: 2, y: 0), nextScene: GameScene())
+        insertOnMap(object: storage)
+
+        let shelf = InteractibleItem(identifier: "shelf", texture: SKTexture(imageNamed: "TileSet-shelf"), position: (x: 0, y: 3), nextScene: GameScene())
+        insertOnMap(object: shelf, isColumnWall: false)
+
+        let door2 = InteractibleItem(identifier: "door2", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:9), nextScene: GameScene())
+        insertDoorOnMap(object: door2, isColumnWall: false, isSouthWall: true)
+
     }
 
     func insertOnMap(object: InteractibleItem, isColumnWall: Bool = true) {
@@ -85,5 +89,4 @@ struct sampleLevel: levelMapProtocol {
             object.zPosition = -1
         }
     }
-    
 }

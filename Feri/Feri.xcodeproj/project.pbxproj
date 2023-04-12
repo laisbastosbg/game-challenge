@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B3D0F9329E6D9F400E9D547 /* BedroomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0F9229E6D9F400E9D547 /* BedroomLevel.swift */; };
 		0BC136A629DC627200D535CD /* PickableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC136A529DC627200D535CD /* PickableItem.swift */; };
 		0BC136A829DC660B00D535CD /* InteractibleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC136A729DC660B00D535CD /* InteractibleItem.swift */; };
 		0BC136AF29DC6D9B00D535CD /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC136AE29DC6D9B00D535CD /* Inventory.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B3D0F9229E6D9F400E9D547 /* BedroomLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedroomLevel.swift; sourceTree = "<group>"; };
 		0BC136A529DC627200D535CD /* PickableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickableItem.swift; sourceTree = "<group>"; };
 		0BC136A729DC660B00D535CD /* InteractibleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractibleItem.swift; sourceTree = "<group>"; };
 		0BC136AE29DC6D9B00D535CD /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
@@ -56,9 +58,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B3D0F9129E6D9E600E9D547 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				0B3D0F9229E6D9F400E9D547 /* BedroomLevel.swift */,
+			);
+			path = Levels;
+			sourceTree = "<group>";
+		};
 		0BC136A929DC6B2800D535CD /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				0B3D0F9129E6D9E600E9D547 /* Levels */,
 				29A445A229DB016100576D1C /* Hero.swift */,
 				0BC136A529DC627200D535CD /* PickableItem.swift */,
 				0BC136A729DC660B00D535CD /* InteractibleItem.swift */,
@@ -214,6 +225,7 @@
 				29A445A729DB08B800576D1C /* sampleLevel.swift in Sources */,
 				29A445A529DB035D00576D1C /* levelMapProtocol.swift in Sources */,
 				29A4458A29DAFE3300576D1C /* AppDelegate.swift in Sources */,
+				0B3D0F9329E6D9F400E9D547 /* BedroomLevel.swift in Sources */,
 				29124DAD29E443DE0044497F /* Point.swift in Sources */,
 				29A445A329DB016100576D1C /* Hero.swift in Sources */,
 				0BC136A629DC627200D535CD /* PickableItem.swift in Sources */,
