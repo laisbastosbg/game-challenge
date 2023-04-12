@@ -38,11 +38,17 @@ struct sampleLevel: levelMapProtocol {
         floor.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         floor.fill(with: blackTiles)
         
-        let vaso = InteractibleItem(identifier: "Vaso", texture: SKTexture(imageNamed: "TileSet-Vaso"), position: (x:9,y:9), nextScene: GameScene())
+        let keyChest = PickableItem(name: "ChaveBau", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chave"))
+        let keyDoor = PickableItem(name: "ChavePorta", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chave"))
+        
+        let vaso = InteractibleItem(identifier: "Vaso", texture: SKTexture(imageNamed: "TileSet-Vaso"), position: (x:9,y:9), pickableItem: keyChest)
         insertOnMap(object: vaso)
         
-        let porta = InteractibleItem(identifier: "Porta", texture: SKTexture(imageNamed: "TilePorta"), position: (x:5,y:0), nextScene: GameScene())
+        let porta = InteractibleItem(identifier: "Porta", texture: SKTexture(imageNamed: "TilePorta"), position: (x:5,y:0) ,nextScene: GameScene(), unlockableItem: keyDoor)
         insertDoorOnMap(object: porta, isColumnWall: true)
+        
+        let bau = InteractibleItem(identifier: "Bau", texture: SKTexture(imageNamed: "TilseSet-storage"), position: (x:1,y:1), pickableItem: keyDoor, unlockableItem: keyChest)
+        insertOnMap(object: bau)
         
         let escada = InteractibleItem(identifier: "StairEnd", texture: SKTexture(imageNamed: "StairEnd"), position: (x:7,y:5), nextScene: GameScene())
         insertOnMap(object: escada)
