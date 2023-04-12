@@ -10,7 +10,7 @@ import SpriteKit
 
 class PickableItem: Equatable {
     static func == (lhs: PickableItem, rhs: PickableItem) -> Bool {
-        return (lhs.spriteNode == rhs.spriteNode) && (lhs.name == rhs.name)
+        return (lhs.texture == rhs.texture) && (lhs.name == rhs.name)
     }
     
     var name: String
@@ -23,12 +23,12 @@ class PickableItem: Equatable {
         }
     }
 
-    var spriteNode: SKSpriteNode
+    var texture: SKTexture
 
-    init(name: String, remainingUses: Int, spriteNode: SKSpriteNode) {
+    init(name: String, remainingUses: Int, texture: SKTexture) {
         self.name = name
         self.remainingUses = remainingUses
-        self.spriteNode = spriteNode
+        self.texture = texture
     }
 
     func use() throws {

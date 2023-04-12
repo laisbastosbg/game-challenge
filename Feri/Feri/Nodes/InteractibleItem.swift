@@ -74,9 +74,14 @@ class InteractibleItem: SKSpriteNode{
         switch actionType {
         case .PickItem:
                 Inventory.shared.items.append(compatiblePickableItems!)
+                print("Pegou:", compatiblePickableItems!)
         case .UseItem:
+            print("Usou:", compatibleUnlockableItems!)
             if compatibleUnlockableItems != nil && Inventory.shared.items.contains(where: {$0 == compatibleUnlockableItems}){
-                Inventory.shared.items.first(where: {$0 == compatibleUnlockableItems})!.remainingUses -= 1
+                do {try Inventory.shared.items.first(where: {$0 == compatibleUnlockableItems})!.use()}
+                catch {
+                    print(error)
+                }
                 compatibleUnlockableItems = nil
                 if compatiblePickableItems != nil {
                     self.actionType = .PickItem
@@ -85,7 +90,9 @@ class InteractibleItem: SKSpriteNode{
                 }
             }
         case .ChangeRoom:
-            self.scene?.view?.presentScene(nextScene)
+            let transition = SKTransition.fade(withDuration: 1)
+            nextScene!.scaleMode = .resizeFill
+            self.scene?.view?.presentScene(nextScene!, transition: transition)
         }
     }
     

@@ -17,13 +17,24 @@ class GameViewController: UIViewController {
         button.setImage(UIImage(named: "ActionButton"), for: .normal)
         return button
     }()
-
+    
+    @objc func interact() {
+        scene.hero.interactWithObject(on: scene.level)
+    }
+    let scene = GameScene()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(interactButton)
+        
+        NSLayoutConstraint.activate([
+            interactButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
+            interactButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
+        ])
+        
+        interactButton.addTarget(self, action: #selector(interact), for: .touchUpInside)
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
-        let scene = GameScene()
+
         
         // Set the scale mode to scale to fit the window
         scene.scaleMode = .resizeFill
