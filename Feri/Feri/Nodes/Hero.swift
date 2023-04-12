@@ -41,6 +41,7 @@ class Hero: SKSpriteNode {
             var gridPosition = map.floor.centerOfTile(atColumn: position.y, row: position.x)
             gridPosition.y += self.size.height/3
             let moveAction =  SKAction.move(to: gridPosition, duration: 0.5)
+            self.zPosition = CGFloat(position.y - position.x + map.numOfRows)
             self.run(moveAction)
             var animateAction: SKAction
             switch direction {

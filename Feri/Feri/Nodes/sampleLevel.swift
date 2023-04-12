@@ -61,12 +61,11 @@ struct sampleLevel: levelMapProtocol {
     func insertOnMap(object: InteractibleItem, isColumnWall: Bool = true) {
         floor.addChild(object)
         object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)
-        if isColumnWall {
-            object.position.y += object.size.height/4
-        } else {
-            object.position.y += object.size.height/4
+        object.position.y += object.size.height/4
+        if !isColumnWall {
             object.xScale *= -1
         }
+        object.zPosition = CGFloat(object.tileMapPosition.y + object.tileMapPosition.x)
     }
 
     func insertDoorOnMap(object: InteractibleItem, isColumnWall: Bool, isSouthWall: Bool = false) {
@@ -84,7 +83,7 @@ struct sampleLevel: levelMapProtocol {
         }
 
         if isSouthWall {
-            object.zPosition = 1
+            object.zPosition = CGFloat(object.tileMapPosition.y) + 1
             object.position.x -= 114
         } else {
             object.zPosition = -1
