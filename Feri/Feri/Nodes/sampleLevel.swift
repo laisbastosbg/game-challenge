@@ -37,6 +37,16 @@ struct sampleLevel: levelMapProtocol {
         map.addChild(floor)
         floor.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         floor.fill(with: blackTiles)
+
+        generateFurniture()
+    }
+
+    func generateFurniture() {
+        let vaso = InteractibleItem(identifier: "Vaso", texture: SKTexture(imageNamed: "TileSet-Vaso"), position: (x:9,y:9), nextScene: GameScene())
+        insertOnMap(object: vaso)
+
+        let porta = InteractibleItem(identifier: "Porta", texture: SKTexture(imageNamed: "TilePorta"), position: (x:5,y:0), nextScene: GameScene())
+        insertDoorOnMap(object: porta, isColumnWall: true)
         
         let keyChest = PickableItem(name: "ChaveBau", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chave"))
         let keyDoor = PickableItem(name: "ChavePorta", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chave"))
@@ -49,26 +59,42 @@ struct sampleLevel: levelMapProtocol {
         
         let bau = InteractibleItem(identifier: "Bau", texture: SKTexture(imageNamed: "TilseSet-storage"), position: (x:1,y:1), pickableItem: keyDoor, unlockableItem: keyChest)
         insertOnMap(object: bau)
-        
         let escada = InteractibleItem(identifier: "StairEnd", texture: SKTexture(imageNamed: "StairEnd"), position: (x:7,y:5), nextScene: GameScene())
         insertOnMap(object: escada)
         escada.zPosition = 0
     }
-    
-    func insertOnMap(object: InteractibleItem) {
+
+    func insertOnMap(object: InteractibleItem, isColumnWall: Bool = true) {
         floor.addChild(object)
         object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)
-        object.position.y += object.size.height/3
+        if isColumnWall {
+            object.position.y += object.size.height/4
+        } else {
+            object.position.y += object.size.height/4
+            object.xScale *= -1
+        }
     }
-    func insertDoorOnMap(object: InteractibleItem, isColumnWall: Bool) {
+
+    func insertDoorOnMap(object: InteractibleItem, isColumnWall: Bool, isSouthWall: Bool = false) {
         floor.addChild(object)
         print((floor.children.first! as! InteractibleItem).tileMapPosition)
+
         object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)
         object.position.y += object.size.height/3 + 8
-        object.position.x -= 26
-        object.zPosition = -2
+
+        if isColumnWall {
+            object.position.x -= 26
+        } else {
+            object.xScale *= -1
+            object.position.x += 80
+        }
+
+        if isSouthWall {
+            object.zPosition = 1
+            object.position.x -= 114
+        } else {
+            object.zPosition = -1
+        }
     }
-    
-    
     
 }

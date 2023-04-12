@@ -12,7 +12,7 @@ class GameScene: SKScene {
     
     var touchLocation: TouchState = .None
 
-    let level = sampleLevel(numOfRows: 10, numOfColumns: 10, heroInitialPosition: (x: 3, y: 3))
+    let level = BedroomLevel(numOfRows: 10, numOfColumns: 10, heroInitialPosition: (x: 3, y: 3))
     
     lazy var hero: Hero = Hero(currentPosition: self.level.heroInitialPosition)
     
