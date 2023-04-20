@@ -1,23 +1,22 @@
 //
-//  GameScene.swift
+//  BedroomScene.swift
 //  Feri
 //
-//  Created by Otávio Albuquerque on 03/04/23.
+//  Created by Lais Godinho on 12/04/23.
 //
 
 import SpriteKit
 
-class GameScene: SKScene {
-    
+class BedroomScene: SKScene {
+
     var touchLocation: TouchState = .None
 
     let level = BedroomLevel(numOfRows: 10, numOfColumns: 10, heroInitialPosition: (x: 3, y: 3))
-//    let level = TransitionRoomLevel(numOfRows: 6, numOfColumns: 16, heroInitialPosition: (x: 4, y: 14))
-    
+
     lazy var hero: Hero = Hero(currentPosition: self.level.heroInitialPosition)
-    
+
     var myCamera = SKCameraNode()
-    
+
     override func didMove(to view: SKView) {
 
         addChild(level.map)
@@ -25,7 +24,7 @@ class GameScene: SKScene {
         level.map.xScale = 1
         level.map.yScale = 1
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        
+
         hero.xScale = 0.3
         hero.yScale = 0.3
         addChild(hero)
@@ -38,8 +37,8 @@ class GameScene: SKScene {
         camera = myCamera
 
     }
-    
-    
+
+
     func touchDown(atPoint pos : CGPoint) {
         let location = pos
         var coordinate: Point = hero.currentPosition
@@ -71,32 +70,32 @@ class GameScene: SKScene {
 
         }
     }
-    
+
     func touchMoved(toPoint pos : CGPoint) {
 
     }
-    
+
     func touchUp(atPoint pos : CGPoint) {
         self.touchLocation = .None
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
-    
+
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
-    
+
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
-    
-    
+
+
     override func update(_ currentTime: TimeInterval) {
         camera?.position = hero.position
     }

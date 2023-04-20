@@ -16,10 +16,10 @@ class InteractibleItem: SKSpriteNode{
     var compatibleUnlockableItems: PickableItem?
     private(set) var tileMapPosition: Point
     private var actionType: InteractionType
-    var nextScene: GameScene?
+    var nextScene: SKScene? = nil
 
 
-    init(identifier: String, texture: SKTexture, position: Point, pickableItem: PickableItem) {
+    init(identifier: String, texture: SKTexture, position: Point, pickableItem: PickableItem? = nil) {
         self.identifier = identifier
         self.tileMapPosition = position
         self.compatiblePickableItems = pickableItem
@@ -28,7 +28,7 @@ class InteractibleItem: SKSpriteNode{
         
     }
     
-    init(identifier: String, texture: SKTexture, position: Point, pickableItem: PickableItem, unlockableItem: PickableItem) {
+    init(identifier: String, texture: SKTexture, position: Point, pickableItem: PickableItem? = nil, unlockableItem: PickableItem? = nil) {
         self.identifier = identifier
         self.tileMapPosition = position
         self.compatiblePickableItems = pickableItem
@@ -37,7 +37,7 @@ class InteractibleItem: SKSpriteNode{
         super.init(texture: texture, color: .clear, size: texture.size())
         
     }
-    init(identifier: String, texture: SKTexture, position: Point, nextScene: GameScene) {
+    init(identifier: String, texture: SKTexture, position: Point, nextScene: SKScene) {
         self.identifier = identifier
         self.tileMapPosition = position
         self.nextScene = nextScene
@@ -45,7 +45,7 @@ class InteractibleItem: SKSpriteNode{
         super.init(texture: texture, color: .clear, size: texture.size())
         
     }
-    init(identifier: String, texture: SKTexture, position: Point, nextScene: GameScene, unlockableItem: PickableItem) {
+    init(identifier: String, texture: SKTexture, position: Point, nextScene: SKScene, unlockableItem: PickableItem) {
         self.identifier = identifier
         self.tileMapPosition = position
         self.nextScene = nextScene

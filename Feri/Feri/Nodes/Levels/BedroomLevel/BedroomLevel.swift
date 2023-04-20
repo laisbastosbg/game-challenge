@@ -37,22 +37,22 @@ struct BedroomLevel: levelMapProtocol {
     }
 
     func generateFurniture() {
-        let door1 = InteractibleItem(identifier: "door1", texture: SKTexture(imageNamed: "TilePorta"), position: (x:9,y:3), nextScene: GameScene())
+        let door1 = InteractibleItem(identifier: "door1", texture: SKTexture(imageNamed: "TilePorta"), position: (x:9,y:3))
         insertDoorOnMap(object: door1, isColumnWall: false)
 
-        let bedsideTable = InteractibleItem(identifier: "BedsideTable", texture: SKTexture(imageNamed: "bedside_table"), position: (x: 10, y: 0), nextScene: GameScene())
+        let bedsideTable = InteractibleItem(identifier: "BedsideTable", texture: SKTexture(imageNamed: "bedside_table"), position: (x: 10, y: 0))
         insertOnMap(object: bedsideTable)
 
-        let bed = InteractibleItem(identifier: "bed", texture: SKTexture(imageNamed: "TileSet-cama"), position: (x: 6, y: 8), nextScene: GameScene())
+        let bed = InteractibleItem(identifier: "bed", texture: SKTexture(imageNamed: "TileSet-cama"), position: (x: 6, y: 8))
         insertOnMap(object: bed)
 
-        let storage = InteractibleItem(identifier: "storage", texture: SKTexture(imageNamed: "storage"), position: (x: 2, y: 0), nextScene: GameScene())
+        let storage = InteractibleItem(identifier: "storage", texture: SKTexture(imageNamed: "storage"), position: (x: 2, y: 0))
         insertOnMap(object: storage)
 
-        let shelf = InteractibleItem(identifier: "shelf", texture: SKTexture(imageNamed: "TileSet-shelf"), position: (x: 0, y: 3), nextScene: GameScene())
+        let shelf = InteractibleItem(identifier: "shelf", texture: SKTexture(imageNamed: "TileSet-shelf"), position: (x: 0, y: 3))
         insertOnMap(object: shelf, isColumnWall: false)
 
-        let door2 = InteractibleItem(identifier: "door2", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:9), nextScene: GameScene())
+        let door2 = InteractibleItem(identifier: "door2", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:9), nextScene: TransitionRoomScene())
         insertDoorOnMap(object: door2, isColumnWall: false, isSouthWall: true)
 
     }
