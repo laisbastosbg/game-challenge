@@ -21,7 +21,7 @@ class GameViewController: UIViewController {
     @objc func interact() {
         scene.hero.interactWithObject(on: scene.level)
     }
-    let scene = GameScene()
+    let scene = BedroomScene()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(interactButton)
