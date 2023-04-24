@@ -37,7 +37,7 @@ class Hero: SKSpriteNode {
         }
         
         
-        if children.first(where: {$0.tileMapPosition == position}) == nil && position != currentPosition{
+        if children.first(where: {$0.tileMapColision.contains(where: {$0 == position}) }) == nil && position != currentPosition{
             var gridPosition = map.floor.centerOfTile(atColumn: position.y, row: position.x)
             gridPosition.y += self.size.height/3
             let moveAction =  SKAction.move(to: gridPosition, duration: 0.5)

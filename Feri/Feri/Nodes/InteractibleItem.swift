@@ -15,6 +15,7 @@ class InteractibleItem: SKSpriteNode{
     var compatiblePickableItems: PickableItem?
     var compatibleUnlockableItems: PickableItem?
     private(set) var tileMapPosition: Point
+    private(set) var tileMapColision: [Point] = []
     private var actionType: InteractionType
     var nextScene: SKScene? = nil
 
@@ -23,6 +24,7 @@ class InteractibleItem: SKSpriteNode{
     init(identifier: String, texture: SKTexture, position: Point, pickableItem: PickableItem? = nil) {
         self.identifier = identifier
         self.tileMapPosition = position
+        self.tileMapColision.append(tileMapPosition)
         self.compatiblePickableItems = pickableItem
         self.actionType = .PickItem
         super.init(texture: texture, color: .clear, size: texture.size())
@@ -32,6 +34,7 @@ class InteractibleItem: SKSpriteNode{
     init(identifier: String, texture: SKTexture, position: Point, pickableItem: PickableItem? = nil, unlockableItem: PickableItem? = nil) {
         self.identifier = identifier
         self.tileMapPosition = position
+        self.tileMapColision.append(tileMapPosition)
         self.compatiblePickableItems = pickableItem
         self.compatibleUnlockableItems = unlockableItem
         self.actionType = .UseItem
@@ -41,6 +44,7 @@ class InteractibleItem: SKSpriteNode{
     init(identifier: String, texture: SKTexture, position: Point, nextScene: SKScene) {
         self.identifier = identifier
         self.tileMapPosition = position
+        self.tileMapColision.append(tileMapPosition)
         self.nextScene = nextScene
         self.actionType = .ChangeRoom
         super.init(texture: texture, color: .clear, size: texture.size())
@@ -49,6 +53,7 @@ class InteractibleItem: SKSpriteNode{
     init(identifier: String, texture: SKTexture, position: Point, nextScene: SKScene, unlockableItem: PickableItem) {
         self.identifier = identifier
         self.tileMapPosition = position
+        self.tileMapColision.append(tileMapPosition)
         self.nextScene = nextScene
         self.compatibleUnlockableItems = unlockableItem
         self.actionType = .UseItem
@@ -95,6 +100,9 @@ class InteractibleItem: SKSpriteNode{
             nextScene!.scaleMode = .resizeFill
             self.scene?.view?.presentScene(nextScene!, transition: transition)
         }
+    }
+    func setCollisor(collision:Point) {
+        self.tileMapColision.append(collision)
     }
     
     

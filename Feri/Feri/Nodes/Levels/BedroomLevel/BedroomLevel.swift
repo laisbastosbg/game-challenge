@@ -45,6 +45,7 @@ struct BedroomLevel: levelMapProtocol {
 
         let bed = InteractibleItem(identifier: "bed", texture: SKTexture(imageNamed: "TileSet-cama"), position: (x: 2, y: 4))
         insertOnMap(object: bed)
+        bed.setCollisor(collision: (x:3,y:4))
 
         let storage = InteractibleItem(identifier: "storage", texture: SKTexture(imageNamed: "storage"), position: (x: 1, y: 0))
         insertOnMap(object: storage)
