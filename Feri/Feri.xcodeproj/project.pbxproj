@@ -67,8 +67,11 @@
 		0B3D0F9129E6D9E600E9D547 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+
+				0B3D0F9229E6D9F400E9D547 /* BedroomLevel.swift */,
+				29A445A629DB08B800576D1C /* sampleLevel.swift */,
 				0B3D0F9929E71D2200E9D547 /* TransitionRoomLevel */,
-				0B3D0F9629E71C1B00E9D547 /* BedroomLevel */,
+
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -98,7 +101,6 @@
 				29A445A229DB016100576D1C /* Hero.swift */,
 				0BC136A529DC627200D535CD /* PickableItem.swift */,
 				0BC136A729DC660B00D535CD /* InteractibleItem.swift */,
-				29A445A629DB08B800576D1C /* sampleLevel.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";

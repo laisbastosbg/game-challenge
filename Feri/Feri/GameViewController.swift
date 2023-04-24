@@ -21,6 +21,7 @@ class GameViewController: UIViewController {
     @objc func interact() {
         scene.hero.interactWithObject(on: scene.level)
     }
+
     let scene = BedroomScene()
     override func viewDidLoad() {
         super.viewDidLoad()

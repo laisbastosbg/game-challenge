@@ -19,6 +19,7 @@ class InteractibleItem: SKSpriteNode{
     var nextScene: SKScene? = nil
 
 
+
     init(identifier: String, texture: SKTexture, position: Point, pickableItem: PickableItem? = nil) {
         self.identifier = identifier
         self.tileMapPosition = position

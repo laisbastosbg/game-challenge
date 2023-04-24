@@ -32,7 +32,7 @@ class GameScene: SKScene {
         print(hero.frame.minY)
         hero.position.y += hero.size.height/3
         myCamera.position = hero.position
-        myCamera.setScale(1)
+        myCamera.setScale(0.7)
         addChild(myCamera)
         camera = myCamera
 
