@@ -11,7 +11,6 @@ import SpriteKit
 protocol levelMapProtocol {
     var numOfRows: Int {get set}
     var numOfColumns: Int {get set}
-    var grid: [[String]]? { get set }
     var map: SKNode { get }
     var floor: SKTileMapNode { get }
     var leftWall: SKTileMapNode { get }

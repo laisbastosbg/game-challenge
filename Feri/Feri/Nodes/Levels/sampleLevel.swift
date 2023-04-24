@@ -37,7 +37,7 @@ struct sampleLevel: levelMapProtocol {
         map.addChild(floor)
         floor.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         floor.fill(with: blackTiles)
-
+        floor.setTileGroup(whiteTiles, forColumn: 1, row: 1)
         generateFurniture()
     }
 

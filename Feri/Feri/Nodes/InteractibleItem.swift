@@ -16,7 +16,7 @@ class InteractibleItem: SKSpriteNode{
     var compatibleUnlockableItems: PickableItem?
     private(set) var tileMapPosition: Point
     private var actionType: InteractionType
-    var nextScene: GameScene?
+    var nextScene: SKScene?
 
 
     init(identifier: String, texture: SKTexture, position: Point, pickableItem: PickableItem) {
