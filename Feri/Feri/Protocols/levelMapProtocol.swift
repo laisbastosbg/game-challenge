@@ -17,7 +17,7 @@ protocol levelMapProtocol {
     var rightWall: SKTileMapNode { get }
     var heroInitialPosition: (x: Int, y: Int) { get }
 
-    func configLevel()
+    mutating func configLevel()
     func generateFurniture()
     func insertOnMap(object: InteractibleItem, isColumnWall: Bool)
     func insertDoorOnMap(object: InteractibleItem, isColumnWall: Bool, isSouthWall: Bool)

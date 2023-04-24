@@ -17,39 +17,42 @@ struct TransitionRoomLevel: levelMapProtocol {
     var leftWall: SKTileMapNode = SKTileMapNode()
     var rightWall: SKTileMapNode = SKTileMapNode()
     var heroInitialPosition: (x: Int, y: Int)
-
-    func configLevel() {
+    var alreadyLoaded = false
+    mutating func configLevel() {
             map.xScale = 1
             map.yScale = 1
             let tileSet = SKTileSet(named: "Chocolate")!
-            let tilesize = CGSize(width: 64, height: 32)
+            let tilesize = CGSize(width: 128, height: 64)
             let tiles = tileSet.tileGroups.first(where: {$0.name == "RoseChoco"})
 
             floor.tileSet = tileSet
             floor.numberOfColumns = numOfColumns
             floor.numberOfRows = numOfRows
             floor.tileSize = tilesize
-            map.addChild(floor)
             floor.anchorPoint = CGPoint(x: 0.5, y: 0.5)
             floor.fill(with: tiles)
 
+        if !alreadyLoaded{
+            map.addChild(floor)
             generateFurniture()
+            alreadyLoaded = true
+        }
     }
 
     func generateFurniture() {
-        let door1 = InteractibleItem(identifier: "door1", texture: SKTexture(imageNamed: "TilePorta"), position: (x:5,y:12), nextScene: BedroomScene())
+        let door1 = InteractibleItem(identifier: "door1", texture: SKTexture(imageNamed: "TilePorta"), position: (x:5,y:12), nextScene: BedroomScene.shared)
         insertDoorOnMap(object: door1, isColumnWall: false)
 
-        let bedsideTable = InteractibleItem(identifier: "BedsideTable", texture: SKTexture(imageNamed: "bedside_table"), position: (x: 6, y: 8), nextScene: GameScene())
+        let bedsideTable = InteractibleItem(identifier: "BedsideTable", texture: SKTexture(imageNamed: "bedside_table"), position: (x: 5, y: 8))
         insertOnMap(object: bedsideTable)
 
-        let stairEnd = InteractibleItem(identifier: "stairEnd", texture: SKTexture(imageNamed: "StairEnd"), position: (x:2,y:2), nextScene: GameScene())
+        let stairEnd = InteractibleItem(identifier: "stairEnd", texture: SKTexture(imageNamed: "StairEnd"), position: (x:2,y:2), nextScene: BedroomScene.shared)
         insertOnMap(object: stairEnd, isColumnWall: true)
 
-        let window = InteractibleItem(identifier: "window", texture: SKTexture(imageNamed: "TileJanela"), position: (x:3,y:0), nextScene: GameScene())
+        let window = InteractibleItem(identifier: "window", texture: SKTexture(imageNamed: "TileJanela"), position: (x:3,y:0))
         insertDoorOnMap(object: window, isColumnWall: true)
 
-        let door2 = InteractibleItem(identifier: "door2", texture: SKTexture(imageNamed: "TilePorta"), position: (x:5,y:3), nextScene: GameScene())
+        let door2 = InteractibleItem(identifier: "door2", texture: SKTexture(imageNamed: "TilePorta"), position: (x:5,y:3), nextScene: BedroomScene.shared)
         insertDoorOnMap(object: door2, isColumnWall: false)
     }
 
@@ -75,12 +78,13 @@ struct TransitionRoomLevel: levelMapProtocol {
             object.position.x -= 26
         } else {
             object.xScale *= -1
-            object.position.x += 80
+            object.position.x += 26
         }
 
         if isSouthWall {
-            object.zPosition = 1
-            object.position.x -= 114
+           object.position.y -= 30
+            object.zPosition = CGFloat(object.tileMapPosition.y - object.tileMapPosition.x + numOfRows) + 1
+            object.position.x -= 70
         } else {
             object.zPosition = -1
         }

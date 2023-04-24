@@ -37,7 +37,7 @@ class Hero: SKSpriteNode {
         }
         
         
-        if children.first(where: {$0.tileMapPosition == position}) == nil && position != currentPosition{
+        if children.first(where: {$0.tileMapColision.contains(where: {$0 == position}) }) == nil && position != currentPosition{
             var gridPosition = map.floor.centerOfTile(atColumn: position.y, row: position.x)
             gridPosition.y += self.size.height/3
             let moveAction =  SKAction.move(to: gridPosition, duration: 0.5)
@@ -104,11 +104,12 @@ class Hero: SKSpriteNode {
     }
     
     func interactWithObject(on map: levelMapProtocol) {
-        print("oia")
+
         let objects = map.floor.children.map { obj in
             obj as! InteractibleItem
         }
-        if let obj = objects.first(where: {$0.tileMapPosition == facingPosition}) {
+        if let obj = objects.first(where: {$0.tileMapColision.contains(where: {$0 == facingPosition})}){
+            print(obj)
             obj.interact()
         }
             
