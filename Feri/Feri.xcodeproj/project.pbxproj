@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B3D0F9329E6D9F400E9D547 /* BedroomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0F9229E6D9F400E9D547 /* BedroomLevel.swift */; };
 		0B3D0F9529E6F80800E9D547 /* TransitionRoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0F9429E6F80800E9D547 /* TransitionRoomLevel.swift */; };
-		0B3D0F9829E71C7E00E9D547 /* BedroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0F9729E71C7E00E9D547 /* BedroomScene.swift */; };
 		0B3D0F9B29E71D3900E9D547 /* TransitionRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0F9A29E71D3900E9D547 /* TransitionRoomScene.swift */; };
+		0B5F755F29F6B07D002CFC3D /* BedroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F755D29F6B07D002CFC3D /* BedroomScene.swift */; };
+		0B5F756029F6B07D002CFC3D /* BedroomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F755E29F6B07D002CFC3D /* BedroomLevel.swift */; };
 		0BC136A629DC627200D535CD /* PickableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC136A529DC627200D535CD /* PickableItem.swift */; };
 		0BC136A829DC660B00D535CD /* InteractibleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC136A729DC660B00D535CD /* InteractibleItem.swift */; };
 		0BC136AF29DC6D9B00D535CD /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC136AE29DC6D9B00D535CD /* Inventory.swift */; };
@@ -30,10 +30,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B3D0F9229E6D9F400E9D547 /* BedroomLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedroomLevel.swift; sourceTree = "<group>"; };
 		0B3D0F9429E6F80800E9D547 /* TransitionRoomLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionRoomLevel.swift; sourceTree = "<group>"; };
 		0B3D0F9729E71C7E00E9D547 /* BedroomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedroomScene.swift; sourceTree = "<group>"; };
 		0B3D0F9A29E71D3900E9D547 /* TransitionRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionRoomScene.swift; sourceTree = "<group>"; };
+		0B5F755D29F6B07D002CFC3D /* BedroomScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BedroomScene.swift; sourceTree = "<group>"; };
+		0B5F755E29F6B07D002CFC3D /* BedroomLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BedroomLevel.swift; sourceTree = "<group>"; };
 		0BC136A529DC627200D535CD /* PickableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickableItem.swift; sourceTree = "<group>"; };
 		0BC136A729DC660B00D535CD /* InteractibleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractibleItem.swift; sourceTree = "<group>"; };
 		0BC136AE29DC6D9B00D535CD /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
@@ -67,22 +68,11 @@
 		0B3D0F9129E6D9E600E9D547 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
-
-				0B3D0F9229E6D9F400E9D547 /* BedroomLevel.swift */,
+				0B5F755C29F6B07D002CFC3D /* BedroomLevel */,
 				29A445A629DB08B800576D1C /* sampleLevel.swift */,
 				0B3D0F9929E71D2200E9D547 /* TransitionRoomLevel */,
-
 			);
 			path = Levels;
-			sourceTree = "<group>";
-		};
-		0B3D0F9629E71C1B00E9D547 /* BedroomLevel */ = {
-			isa = PBXGroup;
-			children = (
-				0B3D0F9229E6D9F400E9D547 /* BedroomLevel.swift */,
-				0B3D0F9729E71C7E00E9D547 /* BedroomScene.swift */,
-			);
-			path = BedroomLevel;
 			sourceTree = "<group>";
 		};
 		0B3D0F9929E71D2200E9D547 /* TransitionRoomLevel */ = {
@@ -92,6 +82,23 @@
 				0B3D0F9A29E71D3900E9D547 /* TransitionRoomScene.swift */,
 			);
 			path = TransitionRoomLevel;
+			sourceTree = "<group>";
+		};
+		0B5F755B29F6AFDE002CFC3D /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				0B3D0F9729E71C7E00E9D547 /* BedroomScene.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		0B5F755C29F6B07D002CFC3D /* BedroomLevel */ = {
+			isa = PBXGroup;
+			children = (
+				0B5F755D29F6B07D002CFC3D /* BedroomScene.swift */,
+				0B5F755E29F6B07D002CFC3D /* BedroomLevel.swift */,
+			);
+			path = BedroomLevel;
 			sourceTree = "<group>";
 		};
 		0BC136A929DC6B2800D535CD /* Nodes */ = {
@@ -145,6 +152,7 @@
 			children = (
 				29A4458829DAFE3300576D1C /* Feri */,
 				29A4458729DAFE3300576D1C /* Products */,
+				0B5F755B29F6AFDE002CFC3D /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -248,16 +256,16 @@
 				29A4459029DAFE3300576D1C /* GameScene.swift in Sources */,
 				29A4459229DAFE3300576D1C /* GameViewController.swift in Sources */,
 				0BC136AF29DC6D9B00D535CD /* Inventory.swift in Sources */,
+				0B5F756029F6B07D002CFC3D /* BedroomLevel.swift in Sources */,
 				29A445AB29DB198C00576D1C /* TouchState.swift in Sources */,
 				29A445A729DB08B800576D1C /* sampleLevel.swift in Sources */,
 				29A445A529DB035D00576D1C /* levelMapProtocol.swift in Sources */,
 				29A4458A29DAFE3300576D1C /* AppDelegate.swift in Sources */,
-				0B3D0F9329E6D9F400E9D547 /* BedroomLevel.swift in Sources */,
+				0B5F755F29F6B07D002CFC3D /* BedroomScene.swift in Sources */,
 				29124DAD29E443DE0044497F /* Point.swift in Sources */,
 				29A445A329DB016100576D1C /* Hero.swift in Sources */,
 				0B3D0F9B29E71D3900E9D547 /* TransitionRoomScene.swift in Sources */,
 				0BC136A629DC627200D535CD /* PickableItem.swift in Sources */,
-				0B3D0F9829E71C7E00E9D547 /* BedroomScene.swift in Sources */,
 				29124DB529E583680044497F /* InteractionTypes.swift in Sources */,
 				0B3D0F9529E6F80800E9D547 /* TransitionRoomLevel.swift in Sources */,
 				0BC136A829DC660B00D535CD /* InteractibleItem.swift in Sources */,
