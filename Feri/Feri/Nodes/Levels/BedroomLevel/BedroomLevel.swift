@@ -17,8 +17,10 @@ struct BedroomLevel: levelMapProtocol {
     var leftWall: SKTileMapNode = SKTileMapNode()
     var rightWall: SKTileMapNode = SKTileMapNode()
     var heroInitialPosition: (x:Int,y:Int)
+    var alreadyLoaded = false
+    mutating func configLevel() {
+        
 
-    func configLevel() {
         map.xScale = 1
         map.yScale = 1
         let tileSet = SKTileSet(named: "Chocolate")!
@@ -29,11 +31,16 @@ struct BedroomLevel: levelMapProtocol {
         floor.numberOfColumns = numOfColumns
         floor.numberOfRows = numOfRows
         floor.tileSize = tilesize
-        map.addChild(floor)
+
         floor.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         floor.fill(with: tiles)
+        if !alreadyLoaded{
+            map.addChild(floor)
+            generateFurniture()
+            alreadyLoaded = true
+        }
 
-        generateFurniture()
+
     }
 
     func generateFurniture() {
@@ -53,7 +60,7 @@ struct BedroomLevel: levelMapProtocol {
         let shelf = InteractibleItem(identifier: "shelf", texture: SKTexture(imageNamed: "TileSet-shelf"), position: (x: 0, y: 1))
         insertOnMap(object: shelf, isColumnWall: false)
 
-        let door2 = InteractibleItem(identifier: "door2", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:4), nextScene: TransitionRoomScene())
+        let door2 = InteractibleItem(identifier: "door2", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:4), nextScene: TransitionRoomScene.shared)
         insertDoorOnMap(object: door2, isColumnWall: false, isSouthWall: true)
 
     }

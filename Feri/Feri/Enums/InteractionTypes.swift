@@ -11,5 +11,5 @@ enum InteractionType {
     case PickItem
     case UseItem
     case ChangeRoom
-    
+    case None
 }

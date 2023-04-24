@@ -7,36 +7,54 @@
 
 import SpriteKit
 
-class BedroomScene: SKScene {
+class BedroomScene: SKScene, SceneProtocol {
+    
+
+
+    var vc_reference: ViewPresenterDelegate!
+    static var shared = BedroomScene()
 
     var touchLocation: TouchState = .None
 
-    let level = BedroomLevel(numOfRows: 5, numOfColumns: 5, heroInitialPosition: (x: 3, y: 3))
+    var level: levelMapProtocol = BedroomLevel(numOfRows: 5, numOfColumns: 5, heroInitialPosition: (x: 3, y: 3))
 
     lazy var hero: Hero = Hero(currentPosition: self.level.heroInitialPosition)
 
     var myCamera = SKCameraNode()
 
+    func addChildren() {
+
+    }
     override func didMove(to view: SKView) {
+        self.name = "Bedroom"
+        super.didMove(to: view)
 
         addChild(level.map)
+        addChild(hero)
+        addChild(myCamera)
         level.configLevel()
+
         level.map.xScale = 1
         level.map.yScale = 1
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
         hero.xScale = 0.3
         hero.yScale = 0.3
-        addChild(hero)
+
         hero.position = level.floor.centerOfTile(atColumn: hero.currentPosition.y, row: hero.currentPosition.x)
         print(hero.frame.minY)
         hero.position.y += hero.size.height/3
         myCamera.position = hero.position
         myCamera.setScale(1)
-        addChild(myCamera)
+
         camera = myCamera
 
     }
+    override func willMove(from view: SKView) {
+        BedroomScene.shared.removeAllChildren()
+    }
+    
+    
 
 
     func touchDown(atPoint pos : CGPoint) {

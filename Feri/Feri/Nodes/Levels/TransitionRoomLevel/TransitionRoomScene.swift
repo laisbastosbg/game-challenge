@@ -7,34 +7,49 @@
 
 import SpriteKit
 
-class TransitionRoomScene: SKScene {
+class TransitionRoomScene: SKScene, SceneProtocol {
+
+    var vc_reference: ViewPresenterDelegate!
+    static var shared = TransitionRoomScene()
 
     var touchLocation: TouchState = .None
 
-    let level = TransitionRoomLevel(numOfRows: 6, numOfColumns: 16, heroInitialPosition: (x: 4, y: 14))
+    var level: levelMapProtocol = TransitionRoomLevel(numOfRows: 6, numOfColumns: 16, heroInitialPosition: (x: 4, y: 14))
 
     lazy var hero: Hero = Hero(currentPosition: self.level.heroInitialPosition)
 
     var myCamera = SKCameraNode()
+    
+    func addChildren() {
+
+    }
 
     override func didMove(to view: SKView) {
-
+        self.name = "TransitionRoom"
         addChild(level.map)
+        addChild(hero)
+        addChild(myCamera)
         level.configLevel()
+
         level.map.xScale = 1
         level.map.yScale = 1
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
         hero.xScale = 0.3
         hero.yScale = 0.3
-        addChild(hero)
+
         hero.position = level.floor.centerOfTile(atColumn: hero.currentPosition.y, row: hero.currentPosition.x)
         print(hero.frame.minY)
         hero.position.y += hero.size.height/3
         myCamera.position = hero.position
         myCamera.setScale(1)
-        addChild(myCamera)
+
         camera = myCamera
+
+    }
+    
+    override func willMove(from view: SKView) {
+        TransitionRoomScene.shared.removeAllChildren()
 
     }
 

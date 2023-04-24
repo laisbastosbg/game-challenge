@@ -104,11 +104,12 @@ class Hero: SKSpriteNode {
     }
     
     func interactWithObject(on map: levelMapProtocol) {
-        print("oia")
+
         let objects = map.floor.children.map { obj in
             obj as! InteractibleItem
         }
-        if let obj = objects.first(where: {$0.tileMapPosition == facingPosition}) {
+        if let obj = objects.first(where: {$0.tileMapColision.contains(where: {$0 == facingPosition})}){
+            print(obj)
             obj.interact()
         }
             

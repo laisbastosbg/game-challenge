@@ -9,7 +9,9 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, ViewPresenterDelegate {
+
+    
     
     private lazy var interactButton: UIButton = {
         let button = UIButton()
@@ -18,11 +20,14 @@ class GameViewController: UIViewController {
         return button
     }()
     
+    var myView: SKView!
+    var scene = BedroomScene.shared
+    
+    
     @objc func interact() {
-        scene.hero.interactWithObject(on: scene.level)
+        (myView.scene as! any SceneProtocol).hero.interactWithObject(on: (myView.scene as! any SceneProtocol).level)
     }
-
-    let scene = BedroomScene()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(interactButton)
@@ -35,23 +40,29 @@ class GameViewController: UIViewController {
         interactButton.addTarget(self, action: #selector(interact), for: .touchUpInside)
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
-
+        
         
         // Set the scale mode to scale to fit the window
         scene.scaleMode = .resizeFill
-
+        
         // Present the scene
-        if let view = self.view as! SKView? {
-            view.presentScene(scene)
-
-            view.ignoresSiblingOrder = true
-
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+        myView = self.view as! SKView?
+        scene.vc_reference = self
+        TransitionRoomScene.shared.vc_reference = self
+        myView.presentScene(scene)
+        
+        myView.ignoresSiblingOrder = true
+        
+        myView.showsFPS = true
+        myView.showsNodeCount = true
+        
     }
     
-
+    func presentView(scene: SKScene) {
+        myView.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
+    }
+    
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .landscape
@@ -59,7 +70,7 @@ class GameViewController: UIViewController {
             return .all
         }
     }
-
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
