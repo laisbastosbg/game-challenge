@@ -40,20 +40,23 @@ struct TransitionRoomLevel: levelMapProtocol {
     }
 
     func generateFurniture() {
-        let door1 = InteractibleItem(identifier: "door1", texture: SKTexture(imageNamed: "TilePorta"), position: (x:5,y:12), nextScene: BedroomScene.shared)
-        insertDoorOnMap(object: door1, isColumnWall: false)
+        let bedroomDoor = InteractibleItem(identifier: "bedroomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:1,y:0), nextScene: BedroomScene.shared)
+        insertDoorOnMap(object: bedroomDoor, isColumnWall: true)
 
-        let bedsideTable = InteractibleItem(identifier: "BedsideTable", texture: SKTexture(imageNamed: "bedside_table"), position: (x: 5, y: 8))
+        let crowbar = PickableItem(name: "crowbar", remainingUses: 2, texture: SKTexture(imageNamed: "objetos"))
+        let balconyKey = PickableItem(name: "balconyKey", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chave"))
+        let bedsideTable = InteractibleItem(identifier: "BedsideTable", texture: SKTexture(imageNamed: "bedside_table"), position: (x: 2, y: 4), pickableItem: balconyKey, unlockableItem: crowbar)
         insertOnMap(object: bedsideTable)
 
-        let stairEnd = InteractibleItem(identifier: "stairEnd", texture: SKTexture(imageNamed: "StairEnd"), position: (x:2,y:2), nextScene: BedroomScene.shared)
-        insertOnMap(object: stairEnd, isColumnWall: true)
+//        let stairEnd = InteractibleItem(identifier: "stairEnd", texture: SKTexture(imageNamed: "StairEnd"), position: (x:0,y:1), nextScene: GameScene())
+//        insertOnMap(object: stairEnd, isColumnWall: true)
+//
+//        let window = InteractibleItem(identifier: "window", texture: SKTexture(imageNamed: "TileJanela"), position: (x:1,y:0), nextScene: GameScene())
+//        insertDoorOnMap(object: window, isColumnWall: true)
 
-        let window = InteractibleItem(identifier: "window", texture: SKTexture(imageNamed: "TileJanela"), position: (x:3,y:0))
-        insertDoorOnMap(object: window, isColumnWall: true)
-
-        let door2 = InteractibleItem(identifier: "door2", texture: SKTexture(imageNamed: "TilePorta"), position: (x:5,y:3), nextScene: BedroomScene.shared)
-        insertDoorOnMap(object: door2, isColumnWall: false)
+        let bathroomKey = PickableItem(name: "bathroomKey", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chaveBanheiro"))
+        let bathroomDoor = InteractibleItem(identifier: "bathroomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:2,y:1), nextScene: BathroomScene.shared, unlockableItem: bathroomKey)
+        insertDoorOnMap(object: bathroomDoor, isColumnWall: false)
     }
 
     func insertOnMap(object: InteractibleItem, isColumnWall: Bool = false) {

@@ -12,8 +12,8 @@ import SpriteKit
 class InteractibleItem: SKSpriteNode{
     
     var identifier: String
-    var compatiblePickableItems: PickableItem?
-    var compatibleUnlockableItems: PickableItem?
+    var storedPickableItem: PickableItem?
+    var compatibleUnlockableItem: PickableItem?
     private(set) var tileMapPosition: Point
     private(set) var tileMapColision: [Point] = []
     private var actionType: InteractionType
@@ -25,7 +25,7 @@ class InteractibleItem: SKSpriteNode{
         self.identifier = identifier
         self.tileMapPosition = position
         self.tileMapColision.append(tileMapPosition)
-        self.compatiblePickableItems = pickableItem
+        self.storedPickableItem = pickableItem
         self.actionType = .PickItem
         super.init(texture: texture, color: .clear, size: texture.size())
         
@@ -35,8 +35,8 @@ class InteractibleItem: SKSpriteNode{
         self.identifier = identifier
         self.tileMapPosition = position
         self.tileMapColision.append(tileMapPosition)
-        self.compatiblePickableItems = pickableItem
-        self.compatibleUnlockableItems = unlockableItem
+        self.storedPickableItem = pickableItem
+        self.compatibleUnlockableItem = unlockableItem
         self.actionType = .UseItem
         super.init(texture: texture, color: .clear, size: texture.size())
         
@@ -55,7 +55,7 @@ class InteractibleItem: SKSpriteNode{
         self.tileMapPosition = position
         self.tileMapColision.append(tileMapPosition)
         self.nextScene = nextScene
-        self.compatibleUnlockableItems = unlockableItem
+        self.compatibleUnlockableItem = unlockableItem
         self.actionType = .UseItem
         super.init(texture: texture, color: .clear, size: texture.size())
         
@@ -86,20 +86,20 @@ class InteractibleItem: SKSpriteNode{
 //    }
 
     func interact() {
+        print(actionType)
         switch actionType {
         case .PickItem:
-                Inventory.shared.items.append(compatiblePickableItems!)
-                print("Pegou:", compatiblePickableItems!)
-            self.actionType = .None
+                Inventory.shared.items.append(storedPickableItem!)
+                print("Pegou:", storedPickableItem!)
         case .UseItem:
-            print("Usou:", compatibleUnlockableItems!)
-            if compatibleUnlockableItems != nil && Inventory.shared.items.contains(where: {$0 == compatibleUnlockableItems}){
-                do {try Inventory.shared.items.first(where: {$0 == compatibleUnlockableItems})!.use()}
+            print("Usou:", compatibleUnlockableItem!)
+            if compatibleUnlockableItem != nil && Inventory.shared.items.contains(where: {$0 == compatibleUnlockableItem}){
+                do {try Inventory.shared.items.first(where: {$0 == compatibleUnlockableItem})!.use()}
                 catch {
                     print(error)
                 }
-                compatibleUnlockableItems = nil
-                if compatiblePickableItems != nil {
+                compatibleUnlockableItem = nil
+                if storedPickableItem != nil {
                     self.actionType = .PickItem
                 }else if nextScene != nil {
                     self.actionType = .ChangeRoom

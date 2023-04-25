@@ -11,6 +11,8 @@
 		0B3D0F9B29E71D3900E9D547 /* TransitionRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0F9A29E71D3900E9D547 /* TransitionRoomScene.swift */; };
 		0B5F755F29F6B07D002CFC3D /* BedroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F755D29F6B07D002CFC3D /* BedroomScene.swift */; };
 		0B5F756029F6B07D002CFC3D /* BedroomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F755E29F6B07D002CFC3D /* BedroomLevel.swift */; };
+		0B5F756429F6C3FC002CFC3D /* BathroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F756329F6C3FC002CFC3D /* BathroomScene.swift */; };
+		0B5F756629F6C425002CFC3D /* BathroomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F756529F6C425002CFC3D /* BathroomLevel.swift */; };
 		0BC136A629DC627200D535CD /* PickableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC136A529DC627200D535CD /* PickableItem.swift */; };
 		0BC136A829DC660B00D535CD /* InteractibleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC136A729DC660B00D535CD /* InteractibleItem.swift */; };
 		0BC136AF29DC6D9B00D535CD /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC136AE29DC6D9B00D535CD /* Inventory.swift */; };
@@ -25,7 +27,6 @@
 		29A4459A29DAFE3300576D1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29A4459829DAFE3300576D1C /* LaunchScreen.storyboard */; };
 		29A445A329DB016100576D1C /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A445A229DB016100576D1C /* Hero.swift */; };
 		29A445A529DB035D00576D1C /* levelMapProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A445A429DB035D00576D1C /* levelMapProtocol.swift */; };
-		29A445A729DB08B800576D1C /* sampleLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A445A629DB08B800576D1C /* sampleLevel.swift */; };
 		29A445A929DB178E00576D1C /* IsoTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 29A445A829DB178E00576D1C /* IsoTileSet.sks */; };
 		29A445AB29DB198C00576D1C /* TouchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A445AA29DB198C00576D1C /* TouchState.swift */; };
 		29C04A1129F6C5BF005947E3 /* SceneProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C04A1029F6C5BF005947E3 /* SceneProtocol.swift */; };
@@ -37,6 +38,8 @@
 		0B3D0F9A29E71D3900E9D547 /* TransitionRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionRoomScene.swift; sourceTree = "<group>"; };
 		0B5F755D29F6B07D002CFC3D /* BedroomScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BedroomScene.swift; sourceTree = "<group>"; };
 		0B5F755E29F6B07D002CFC3D /* BedroomLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BedroomLevel.swift; sourceTree = "<group>"; };
+		0B5F756329F6C3FC002CFC3D /* BathroomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathroomScene.swift; sourceTree = "<group>"; };
+		0B5F756529F6C425002CFC3D /* BathroomLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathroomLevel.swift; sourceTree = "<group>"; };
 		0BC136A529DC627200D535CD /* PickableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickableItem.swift; sourceTree = "<group>"; };
 		0BC136A729DC660B00D535CD /* InteractibleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractibleItem.swift; sourceTree = "<group>"; };
 		0BC136AE29DC6D9B00D535CD /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
@@ -52,7 +55,6 @@
 		29A4459929DAFE3300576D1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		29A445A229DB016100576D1C /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		29A445A429DB035D00576D1C /* levelMapProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = levelMapProtocol.swift; sourceTree = "<group>"; };
-		29A445A629DB08B800576D1C /* sampleLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sampleLevel.swift; sourceTree = "<group>"; };
 		29A445A829DB178E00576D1C /* IsoTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = IsoTileSet.sks; sourceTree = "<group>"; };
 		29A445AA29DB198C00576D1C /* TouchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchState.swift; sourceTree = "<group>"; };
 		29C04A1029F6C5BF005947E3 /* SceneProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneProtocol.swift; sourceTree = "<group>"; };
@@ -72,20 +74,21 @@
 		0B3D0F9129E6D9E600E9D547 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
-				0B5F755C29F6B07D002CFC3D /* BedroomLevel */,
-				29A445A629DB08B800576D1C /* sampleLevel.swift */,
-				0B3D0F9929E71D2200E9D547 /* TransitionRoomLevel */,
+				0B5F756229F6C30E002CFC3D /* Balcony */,
+				0B5F756129F6C2FF002CFC3D /* Bathroom */,
+				0B5F755C29F6B07D002CFC3D /* Bedroom */,
+				0B3D0F9929E71D2200E9D547 /* TransitionRoom */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
 		};
-		0B3D0F9929E71D2200E9D547 /* TransitionRoomLevel */ = {
+		0B3D0F9929E71D2200E9D547 /* TransitionRoom */ = {
 			isa = PBXGroup;
 			children = (
 				0B3D0F9429E6F80800E9D547 /* TransitionRoomLevel.swift */,
 				0B3D0F9A29E71D3900E9D547 /* TransitionRoomScene.swift */,
 			);
-			path = TransitionRoomLevel;
+			path = TransitionRoom;
 			sourceTree = "<group>";
 		};
 		0B5F755B29F6AFDE002CFC3D /* Recovered References */ = {
@@ -96,13 +99,29 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		0B5F755C29F6B07D002CFC3D /* BedroomLevel */ = {
+		0B5F755C29F6B07D002CFC3D /* Bedroom */ = {
 			isa = PBXGroup;
 			children = (
 				0B5F755D29F6B07D002CFC3D /* BedroomScene.swift */,
 				0B5F755E29F6B07D002CFC3D /* BedroomLevel.swift */,
 			);
-			path = BedroomLevel;
+			path = Bedroom;
+			sourceTree = "<group>";
+		};
+		0B5F756129F6C2FF002CFC3D /* Bathroom */ = {
+			isa = PBXGroup;
+			children = (
+				0B5F756329F6C3FC002CFC3D /* BathroomScene.swift */,
+				0B5F756529F6C425002CFC3D /* BathroomLevel.swift */,
+			);
+			path = Bathroom;
+			sourceTree = "<group>";
+		};
+		0B5F756229F6C30E002CFC3D /* Balcony */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Balcony;
 			sourceTree = "<group>";
 		};
 		0BC136A929DC6B2800D535CD /* Nodes */ = {
@@ -265,12 +284,13 @@
 				0BC136AF29DC6D9B00D535CD /* Inventory.swift in Sources */,
 				0B5F756029F6B07D002CFC3D /* BedroomLevel.swift in Sources */,
 				29A445AB29DB198C00576D1C /* TouchState.swift in Sources */,
-				29A445A729DB08B800576D1C /* sampleLevel.swift in Sources */,
+				0B5F756629F6C425002CFC3D /* BathroomLevel.swift in Sources */,
 				29A445A529DB035D00576D1C /* levelMapProtocol.swift in Sources */,
 				29A4458A29DAFE3300576D1C /* AppDelegate.swift in Sources */,
 				0B5F755F29F6B07D002CFC3D /* BedroomScene.swift in Sources */,
 				29A0888B29F6F9D1006D9613 /* ViewPresenterDelegate.swift in Sources */,
 				29124DAD29E443DE0044497F /* Point.swift in Sources */,
+				0B5F756429F6C3FC002CFC3D /* BathroomScene.swift in Sources */,
 				29A445A329DB016100576D1C /* Hero.swift in Sources */,
 				0B3D0F9B29E71D3900E9D547 /* TransitionRoomScene.swift in Sources */,
 				0BC136A629DC627200D535CD /* PickableItem.swift in Sources */,

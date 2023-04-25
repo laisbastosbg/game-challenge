@@ -111,4 +111,3 @@ class TransitionRoomScene: SKScene, SceneProtocol {
         camera?.position = hero.position
     }
 }
-

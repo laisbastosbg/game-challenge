@@ -44,29 +44,30 @@ struct BedroomLevel: levelMapProtocol {
     }
 
     func generateFurniture() {
-        let door1 = InteractibleItem(identifier: "door1", texture: SKTexture(imageNamed: "TilePorta"), position: (x:4,y:2))
-        insertDoorOnMap(object: door1, isColumnWall: false)
+        let balconyKey = PickableItem(name: "balconyKey", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chave"))
+        let balconyDoor = InteractibleItem(identifier: "balconyDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:4,y:2), nextScene: BathroomScene.shared, unlockableItem: balconyKey)
+        insertDoorOnMap(object: balconyDoor, isColumnWall: false)
 
-        let bedsideTable = InteractibleItem(identifier: "BedsideTable", texture: SKTexture(imageNamed: "bedside_table"), position: (x: 4, y: 0))
+        let bathroomKey = PickableItem(name: "bathroomKey", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chaveBanheiro"))
+        let bedsideTable = InteractibleItem(identifier: "BedsideTable", texture: SKTexture(imageNamed: "bedside_table"), position: (x: 4, y: 0), pickableItem: bathroomKey)
         insertOnMap(object: bedsideTable)
 
-        let bed = InteractibleItem(identifier: "bed", texture: SKTexture(imageNamed: "TileSet-cama"), position: (x: 2, y: 4))
+        //TODO: mudar asset
+        let crowbar = PickableItem(name: "crowbar", remainingUses: 2, texture: SKTexture(imageNamed: "objetos"))
+        let bed = InteractibleItem(identifier: "bed", texture: SKTexture(imageNamed: "TileSet-cama"), position: (x: 2, y: 4), pickableItem: crowbar)
         insertOnMap(object: bed)
         bed.setCollisor(collision: (x:3,y:4))
 
-        let storage = InteractibleItem(identifier: "storage", texture: SKTexture(imageNamed: "storage"), position: (x: 1, y: 0))
+        let ropes = PickableItem(name: "ropes", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-corda"))
+        let storage = InteractibleItem(identifier: "storage", texture: SKTexture(imageNamed: "storage"), position: (x: 1, y: 0), pickableItem: ropes)
         insertOnMap(object: storage)
 
-        let shelf = InteractibleItem(identifier: "shelf", texture: SKTexture(imageNamed: "TileSet-shelf"), position: (x: 0, y: 1))
+        let lantern = PickableItem(name: "lantern", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-lanterna"))
+        let shelf = InteractibleItem(identifier: "shelf", texture: SKTexture(imageNamed: "TileSet-shelf"), position: (x: 0, y: 1), pickableItem: lantern)
         insertOnMap(object: shelf, isColumnWall: false)
 
-        let door2 = InteractibleItem(identifier: "door2", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:4), nextScene: TransitionRoomScene.shared)
-        insertDoorOnMap(object: door2, isColumnWall: false, isSouthWall: true)
-        
-        let wall = InteractibleItem(identifier: "wall", texture: SKTexture(imageNamed: "TileSet-Pare"), position: (x:4,y:4))
-        wall.xScale = 1
-        wall.yScale = 1
-        insertWallOnMap(object: wall, isColumnWall: false)
+        let transitionRoomDoor = InteractibleItem(identifier: "transitionRoomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:4), nextScene: TransitionRoomScene.shared)
+        insertDoorOnMap(object: transitionRoomDoor, isColumnWall: false, isSouthWall: true)
 
     }
 
@@ -95,28 +96,6 @@ struct BedroomLevel: levelMapProtocol {
         } else {
             object.xScale *= -1
             object.position.x += 26
-        }
-
-        if isSouthWall {
-           object.position.y -= 30
-            object.zPosition = CGFloat(object.tileMapPosition.y - object.tileMapPosition.x + numOfRows) + 1
-            object.position.x -= 70
-        } else {
-            object.zPosition = -1
-        }
-    }
-    func insertWallOnMap(object: InteractibleItem, isColumnWall: Bool, isSouthWall: Bool = false) {
-        floor.addChild(object)
-        print((floor.children.first! as! InteractibleItem).tileMapPosition)
-
-        object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)
-        object.position.y += object.size.height/3 + 20
-
-        if isColumnWall {
-            object.position.x -= 10
-        } else {
-            object.xScale *= -1
-            object.position.x += 8
         }
 
         if isSouthWall {
