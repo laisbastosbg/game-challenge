@@ -1,5 +1,5 @@
 //
-//  BedroomScene.swift
+//  TransitionRoomScene.swift
 //  Feri
 //
 //  Created by Lais Godinho on 12/04/23.
@@ -7,28 +7,24 @@
 
 import SpriteKit
 
-class BedroomScene: SKScene, SceneProtocol {
-    
+class TransitionRoomScene: SKScene, SceneProtocol {
 
-
-    var vc_reference: ViewPresenterDelegate!
-    static var shared = BedroomScene()
+    static var shared = TransitionRoomScene()
 
     var touchLocation: TouchState = .None
 
-    var level: levelMapProtocol = BedroomLevel(numOfRows: 5, numOfColumns: 5, heroInitialPosition: (x: 3, y: 3))
+    var level: levelMapProtocol = TransitionRoomLevel(numOfRows: 6, numOfColumns: 16, heroInitialPosition: (x: 4, y: 14))
 
     lazy var hero: Hero = Hero(currentPosition: self.level.heroInitialPosition)
 
     var myCamera = SKCameraNode()
-
+    
     func addChildren() {
 
     }
-    override func didMove(to view: SKView) {
-        self.name = "Bedroom"
-        super.didMove(to: view)
 
+    override func didMove(to view: SKView) {
+        self.name = "TransitionRoom"
         addChild(level.map)
         addChild(hero)
         addChild(myCamera)
@@ -50,11 +46,11 @@ class BedroomScene: SKScene, SceneProtocol {
         camera = myCamera
 
     }
+    
     override func willMove(from view: SKView) {
-        BedroomScene.shared.removeAllChildren()
+        TransitionRoomScene.shared.removeAllChildren()
+
     }
-    
-    
 
 
     func touchDown(atPoint pos : CGPoint) {

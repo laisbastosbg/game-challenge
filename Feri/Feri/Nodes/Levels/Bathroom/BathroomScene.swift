@@ -1,55 +1,43 @@
 //
-//  TransitionRoomScene.swift
+//  BathroomScene.swift
 //  Feri
 //
-//  Created by Lais Godinho on 12/04/23.
+//  Created by Lais Godinho on 24/04/23.
 //
 
 import SpriteKit
 
-class TransitionRoomScene: SKScene, SceneProtocol {
+class BathroomScene: SKScene {
 
-    var vc_reference: ViewPresenterDelegate!
-    static var shared = TransitionRoomScene()
+    static var shared = BathroomScene()
+    static var description = "BathroomScene"
 
     var touchLocation: TouchState = .None
 
-    var level: levelMapProtocol = TransitionRoomLevel(numOfRows: 6, numOfColumns: 16, heroInitialPosition: (x: 4, y: 14))
+    let level = BathroomLevel(numOfRows: 5, numOfColumns: 3, heroInitialPosition: (x: 0, y: 2))
 
     lazy var hero: Hero = Hero(currentPosition: self.level.heroInitialPosition)
 
     var myCamera = SKCameraNode()
-    
-    func addChildren() {
-
-    }
 
     override func didMove(to view: SKView) {
-        self.name = "TransitionRoom"
-        addChild(level.map)
-        addChild(hero)
-        addChild(myCamera)
-        level.configLevel()
 
+        addChild(level.map)
+        level.configLevel()
         level.map.xScale = 1
         level.map.yScale = 1
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
         hero.xScale = 0.3
         hero.yScale = 0.3
-
+        addChild(hero)
         hero.position = level.floor.centerOfTile(atColumn: hero.currentPosition.y, row: hero.currentPosition.x)
         print(hero.frame.minY)
         hero.position.y += hero.size.height/3
         myCamera.position = hero.position
         myCamera.setScale(1)
-
+        addChild(myCamera)
         camera = myCamera
-
-    }
-    
-    override func willMove(from view: SKView) {
-        TransitionRoomScene.shared.removeAllChildren()
 
     }
 

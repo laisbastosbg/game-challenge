@@ -27,7 +27,11 @@ class GameViewController: UIViewController, ViewPresenterDelegate {
     @objc func interact() {
         (myView.scene as! any SceneProtocol).hero.interactWithObject(on: (myView.scene as! any SceneProtocol).level)
     }
-    
+
+//    let scene = BedroomScene()
+//    let scene = GameScene(level: TransitionRoomLevel(numOfRows: 3, numOfColumns: 8, heroInitialPosition: (x: 2, y: 6)))
+//    let scene = BathroomScene()
+//    let scene = TransitionRoomScene.shared
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(interactButton)
@@ -47,8 +51,6 @@ class GameViewController: UIViewController, ViewPresenterDelegate {
         
         // Present the scene
         myView = self.view as! SKView?
-        scene.vc_reference = self
-        TransitionRoomScene.shared.vc_reference = self
         myView.presentScene(scene)
         
         myView.ignoresSiblingOrder = true
