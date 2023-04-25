@@ -20,6 +20,13 @@ class GameViewController: UIViewController {
         return button
     }()
     
+    private lazy var DPad: UIView = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "ActionButton"), for: .normal)
+        return button
+    }()
+    
     var myView: SKView!
     var scene = BedroomScene.shared
     
