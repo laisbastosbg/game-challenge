@@ -54,7 +54,8 @@ struct BedroomLevel: levelMapProtocol {
 
         //TODO: mudar asset
         let crowbar = WorldItems.shared.getItem(name: "crowbar")
-        let bed = InteractibleItem(identifier: "bed", texture: SKTexture(imageNamed: "TileSet-cama"), position: (x: 2, y: 4), pickableItem: crowbar)
+        let lantern = WorldItems.shared.getItem(name: "lantern")
+        let bed = InteractibleItem(identifier: "bed", texture: SKTexture(imageNamed: "TileSet-cama"), position: (x: 2, y: 4), pickableItem: crowbar, unlockableItem: lantern)
         insertOnMap(object: bed)
         bed.setCollisor(collision: (x:3,y:4))
 
@@ -62,7 +63,6 @@ struct BedroomLevel: levelMapProtocol {
         let storage = InteractibleItem(identifier: "storage", texture: SKTexture(imageNamed: "storage"), position: (x: 1, y: 0), pickableItem: ropes)
         insertOnMap(object: storage)
 
-        let lantern = WorldItems.shared.getItem(name: "lantern")
         let shelf = InteractibleItem(identifier: "shelf", texture: SKTexture(imageNamed: "TileSet-shelf"), position: (x: 0, y: 1), pickableItem: lantern)
         insertOnMap(object: shelf, isColumnWall: false)
 

@@ -21,16 +21,15 @@ class GameViewController: UIViewController, ViewPresenterDelegate {
     }()
     
     var myView: SKView!
-//    var scene = BedroomScene.shared
+    var scene = BedroomScene.shared
     
     
     @objc func interact() {
         (myView.scene as! any SceneProtocol).hero.interactWithObject(on: (myView.scene as! any SceneProtocol).level)
     }
 
-//    let scene = BedroomScene()
 //    let scene = GameScene(level: TransitionRoomLevel(numOfRows: 3, numOfColumns: 8, heroInitialPosition: (x: 2, y: 6)))
-    let scene = BathroomScene.shared
+//    let scene = BathroomScene.shared
 //    let scene = TransitionRoomScene.shared
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -18,6 +18,8 @@ class TransitionRoomScene: SKScene, SceneProtocol {
     lazy var hero: Hero = Hero(currentPosition: self.level.heroInitialPosition)
 
     var myCamera = SKCameraNode()
+
+    var heroPosition: (x: Int, y: Int)?
     
     func addChildren() {
 
@@ -25,6 +27,10 @@ class TransitionRoomScene: SKScene, SceneProtocol {
 
     override func didMove(to view: SKView) {
         self.name = "TransitionRoom"
+
+        if heroPosition != nil {
+            self.hero = Hero(currentPosition: heroPosition!)
+        }
         addChild(level.map)
         addChild(hero)
         addChild(myCamera)
