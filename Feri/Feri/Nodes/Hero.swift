@@ -46,25 +46,25 @@ class Hero: SKSpriteNode {
             var animateAction: SKAction
             switch direction {
             case .TopLeft:
-                animateAction = SKAction.animate(with: atlasBack.textureNames.map(SKTexture.init(imageNamed:)), timePerFrame: 0.1)
+                animateAction = SKAction.animate(with: atlasBack.textureNames.map(SKTexture.init(imageNamed:)), timePerFrame: 0.11)
                 self.xScale = 0.3
                 self.run(animateAction)
                 facingPosition = position
                 facingPosition.y -= 1
             case .TopRight:
-                animateAction = SKAction.animate(with: atlasBack.textureNames.map(SKTexture.init(imageNamed:)), timePerFrame: 0.1)
+                animateAction = SKAction.animate(with: atlasBack.textureNames.map(SKTexture.init(imageNamed:)), timePerFrame: 0.11)
                 self.xScale = -0.3
                 self.run(animateAction)
                 facingPosition = position
                 facingPosition.x += 1
             case .DownLeft:
-                animateAction = SKAction.animate(with: atlasFront.textureNames.map(SKTexture.init(imageNamed:)), timePerFrame: 0.1)
+                animateAction = SKAction.animate(with: atlasFront.textureNames.map(SKTexture.init(imageNamed:)), timePerFrame: 0.11)
                 self.xScale = 0.3
                 self.run(animateAction)
                 facingPosition = position
                 facingPosition.x -= 1
             case .DownRight:
-                animateAction = SKAction.animate(with: atlasFront.textureNames.map(SKTexture.init(imageNamed:)), timePerFrame: 0.1)
+                animateAction = SKAction.animate(with: atlasFront.textureNames.map(SKTexture.init(imageNamed:)), timePerFrame: 0.11)
                 self.xScale = -0.3
                 self.run(animateAction)
                 facingPosition = position

@@ -89,6 +89,28 @@ struct TransitionRoomLevel: levelMapProtocol {
             object.zPosition = -1
         }
     }
+    func insertWallOnMap(object: InteractibleItem, isColumnWall: Bool, isSouthWall: Bool = false) {
+        floor.addChild(object)
+        print((floor.children.first! as! InteractibleItem).tileMapPosition)
+
+        object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)
+        object.position.y += object.size.height/3 + 16
+
+        if isColumnWall {
+            object.position.x -= 26
+        } else {
+            object.xScale *= -1
+            object.position.x += 18
+        }
+
+        if isSouthWall {
+           object.position.y -= 30
+            object.zPosition = CGFloat(object.tileMapPosition.y - object.tileMapPosition.x + numOfRows) + 1
+            object.position.x -= 70
+        } else {
+            object.zPosition = -1
+        }
+    }
 
 
 }

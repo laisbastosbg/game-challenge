@@ -9,9 +9,6 @@ import SpriteKit
 
 class BedroomScene: SKScene, SceneProtocol {
     
-
-
-    var vc_reference: ViewPresenterDelegate!
     static var shared = BedroomScene()
 
     var touchLocation: TouchState = .None

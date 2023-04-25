@@ -9,7 +9,6 @@ import SpriteKit
 
 class TransitionRoomScene: SKScene, SceneProtocol {
 
-    var vc_reference: ViewPresenterDelegate!
     static var shared = TransitionRoomScene()
 
     var touchLocation: TouchState = .None
@@ -20,9 +19,6 @@ class TransitionRoomScene: SKScene, SceneProtocol {
 
     var myCamera = SKCameraNode()
     
-    func addChildren() {
-
-    }
 
     override func didMove(to view: SKView) {
         self.name = "TransitionRoom"

@@ -9,7 +9,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class GameViewController: UIViewController, ViewPresenterDelegate {
+class GameViewController: UIViewController {
 
     
     
@@ -47,8 +47,6 @@ class GameViewController: UIViewController, ViewPresenterDelegate {
         
         // Present the scene
         myView = self.view as! SKView?
-        scene.vc_reference = self
-        TransitionRoomScene.shared.vc_reference = self
         myView.presentScene(scene)
         
         myView.ignoresSiblingOrder = true

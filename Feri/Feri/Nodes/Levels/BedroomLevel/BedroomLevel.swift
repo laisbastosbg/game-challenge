@@ -62,6 +62,11 @@ struct BedroomLevel: levelMapProtocol {
 
         let door2 = InteractibleItem(identifier: "door2", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:4), nextScene: TransitionRoomScene.shared)
         insertDoorOnMap(object: door2, isColumnWall: false, isSouthWall: true)
+        
+        let wall = InteractibleItem(identifier: "wall", texture: SKTexture(imageNamed: "TileSet-Pare"), position: (x:4,y:4))
+        wall.xScale = 1
+        wall.yScale = 1
+        insertWallOnMap(object: wall, isColumnWall: false)
 
     }
 
@@ -90,6 +95,28 @@ struct BedroomLevel: levelMapProtocol {
         } else {
             object.xScale *= -1
             object.position.x += 26
+        }
+
+        if isSouthWall {
+           object.position.y -= 30
+            object.zPosition = CGFloat(object.tileMapPosition.y - object.tileMapPosition.x + numOfRows) + 1
+            object.position.x -= 70
+        } else {
+            object.zPosition = -1
+        }
+    }
+    func insertWallOnMap(object: InteractibleItem, isColumnWall: Bool, isSouthWall: Bool = false) {
+        floor.addChild(object)
+        print((floor.children.first! as! InteractibleItem).tileMapPosition)
+
+        object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)
+        object.position.y += object.size.height/3 + 20
+
+        if isColumnWall {
+            object.position.x -= 10
+        } else {
+            object.xScale *= -1
+            object.position.x += 8
         }
 
         if isSouthWall {
