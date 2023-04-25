@@ -9,12 +9,8 @@ import SpriteKit
 
 class BedroomScene: SKScene, SceneProtocol {
     
-
-
-    var vc_reference: ViewPresenterDelegate!
     static var shared = BedroomScene()
 
-    static var shared = BedroomScene()
     var touchLocation: TouchState = .None
 
     var level: levelMapProtocol = BedroomLevel(numOfRows: 5, numOfColumns: 5, heroInitialPosition: (x: 3, y: 3))

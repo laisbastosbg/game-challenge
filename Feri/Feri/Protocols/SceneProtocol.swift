@@ -13,6 +13,5 @@ protocol SceneProtocol: class {
     var hero: Hero { get set }
     var level: levelMapProtocol { get }
     var touchLocation: TouchState { get set }
-    var vc_reference: ViewPresenterDelegate! {get set}
     
 }
