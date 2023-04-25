@@ -8,7 +8,7 @@
 import SpriteKit
 
 class BedroomScene: SKScene, SceneProtocol {
-    
+
     static var shared = BedroomScene()
 
     var touchLocation: TouchState = .None
@@ -19,13 +19,18 @@ class BedroomScene: SKScene, SceneProtocol {
 
     var myCamera = SKCameraNode()
 
+    var heroPosition: (x: Int, y: Int)?
+
     func addChildren() {
 
     }
     override func didMove(to view: SKView) {
-        self.name = "Bedroom"
         super.didMove(to: view)
 
+        if heroPosition != nil {
+            self.hero = Hero(currentPosition: heroPosition!)
+        }
+        
         addChild(level.map)
         addChild(hero)
         addChild(myCamera)

@@ -92,7 +92,7 @@ class InteractibleItem: SKSpriteNode{
             }
             print("===============")
         case .UseItem:
-            print("Usou:", compatibleUnlockableItem!)
+            print("Usou:", compatibleUnlockableItem!.name)
             if compatibleUnlockableItem != nil && Inventory.shared.items.contains(where: {$0 == compatibleUnlockableItem}){
                 do {try Inventory.shared.items.first(where: {$0 == compatibleUnlockableItem})!.use()}
                 catch {

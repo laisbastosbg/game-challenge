@@ -26,8 +26,6 @@ class TransitionRoomScene: SKScene, SceneProtocol {
     }
 
     override func didMove(to view: SKView) {
-        self.name = "TransitionRoom"
-
         if heroPosition != nil {
             self.hero = Hero(currentPosition: heroPosition!)
         }

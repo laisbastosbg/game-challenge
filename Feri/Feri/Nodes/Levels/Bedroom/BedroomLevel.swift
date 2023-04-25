@@ -66,6 +66,7 @@ struct BedroomLevel: levelMapProtocol {
         let shelf = InteractibleItem(identifier: "shelf", texture: SKTexture(imageNamed: "TileSet-shelf"), position: (x: 0, y: 1), pickableItem: lantern)
         insertOnMap(object: shelf, isColumnWall: false)
 
+        TransitionRoomScene.shared.heroPosition = (x: 2, y: 6)
         let transitionRoomDoor = InteractibleItem(identifier: "transitionRoomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:4), nextScene: TransitionRoomScene.shared)
         insertDoorOnMap(object: transitionRoomDoor, isColumnWall: false, isSouthWall: true)
 

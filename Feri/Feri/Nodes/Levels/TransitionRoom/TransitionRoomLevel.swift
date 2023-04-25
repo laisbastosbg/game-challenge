@@ -55,6 +55,7 @@ struct TransitionRoomLevel: levelMapProtocol {
 //        insertDoorOnMap(object: window, isColumnWall: true)
 
         let bathroomKey = WorldItems.shared.getItem(name: "bathroomKey")
+        BathroomScene.shared.heroPosition = (x: 1, y: 0)
         let bathroomDoor = InteractibleItem(identifier: "bathroomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:2,y:1), nextScene: BathroomScene.shared, unlockableItem: bathroomKey)
         insertDoorOnMap(object: bathroomDoor, isColumnWall: false)
     }

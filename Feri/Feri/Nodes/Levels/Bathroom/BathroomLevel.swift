@@ -36,6 +36,7 @@ struct BathroomLevel: levelMapProtocol {
     }
 
     func generateFurniture() {
+        TransitionRoomScene.shared.heroPosition = (x: 2, y: 1)
         let transitionRoomDoor = InteractibleItem(identifier: "transitionRoomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:2), nextScene: TransitionRoomScene.shared)
         insertDoorOnMap(object: transitionRoomDoor, isColumnWall: false, isSouthWall: true)
 
