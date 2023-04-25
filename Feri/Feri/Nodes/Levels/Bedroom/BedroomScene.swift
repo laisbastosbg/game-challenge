@@ -9,6 +9,7 @@ import SpriteKit
 
 class BedroomScene: SKScene {
 
+    static var shared = BedroomScene()
     var touchLocation: TouchState = .None
 
     let level = BedroomLevel(numOfRows: 5, numOfColumns: 5, heroInitialPosition: (x: 3, y: 3))

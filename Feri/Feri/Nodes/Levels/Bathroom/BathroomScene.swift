@@ -1,17 +1,20 @@
 //
-//  TransitionRoomScene.swift
+//  BathroomScene.swift
 //  Feri
 //
-//  Created by Lais Godinho on 12/04/23.
+//  Created by Lais Godinho on 24/04/23.
 //
 
 import SpriteKit
 
-class TransitionRoomScene: SKScene {
+class BathroomScene: SKScene {
+
+    static var shared = BathroomScene()
+    static var description = "BathroomScene"
 
     var touchLocation: TouchState = .None
 
-    let level = TransitionRoomLevel(numOfRows: 6, numOfColumns: 16, heroInitialPosition: (x: 4, y: 14))
+    let level = BathroomLevel(numOfRows: 5, numOfColumns: 3, heroInitialPosition: (x: 0, y: 2))
 
     lazy var hero: Hero = Hero(currentPosition: self.level.heroInitialPosition)
 

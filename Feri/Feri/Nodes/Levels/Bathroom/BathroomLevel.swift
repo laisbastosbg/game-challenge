@@ -1,14 +1,13 @@
 //
-//  BedroomLevel.swift
+//  BathroomLevel.swift
 //  Feri
 //
-//  Created by Lais Godinho on 11/04/23.
+//  Created by Lais Godinho on 24/04/23.
 //
 
-import Foundation
 import SpriteKit
 
-struct BedroomLevel: levelMapProtocol {
+struct BathroomLevel: levelMapProtocol {
     var numOfRows: Int
     var numOfColumns: Int
     var grid: [[String]]?
@@ -37,24 +36,18 @@ struct BedroomLevel: levelMapProtocol {
     }
 
     func generateFurniture() {
-        let door1 = InteractibleItem(identifier: "door1", texture: SKTexture(imageNamed: "TilePorta"), position: (x:4,y:2))
-        insertDoorOnMap(object: door1, isColumnWall: false)
+        let transitionRoomDoor = InteractibleItem(identifier: "transitionRoomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:2), nextScene: TransitionRoomScene.shared)
+        insertDoorOnMap(object: transitionRoomDoor, isColumnWall: false, isSouthWall: true)
 
-        let bedsideTable = InteractibleItem(identifier: "BedsideTable", texture: SKTexture(imageNamed: "bedside_table"), position: (x: 4, y: 0))
-        insertOnMap(object: bedsideTable)
+        let plunger = PickableItem(name: "bathroomKey", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chaveBanheiro"))
+        //TODO: mudar asset
+        let crowbar = PickableItem(name: "crowbar", remainingUses: 2, texture: SKTexture(imageNamed: "objetos"))
+        let bathroomSink = InteractibleItem(identifier: "bathroomSink", texture: SKTexture(imageNamed: "TileSet-piaDoBanheiro"), position: (x: 3, y: 3), pickableItem: plunger, unlockableItem: crowbar)
+        insertOnMap(object: bathroomSink)
 
-        let bed = InteractibleItem(identifier: "bed", texture: SKTexture(imageNamed: "TileSet-cama"), position: (x: 2, y: 4))
-        insertOnMap(object: bed)
-
-        let storage = InteractibleItem(identifier: "storage", texture: SKTexture(imageNamed: "storage"), position: (x: 1, y: 0))
-        insertOnMap(object: storage)
-
-        let shelf = InteractibleItem(identifier: "shelf", texture: SKTexture(imageNamed: "TileSet-shelf"), position: (x: 0, y: 1))
-        insertOnMap(object: shelf, isColumnWall: false)
-
-        let door2 = InteractibleItem(identifier: "door2", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:4), nextScene: TransitionRoomScene())
-        insertDoorOnMap(object: door2, isColumnWall: false, isSouthWall: true)
-
+        let storageKey = PickableItem(name: "storageKey", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chave"))
+        let toilet = InteractibleItem(identifier: "toilet", texture: SKTexture(imageNamed: "TileSet-vasoSujo"), position: (x: 2, y: 0), pickableItem: storageKey, unlockableItem: plunger)
+        insertOnMap(object: toilet, isColumnWall: false)
     }
 
     func insertOnMap(object: InteractibleItem, isColumnWall: Bool = true) {
