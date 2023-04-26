@@ -41,23 +41,20 @@ struct TransitionRoomLevel: levelMapProtocol {
     }
 
     func generateFurniture() {
-        let bedroomDoor = InteractibleItem(identifier: "bedroomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:2,y:6), nextScene: BedroomScene.shared)
+        let bedroomDoor = WorldInteractibleItems.shared.getInteractibleItem(name: "transitionRoomToBedroomDoor")
         insertDoorOnMap(object: bedroomDoor, isColumnWall: false)
 
-        let crowbar = WorldItems.shared.getItem(name: "crowbar")
-        let balconyKey = WorldItems.shared.getItem(name: "balconyKey")
-        let bedsideTable = InteractibleItem(identifier: "BedsideTable", texture: SKTexture(imageNamed: "bedside_table"), position: (x: 2, y: 4), pickableItem: balconyKey, unlockableItem: crowbar)
-        insertOnMap(object: bedsideTable)
+        let transitionRoomTable = WorldInteractibleItems.shared.getInteractibleItem(name: "transitionRoomTable")
+        insertOnMap(object: transitionRoomTable)
 
-//        let stairEnd = InteractibleItem(identifier: "stairEnd", texture: SKTexture(imageNamed: "StairEnd"), position: (x:0,y:1), nextScene: GameScene())
-//        insertOnMap(object: stairEnd, isColumnWall: true)
-//
-//        let window = InteractibleItem(identifier: "window", texture: SKTexture(imageNamed: "TileJanela"), position: (x:1,y:0), nextScene: GameScene())
-//        insertDoorOnMap(object: window, isColumnWall: true)
+        let stairEnd = WorldInteractibleItems.shared.getInteractibleItem(name: "stairEnd")
+        insertOnMap(object: stairEnd, isColumnWall: true)
 
-        let bathroomKey = WorldItems.shared.getItem(name: "bathroomKey")
+        let window = WorldInteractibleItems.shared.getInteractibleItem(name: "window")
+        insertDoorOnMap(object: window, isColumnWall: true)
+
         BathroomScene.shared.heroPosition = (x: 1, y: 0)
-        let bathroomDoor = InteractibleItem(identifier: "bathroomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:2,y:1), nextScene: BathroomScene.shared, unlockableItem: bathroomKey)
+        let bathroomDoor = WorldInteractibleItems.shared.getInteractibleItem(name: "transitionRoomToBathroomDoor")
         insertDoorOnMap(object: bathroomDoor, isColumnWall: false)
     }
     
