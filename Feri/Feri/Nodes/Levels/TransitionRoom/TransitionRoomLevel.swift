@@ -35,6 +35,7 @@ struct TransitionRoomLevel: levelMapProtocol {
         if !alreadyLoaded{
             map.addChild(floor)
             generateFurniture()
+            generateWalls()
             alreadyLoaded = true
         }
     }
@@ -57,6 +58,19 @@ struct TransitionRoomLevel: levelMapProtocol {
         let bathroomKey = PickableItem(name: "bathroomKey", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chaveBanheiro"))
         let bathroomDoor = InteractibleItem(identifier: "bathroomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:2,y:1), nextScene: BathroomScene.shared, unlockableItem: bathroomKey)
         insertDoorOnMap(object: bathroomDoor, isColumnWall: false)
+    }
+    
+    func generateWalls() {
+        for i in 0..<numOfRows {
+            let wall = Wall(texture: SKTexture(imageNamed: "TileSet-Pare"), position: (x:i,y:0))
+            insertWallOnMap(object: wall, isColumnWall: true)
+
+        }
+        for i in 0..<numOfColumns {
+            let wall = Wall(texture: SKTexture(imageNamed: "TileSet-Pare"), position: (x:numOfRows-1,y:i))
+            insertWallOnMap(object: wall, isColumnWall: false)
+
+        }
     }
 
     func insertOnMap(object: InteractibleItem, isColumnWall: Bool = false) {
@@ -91,6 +105,26 @@ struct TransitionRoomLevel: levelMapProtocol {
         } else {
             object.zPosition = -1
         }
+    }
+    func insertWallOnMap(object: Wall, isColumnWall: Bool) {
+        floor.addChild(object)
+        object.xScale = 1.2
+        object.yScale = 1
+
+        object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)
+        object.position.y += object.size.height/3 + 18
+
+        if isColumnWall {
+            object.zPosition = CGFloat(-object.tileMapPosition.x - numOfRows) 
+            object.position.x -= 32
+        } else {
+            object.zPosition = CGFloat( object.tileMapPosition.y - numOfColumns)
+            object.xScale *= -1
+            object.position.x += 32
+        }
+        print(object.tileMapPosition, object.zPosition)
+
+
     }
 
 

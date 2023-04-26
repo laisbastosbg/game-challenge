@@ -9,11 +9,18 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class GameViewController: UIViewController, ViewPresenterDelegate {
+class GameViewController: UIViewController {
 
     
     
     private lazy var interactButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "ActionButton"), for: .normal)
+        return button
+    }()
+    
+    private lazy var DPad: UIView = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "ActionButton"), for: .normal)

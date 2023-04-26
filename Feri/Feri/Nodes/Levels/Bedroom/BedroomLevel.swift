@@ -37,6 +37,7 @@ struct BedroomLevel: levelMapProtocol {
         if !alreadyLoaded{
             map.addChild(floor)
             generateFurniture()
+            generateWalls()
             alreadyLoaded = true
         }
 
@@ -68,7 +69,21 @@ struct BedroomLevel: levelMapProtocol {
 
         let transitionRoomDoor = InteractibleItem(identifier: "transitionRoomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:4), nextScene: TransitionRoomScene.shared)
         insertDoorOnMap(object: transitionRoomDoor, isColumnWall: false, isSouthWall: true)
+        
 
+    }
+    
+    func generateWalls() {
+        for i in 0..<numOfRows {
+            let wall = Wall(texture: SKTexture(imageNamed: "TileSet-Pare"), position: (x:i,y:0))
+            insertWallOnMap(object: wall, isColumnWall: true)
+
+        }
+        for i in 0..<numOfColumns {
+            let wall = Wall(texture: SKTexture(imageNamed: "TileSet-Pare"), position: (x:numOfRows-1,y:i))
+            insertWallOnMap(object: wall, isColumnWall: false)
+
+        }
     }
 
     func insertOnMap(object: InteractibleItem, isColumnWall: Bool = true) {
@@ -105,5 +120,27 @@ struct BedroomLevel: levelMapProtocol {
         } else {
             object.zPosition = -1
         }
+        print("Portas:",object.zPosition)
+    }
+    
+    func insertWallOnMap(object: Wall, isColumnWall: Bool) {
+        floor.addChild(object)
+        object.xScale = 1.2
+        object.yScale = 1
+
+        object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)
+        object.position.y += object.size.height/3 + 18
+
+        if isColumnWall {
+            object.zPosition = CGFloat(numOfRows - object.tileMapPosition.x) - 5
+            object.position.x -= 32
+        } else {
+            object.zPosition = CGFloat( object.tileMapPosition.y) - 5
+            object.xScale *= -1
+            object.position.x += 32
+        }
+        print(object.tileMapPosition, object.zPosition)
+
+
     }
 }

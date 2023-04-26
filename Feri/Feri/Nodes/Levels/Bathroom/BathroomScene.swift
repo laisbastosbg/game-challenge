@@ -7,14 +7,14 @@
 
 import SpriteKit
 
-class BathroomScene: SKScene {
+class BathroomScene: SKScene, SceneProtocol {
 
     static var shared = BathroomScene()
     static var description = "BathroomScene"
 
     var touchLocation: TouchState = .None
 
-    let level = BathroomLevel(numOfRows: 5, numOfColumns: 3, heroInitialPosition: (x: 0, y: 2))
+    var level: levelMapProtocol = BathroomLevel(numOfRows: 5, numOfColumns: 3, heroInitialPosition: (x: 0, y: 2))
 
     lazy var hero: Hero = Hero(currentPosition: self.level.heroInitialPosition)
 

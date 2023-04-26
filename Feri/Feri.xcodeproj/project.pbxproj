@@ -19,6 +19,7 @@
 		29124DAD29E443DE0044497F /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29124DAC29E443DE0044497F /* Point.swift */; };
 		29124DB529E583680044497F /* InteractionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29124DB429E583680044497F /* InteractionTypes.swift */; };
 		29A0888B29F6F9D1006D9613 /* ViewPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A0888A29F6F9D1006D9613 /* ViewPresenterDelegate.swift */; };
+		29A0888D29F80F21006D9613 /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A0888C29F80F21006D9613 /* Wall.swift */; };
 		29A4458A29DAFE3300576D1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4458929DAFE3300576D1C /* AppDelegate.swift */; };
 		29A4459029DAFE3300576D1C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4458F29DAFE3300576D1C /* GameScene.swift */; };
 		29A4459229DAFE3300576D1C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4459129DAFE3300576D1C /* GameViewController.swift */; };
@@ -46,6 +47,7 @@
 		29124DAC29E443DE0044497F /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		29124DB429E583680044497F /* InteractionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionTypes.swift; sourceTree = "<group>"; };
 		29A0888A29F6F9D1006D9613 /* ViewPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPresenterDelegate.swift; sourceTree = "<group>"; };
+		29A0888C29F80F21006D9613 /* Wall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		29A4458629DAFE3300576D1C /* Feri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Feri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29A4458929DAFE3300576D1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29A4458F29DAFE3300576D1C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -74,7 +76,6 @@
 		0B3D0F9129E6D9E600E9D547 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
-				0B5F756229F6C30E002CFC3D /* Balcony */,
 				0B5F756129F6C2FF002CFC3D /* Bathroom */,
 				0B5F755C29F6B07D002CFC3D /* Bedroom */,
 				0B3D0F9929E71D2200E9D547 /* TransitionRoom */,
@@ -117,13 +118,6 @@
 			path = Bathroom;
 			sourceTree = "<group>";
 		};
-		0B5F756229F6C30E002CFC3D /* Balcony */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Balcony;
-			sourceTree = "<group>";
-		};
 		0BC136A929DC6B2800D535CD /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +125,7 @@
 				29A445A229DB016100576D1C /* Hero.swift */,
 				0BC136A529DC627200D535CD /* PickableItem.swift */,
 				0BC136A729DC660B00D535CD /* InteractibleItem.swift */,
+				29A0888C29F80F21006D9613 /* Wall.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -295,6 +290,7 @@
 				0B3D0F9B29E71D3900E9D547 /* TransitionRoomScene.swift in Sources */,
 				0BC136A629DC627200D535CD /* PickableItem.swift in Sources */,
 				29124DB529E583680044497F /* InteractionTypes.swift in Sources */,
+				29A0888D29F80F21006D9613 /* Wall.swift in Sources */,
 				0B3D0F9529E6F80800E9D547 /* TransitionRoomLevel.swift in Sources */,
 				0BC136A829DC660B00D535CD /* InteractibleItem.swift in Sources */,
 			);

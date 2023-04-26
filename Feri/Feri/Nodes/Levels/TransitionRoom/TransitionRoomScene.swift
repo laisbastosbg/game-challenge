@@ -19,9 +19,6 @@ class TransitionRoomScene: SKScene, SceneProtocol {
 
     var myCamera = SKCameraNode()
     
-    func addChildren() {
-
-    }
 
     override func didMove(to view: SKView) {
         self.name = "TransitionRoom"
