@@ -51,8 +51,7 @@ class WorldInteractibleItems {
 
         // Bedroom furniture
 
-
-        let bedroomToBalconyDoor = InteractibleItem(identifier: "bedroomToBalconyDoor", texture: SKTexture(imageNamed: "porta_fechada"), unlockedTexture: SKTexture(imageNamed: "porta_aberta"), position: (x:4,y:2), nextScene: BathroomScene.shared, unlockableItem: balconyKey)
+        let bedroomToBalconyDoor = InteractibleItem(identifier: "bedroomToBalconyDoor", texture: SKTexture(imageNamed: "porta_fechada"), unlockedTexture: SKTexture(imageNamed: "porta_aberta"), position: (x:4,y:2), nextScene: OutsideScene.shared, unlockableItem: balconyKey)
 
         let bedsideTable = InteractibleItem(identifier: "bedsideTable", texture: SKTexture(imageNamed: "bedside_table"), pickedTexture: SKTexture(imageNamed: "bedside_table_unlocked"), position: (x: 4, y: 0), pickableItem: bathroomKey)
 
@@ -75,6 +74,10 @@ class WorldInteractibleItems {
 
         let transitionRoomToBathroomDoor = InteractibleItem(identifier: "transitionRoomToBathroomDoor", texture: SKTexture(imageNamed: "porta_fechada"), unlockedTexture: SKTexture(imageNamed: "porta_aberta"), position: (x:2,y:1), nextScene: BathroomScene.shared, unlockableItem: bathroomKey)
 
+        // Balcony furniture
+
+        let balconyToBedroomDoor = InteractibleItem(identifier: "balconyToBedroomDoor", texture: SKTexture(imageNamed: "porta_fechada"), unlockedTexture: SKTexture(imageNamed: "porta_aberta"), position: (x:0,y:), nextScene: OutsideScene.shared, unlockableItem: balconyKey)
+
         return [
             bathroomToTransitionRoomDoor,
             bathroomSink,
@@ -90,7 +93,8 @@ class WorldInteractibleItems {
             transitionRoomTable,
             stairEnd,
             window,
-            transitionRoomToBathroomDoor
+            transitionRoomToBathroomDoor,
+            balconyToBedroomDoor
         ]
     }
 }

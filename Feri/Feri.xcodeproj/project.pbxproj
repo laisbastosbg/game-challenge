@@ -10,6 +10,8 @@
 		0B3D0F9529E6F80800E9D547 /* TransitionRoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0F9429E6F80800E9D547 /* TransitionRoomLevel.swift */; };
 		0B3D0F9B29E71D3900E9D547 /* TransitionRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0F9A29E71D3900E9D547 /* TransitionRoomScene.swift */; };
 		0B5BCF6129F9626A008463EC /* WorldInteractibleItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5BCF6029F9626A008463EC /* WorldInteractibleItems.swift */; };
+		0B5BCF6629F9BC07008463EC /* OutsideScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5BCF6529F9BC07008463EC /* OutsideScene.swift */; };
+		0B5BCF6829F9BC21008463EC /* OutsideLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5BCF6729F9BC21008463EC /* OutsideLevel.swift */; };
 		0B5F755F29F6B07D002CFC3D /* BedroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F755D29F6B07D002CFC3D /* BedroomScene.swift */; };
 		0B5F756029F6B07D002CFC3D /* BedroomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F755E29F6B07D002CFC3D /* BedroomLevel.swift */; };
 		0B5F756429F6C3FC002CFC3D /* BathroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F756329F6C3FC002CFC3D /* BathroomScene.swift */; };
@@ -40,6 +42,8 @@
 		0B3D0F9729E71C7E00E9D547 /* BedroomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedroomScene.swift; sourceTree = "<group>"; };
 		0B3D0F9A29E71D3900E9D547 /* TransitionRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionRoomScene.swift; sourceTree = "<group>"; };
 		0B5BCF6029F9626A008463EC /* WorldInteractibleItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldInteractibleItems.swift; sourceTree = "<group>"; };
+		0B5BCF6529F9BC07008463EC /* OutsideScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutsideScene.swift; sourceTree = "<group>"; };
+		0B5BCF6729F9BC21008463EC /* OutsideLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutsideLevel.swift; sourceTree = "<group>"; };
 		0B5F755D29F6B07D002CFC3D /* BedroomScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BedroomScene.swift; sourceTree = "<group>"; };
 		0B5F755E29F6B07D002CFC3D /* BedroomLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BedroomLevel.swift; sourceTree = "<group>"; };
 		0B5F756329F6C3FC002CFC3D /* BathroomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathroomScene.swift; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 		0B3D0F9129E6D9E600E9D547 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				0B5BCF6429F9BBE3008463EC /* Outside */,
 				0B5F756129F6C2FF002CFC3D /* Bathroom */,
 				0B5F755C29F6B07D002CFC3D /* Bedroom */,
 				0B3D0F9929E71D2200E9D547 /* TransitionRoom */,
@@ -94,6 +99,15 @@
 				0B3D0F9A29E71D3900E9D547 /* TransitionRoomScene.swift */,
 			);
 			path = TransitionRoom;
+			sourceTree = "<group>";
+		};
+		0B5BCF6429F9BBE3008463EC /* Outside */ = {
+			isa = PBXGroup;
+			children = (
+				0B5BCF6529F9BC07008463EC /* OutsideScene.swift */,
+				0B5BCF6729F9BC21008463EC /* OutsideLevel.swift */,
+			);
+			path = Outside;
 			sourceTree = "<group>";
 		};
 		0B5F755B29F6AFDE002CFC3D /* Recovered References */ = {
@@ -289,7 +303,9 @@
 				0B5F756629F6C425002CFC3D /* BathroomLevel.swift in Sources */,
 				29A445A529DB035D00576D1C /* levelMapProtocol.swift in Sources */,
 				0B5BCF6129F9626A008463EC /* WorldInteractibleItems.swift in Sources */,
+				0B5BCF6829F9BC21008463EC /* OutsideLevel.swift in Sources */,
 				29A4458A29DAFE3300576D1C /* AppDelegate.swift in Sources */,
+				0B5BCF6629F9BC07008463EC /* OutsideScene.swift in Sources */,
 				0B5F755F29F6B07D002CFC3D /* BedroomScene.swift in Sources */,
 				29A0888B29F6F9D1006D9613 /* ViewPresenterDelegate.swift in Sources */,
 				29124DAD29E443DE0044497F /* Point.swift in Sources */,

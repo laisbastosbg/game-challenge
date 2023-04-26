@@ -38,7 +38,8 @@ class GameViewController: UIViewController {
 
     
     var myView: SKView!
-    var scene = BedroomScene.shared
+//    var scene = BedroomScene.shared
+    var scene = OutsideScene.shared
     
     
     @objc func interact() {
