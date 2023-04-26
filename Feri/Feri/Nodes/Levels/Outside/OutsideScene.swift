@@ -1,19 +1,20 @@
 //
-//  BedroomScene.swift
+//  OutsideScene.swift
 //  Feri
 //
-//  Created by Lais Godinho on 12/04/23.
+//  Created by Lais Godinho on 26/04/23.
 //
 
 import SpriteKit
 
-class BedroomScene: SKScene, SceneProtocol {
+class OutsideScene: SKScene, SceneProtocol {
 
-    static var shared = BedroomScene()
+    static var shared = OutsideScene()
+    static var description = "OutsideScene"
 
     var touchLocation: TouchState = .None
 
-    var level: levelMapProtocol = BedroomLevel(numOfRows: 5, numOfColumns: 5, heroInitialPosition: (x: 1, y: 2))
+    var level: levelMapProtocol = OutsideLevel(numOfRows: 3, numOfColumns: 3, heroInitialPosition: (x: 1, y: 1))
 
     lazy var hero: Hero = Hero(currentPosition: self.level.heroInitialPosition)
 
@@ -21,42 +22,33 @@ class BedroomScene: SKScene, SceneProtocol {
 
     var heroPosition: (x: Int, y: Int)?
 
-    func addChildren() {
-
-    }
     override func didMove(to view: SKView) {
-        super.didMove(to: view)
 
         if heroPosition != nil {
             self.hero = Hero(currentPosition: heroPosition!)
         }
-        
-        addChild(level.map)
-        addChild(hero)
-        addChild(myCamera)
-        level.configLevel()
 
+        addChild(level.map)
+        level.configLevel()
         level.map.xScale = 1
         level.map.yScale = 1
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
         hero.xScale = 0.3
         hero.yScale = 0.3
-
+        addChild(hero)
         hero.position = level.floor.centerOfTile(atColumn: hero.currentPosition.y, row: hero.currentPosition.x)
         print(hero.frame.minY)
         hero.position.y += hero.size.height/3
         myCamera.position = hero.position
         myCamera.setScale(1)
-
+        addChild(myCamera)
         camera = myCamera
 
     }
     override func willMove(from view: SKView) {
-        BedroomScene.shared.removeAllChildren()
+        BathroomScene.shared.removeAllChildren()
     }
-    
-    
 
 
     func touchDown(atPoint pos : CGPoint) {
@@ -120,3 +112,4 @@ class BedroomScene: SKScene, SceneProtocol {
         camera?.position = hero.position
     }
 }
+

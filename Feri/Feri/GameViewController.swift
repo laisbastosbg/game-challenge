@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import SpriteKit
 import GameplayKit
 import SwiftUI
@@ -25,6 +26,7 @@ class GameViewController: UIViewController {
         return button
     }()
 
+
     lazy var InventoryView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named:"UI-Inventario")!)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -40,9 +42,19 @@ class GameViewController: UIViewController {
     
     
 
+    let overlayView: UIView = UIHostingConfiguration {
+        RadialGradient(colors: [.clear, .black], center: .center, startRadius: 0, endRadius: 300)
+            .ignoresSafeArea()
+    }
+
+    .margins(.all, 0)
+    .makeContentView()
+
+
     
     var myView: SKView!
     var scene = BedroomScene.shared
+//    var scene = OutsideScene.shared
     
     
     @objc func interact() {
@@ -56,6 +68,18 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        overlayView.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(overlayView)
+
+        NSLayoutConstraint.activate([
+            overlayView.topAnchor.constraint(equalTo: view.topAnchor),
+            overlayView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            overlayView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            overlayView.rightAnchor.constraint(equalTo: view.rightAnchor)
+        ])
+
         view.addSubview(interactButton)
         view.addSubview(inventoryButton)
         
@@ -85,6 +109,7 @@ class GameViewController: UIViewController {
             inventoryElements.centerXAnchor.constraint(equalTo: InventoryView.centerXAnchor),
             inventoryElements.centerYAnchor.constraint(equalTo: InventoryView.centerYAnchor)
 
+
         ])
         
         self.InventoryView.isHidden = true
@@ -107,6 +132,12 @@ class GameViewController: UIViewController {
         myView.showsFPS = true
         myView.showsNodeCount = true
         
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        gradient.frame = view.bounds
+//        view.layer.addSublayer(gradient)
     }
     
     func presentView(scene: SKScene) {
