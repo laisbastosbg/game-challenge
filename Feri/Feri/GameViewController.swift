@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import SpriteKit
 import GameplayKit
 
@@ -26,6 +27,15 @@ class GameViewController: UIViewController {
         button.setImage(UIImage(named: "ActionButton"), for: .normal)
         return button
     }()
+
+    let overlayView: UIView = UIHostingConfiguration {
+        RadialGradient(colors: [.clear, .black], center: .center, startRadius: 0, endRadius: 300)
+            .ignoresSafeArea()
+    }
+
+    .margins(.all, 0)
+    .makeContentView()
+
     
     var myView: SKView!
     var scene = BedroomScene.shared
@@ -40,11 +50,23 @@ class GameViewController: UIViewController {
 //    let scene = TransitionRoomScene.shared
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        overlayView.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(overlayView)
+
+        NSLayoutConstraint.activate([
+            overlayView.topAnchor.constraint(equalTo: view.topAnchor),
+            overlayView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            overlayView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            overlayView.rightAnchor.constraint(equalTo: view.rightAnchor)
+        ])
+
         view.addSubview(interactButton)
         
         NSLayoutConstraint.activate([
             interactButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
-            interactButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
+            interactButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
         ])
         
         interactButton.addTarget(self, action: #selector(interact), for: .touchUpInside)
@@ -64,6 +86,12 @@ class GameViewController: UIViewController {
         myView.showsFPS = true
         myView.showsNodeCount = true
         
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        gradient.frame = view.bounds
+//        view.layer.addSublayer(gradient)
     }
     
     func presentView(scene: SKScene) {
