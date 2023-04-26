@@ -13,7 +13,7 @@ class BedroomScene: SKScene, SceneProtocol {
 
     var touchLocation: TouchState = .None
 
-    var level: levelMapProtocol = BedroomLevel(numOfRows: 5, numOfColumns: 5, heroInitialPosition: (x: 3, y: 3))
+    var level: levelMapProtocol = BedroomLevel(numOfRows: 5, numOfColumns: 5, heroInitialPosition: (x: 1, y: 2))
 
     lazy var hero: Hero = Hero(currentPosition: self.level.heroInitialPosition)
 

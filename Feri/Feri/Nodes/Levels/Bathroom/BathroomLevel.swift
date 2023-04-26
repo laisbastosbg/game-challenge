@@ -41,29 +41,28 @@ struct BathroomLevel: levelMapProtocol {
     }
 
     func generateFurniture() {
-        TransitionRoomScene.shared.heroPosition = (x: 2, y: 1)
-        let transitionRoomDoor = InteractibleItem(identifier: "transitionRoomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:2), nextScene: TransitionRoomScene.shared)
+        TransitionRoomScene.shared.heroPosition = (x: 1, y: 1)
+        let transitionRoomDoor = WorldInteractibleItems.shared.getInteractibleItem(name: "bathroomToTransitionRoomDoor")
         insertDoorOnMap(object: transitionRoomDoor, isColumnWall: false, isSouthWall: true)
 
-        let plunger = WorldItems.shared.getItem(name: "plunger")
-        //TODO: mudar asset
-        let crowbar = WorldItems.shared.getItem(name: "crowbar")
-        let bathroomSink = InteractibleItem(identifier: "bathroomSink", texture: SKTexture(imageNamed: "TileSet-piaDoBanheiro"), position: (x: 3, y: 2), pickableItem: plunger, unlockableItem: crowbar)
-        insertOnMap(object: bathroomSink)
+        let bathroomSink = WorldInteractibleItems.shared.getInteractibleItem(name: "bathroomSink")
+        insertOnMap(object: bathroomSink, isColumnWall: true)
 
-        let storageKey = WorldItems.shared.getItem(name: "storageKey")
-        let toilet = InteractibleItem(identifier: "toilet", texture: SKTexture(imageNamed: "TileSet-vasoSujo"), position: (x: 2, y: 0), pickableItem: storageKey, unlockableItem: plunger)
+        let toilet = WorldInteractibleItems.shared.getInteractibleItem(name: "toilet")
         insertOnMap(object: toilet, isColumnWall: false)
+
+        let stool = WorldInteractibleItems.shared.getInteractibleItem(name: "stool")
+        insertOnMap(object: stool, isColumnWall: false)
     }
     
     func generateWalls() {
         for i in 0..<numOfRows {
-            let wall = Wall(texture: SKTexture(imageNamed: "TileSet-Pare"), position: (x:i,y:0))
+            let wall = Wall(texture: SKTexture(imageNamed: "wall-darkColor"), position: (x:i,y:0))
             insertWallOnMap(object: wall, isColumnWall: true)
 
         }
         for i in 0..<numOfColumns {
-            let wall = Wall(texture: SKTexture(imageNamed: "TileSet-Pare"), position: (x:numOfRows-1,y:i))
+            let wall = Wall(texture: SKTexture(imageNamed: "wall-mediumColor"), position: (x:numOfRows-1,y:i))
             insertWallOnMap(object: wall, isColumnWall: false)
 
         }
@@ -87,7 +86,7 @@ struct BathroomLevel: levelMapProtocol {
         print((floor.children.first! as! InteractibleItem).tileMapPosition)
 
         object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)
-        object.position.y += object.size.height/3 + 8
+        object.position.y += object.size.height/2
 
         if isColumnWall {
             object.position.x -= 26
@@ -101,13 +100,13 @@ struct BathroomLevel: levelMapProtocol {
             object.zPosition = CGFloat(object.tileMapPosition.y - object.tileMapPosition.x + numOfRows) + 1
             object.position.x -= 70
         } else {
-            object.zPosition = -1
+            object.zPosition = 0
         }
     }
     
     func insertWallOnMap(object: Wall, isColumnWall: Bool) {
         floor.addChild(object)
-        object.xScale = 1.2
+        object.xScale = 1
         object.yScale = 1
 
         object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)
