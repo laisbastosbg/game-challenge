@@ -41,16 +41,17 @@ struct BathroomLevel: levelMapProtocol {
     }
 
     func generateFurniture() {
+        TransitionRoomScene.shared.heroPosition = (x: 2, y: 1)
         let transitionRoomDoor = InteractibleItem(identifier: "transitionRoomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:2), nextScene: TransitionRoomScene.shared)
         insertDoorOnMap(object: transitionRoomDoor, isColumnWall: false, isSouthWall: true)
 
-        let plunger = PickableItem(name: "bathroomKey", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chaveBanheiro"))
+        let plunger = WorldItems.shared.getItem(name: "plunger")
         //TODO: mudar asset
-        let crowbar = PickableItem(name: "crowbar", remainingUses: 2, texture: SKTexture(imageNamed: "objetos"))
+        let crowbar = WorldItems.shared.getItem(name: "crowbar")
         let bathroomSink = InteractibleItem(identifier: "bathroomSink", texture: SKTexture(imageNamed: "TileSet-piaDoBanheiro"), position: (x: 3, y: 3), pickableItem: plunger, unlockableItem: crowbar)
         insertOnMap(object: bathroomSink)
 
-        let storageKey = PickableItem(name: "storageKey", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chave"))
+        let storageKey = WorldItems.shared.getItem(name: "storageKey")
         let toilet = InteractibleItem(identifier: "toilet", texture: SKTexture(imageNamed: "TileSet-vasoSujo"), position: (x: 2, y: 0), pickableItem: storageKey, unlockableItem: plunger)
         insertOnMap(object: toilet, isColumnWall: false)
     }

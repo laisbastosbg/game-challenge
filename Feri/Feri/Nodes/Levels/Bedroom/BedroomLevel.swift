@@ -45,28 +45,29 @@ struct BedroomLevel: levelMapProtocol {
     }
 
     func generateFurniture() {
-        let balconyKey = PickableItem(name: "balconyKey", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chave"))
+        let balconyKey = WorldItems.shared.getItem(name: "balconyKey")
         let balconyDoor = InteractibleItem(identifier: "balconyDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:4,y:2), nextScene: BathroomScene.shared, unlockableItem: balconyKey)
         insertDoorOnMap(object: balconyDoor, isColumnWall: false)
 
-        let bathroomKey = PickableItem(name: "bathroomKey", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chaveBanheiro"))
+        let bathroomKey = WorldItems.shared.getItem(name: "bathroomKey")
         let bedsideTable = InteractibleItem(identifier: "BedsideTable", texture: SKTexture(imageNamed: "bedside_table"), position: (x: 4, y: 0), pickableItem: bathroomKey)
         insertOnMap(object: bedsideTable)
 
         //TODO: mudar asset
-        let crowbar = PickableItem(name: "crowbar", remainingUses: 2, texture: SKTexture(imageNamed: "objetos"))
-        let bed = InteractibleItem(identifier: "bed", texture: SKTexture(imageNamed: "TileSet-cama"), position: (x: 2, y: 4), pickableItem: crowbar)
+        let crowbar = WorldItems.shared.getItem(name: "crowbar")
+        let lantern = WorldItems.shared.getItem(name: "lantern")
+        let bed = InteractibleItem(identifier: "bed", texture: SKTexture(imageNamed: "TileSet-cama"), position: (x: 2, y: 4), pickableItem: crowbar, unlockableItem: lantern)
         insertOnMap(object: bed)
         bed.setCollisor(collision: (x:3,y:4))
 
-        let ropes = PickableItem(name: "ropes", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-corda"))
+        let ropes = WorldItems.shared.getItem(name: "ropes")
         let storage = InteractibleItem(identifier: "storage", texture: SKTexture(imageNamed: "storage"), position: (x: 1, y: 0), pickableItem: ropes)
         insertOnMap(object: storage)
 
-        let lantern = PickableItem(name: "lantern", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-lanterna"))
         let shelf = InteractibleItem(identifier: "shelf", texture: SKTexture(imageNamed: "TileSet-shelf"), position: (x: 0, y: 1), pickableItem: lantern)
         insertOnMap(object: shelf, isColumnWall: false)
 
+        TransitionRoomScene.shared.heroPosition = (x: 2, y: 6)
         let transitionRoomDoor = InteractibleItem(identifier: "transitionRoomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:4), nextScene: TransitionRoomScene.shared)
         insertDoorOnMap(object: transitionRoomDoor, isColumnWall: false, isSouthWall: true)
         

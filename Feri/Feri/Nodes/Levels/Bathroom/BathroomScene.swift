@@ -20,7 +20,13 @@ class BathroomScene: SKScene, SceneProtocol {
 
     var myCamera = SKCameraNode()
 
+    var heroPosition: (x: Int, y: Int)?
+
     override func didMove(to view: SKView) {
+
+        if heroPosition != nil {
+            self.hero = Hero(currentPosition: heroPosition!)
+        }
 
         addChild(level.map)
         level.configLevel()
@@ -39,6 +45,9 @@ class BathroomScene: SKScene, SceneProtocol {
         addChild(myCamera)
         camera = myCamera
 
+    }
+    override func willMove(from view: SKView) {
+        BathroomScene.shared.removeAllChildren()
     }
 
 

@@ -13,6 +13,7 @@
 		0B5F756029F6B07D002CFC3D /* BedroomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F755E29F6B07D002CFC3D /* BedroomLevel.swift */; };
 		0B5F756429F6C3FC002CFC3D /* BathroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F756329F6C3FC002CFC3D /* BathroomScene.swift */; };
 		0B5F756629F6C425002CFC3D /* BathroomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F756529F6C425002CFC3D /* BathroomLevel.swift */; };
+		0B5F758229F8085C002CFC3D /* WorldItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F758129F8085C002CFC3D /* WorldItems.swift */; };
 		0BC136A629DC627200D535CD /* PickableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC136A529DC627200D535CD /* PickableItem.swift */; };
 		0BC136A829DC660B00D535CD /* InteractibleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC136A729DC660B00D535CD /* InteractibleItem.swift */; };
 		0BC136AF29DC6D9B00D535CD /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC136AE29DC6D9B00D535CD /* Inventory.swift */; };
@@ -41,6 +42,7 @@
 		0B5F755E29F6B07D002CFC3D /* BedroomLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BedroomLevel.swift; sourceTree = "<group>"; };
 		0B5F756329F6C3FC002CFC3D /* BathroomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathroomScene.swift; sourceTree = "<group>"; };
 		0B5F756529F6C425002CFC3D /* BathroomLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathroomLevel.swift; sourceTree = "<group>"; };
+		0B5F758129F8085C002CFC3D /* WorldItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldItems.swift; sourceTree = "<group>"; };
 		0BC136A529DC627200D535CD /* PickableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickableItem.swift; sourceTree = "<group>"; };
 		0BC136A729DC660B00D535CD /* InteractibleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractibleItem.swift; sourceTree = "<group>"; };
 		0BC136AE29DC6D9B00D535CD /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				0BC136AE29DC6D9B00D535CD /* Inventory.swift */,
 				29124DAC29E443DE0044497F /* Point.swift */,
+				0B5F758129F8085C002CFC3D /* WorldItems.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29A4459029DAFE3300576D1C /* GameScene.swift in Sources */,
+				0B5F758229F8085C002CFC3D /* WorldItems.swift in Sources */,
 				29C04A1129F6C5BF005947E3 /* SceneProtocol.swift in Sources */,
 				29A4459229DAFE3300576D1C /* GameViewController.swift in Sources */,
 				0BC136AF29DC6D9B00D535CD /* Inventory.swift in Sources */,

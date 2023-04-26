@@ -18,7 +18,7 @@ class PickableItem: Equatable {
     var remainingUses: Int {
         didSet {
             if self.remainingUses <= 0 {
-                Inventory.shared.items.removeAll(where: { $0 == self })
+                Inventory.shared.removeItem(item: self)
             }
         }
     }

@@ -19,8 +19,6 @@ class InteractibleItem: SKSpriteNode{
     private var actionType: InteractionType
     var nextScene: SKScene? = nil
 
-
-
     init(identifier: String, texture: SKTexture, position: Point, pickableItem: PickableItem?) {
         self.identifier = identifier
         self.tileMapPosition = position
@@ -28,7 +26,6 @@ class InteractibleItem: SKSpriteNode{
         self.storedPickableItem = pickableItem
         self.actionType = .PickItem
         super.init(texture: texture, color: .clear, size: texture.size())
-        
     }
     
     init(identifier: String, texture: SKTexture, position: Point, pickableItem: PickableItem?, unlockableItem: PickableItem?) {
@@ -39,8 +36,8 @@ class InteractibleItem: SKSpriteNode{
         self.compatibleUnlockableItem = unlockableItem
         self.actionType = .UseItem
         super.init(texture: texture, color: .clear, size: texture.size())
-        
     }
+
     init(identifier: String, texture: SKTexture, position: Point, nextScene: SKScene) {
         self.identifier = identifier
         self.tileMapPosition = position
@@ -48,8 +45,8 @@ class InteractibleItem: SKSpriteNode{
         self.nextScene = nextScene
         self.actionType = .ChangeRoom
         super.init(texture: texture, color: .clear, size: texture.size())
-        
     }
+
     init(identifier: String, texture: SKTexture, position: Point, nextScene: SKScene, unlockableItem: PickableItem) {
         self.identifier = identifier
         self.tileMapPosition = position
@@ -67,10 +64,8 @@ class InteractibleItem: SKSpriteNode{
         self.tileMapColision.append(tileMapPosition)
         self.actionType = .None
         super.init(texture: texture, color: .clear, size: texture.size())
-        
     }
-    
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -89,10 +84,15 @@ class InteractibleItem: SKSpriteNode{
         print(actionType)
         switch actionType {
         case .PickItem:
-                Inventory.shared.items.append(storedPickableItem!)
-                print("Pegou:", storedPickableItem!)
+                Inventory.shared.addItem(newItem: storedPickableItem!)
+
+            print("===============")
+            for item in Inventory.shared.items {
+                print(item.name)
+            }
+            print("===============")
         case .UseItem:
-            print("Usou:", compatibleUnlockableItem!)
+            print("Usou:", compatibleUnlockableItem!.name)
             if compatibleUnlockableItem != nil && Inventory.shared.items.contains(where: {$0 == compatibleUnlockableItem}){
                 do {try Inventory.shared.items.first(where: {$0 == compatibleUnlockableItem})!.use()}
                 catch {
@@ -114,11 +114,10 @@ class InteractibleItem: SKSpriteNode{
             return
         }
     }
+
     func setCollisor(collision:Point) {
         self.tileMapColision.append(collision)
     }
-    
-    
 }
 
 enum InteractibleItemError: Error {

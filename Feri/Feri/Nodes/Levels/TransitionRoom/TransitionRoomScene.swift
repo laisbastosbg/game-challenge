@@ -13,15 +13,19 @@ class TransitionRoomScene: SKScene, SceneProtocol {
 
     var touchLocation: TouchState = .None
 
-    var level: levelMapProtocol = TransitionRoomLevel(numOfRows: 6, numOfColumns: 16, heroInitialPosition: (x: 4, y: 14))
+    var level: levelMapProtocol = TransitionRoomLevel(numOfRows: 3, numOfColumns: 8, heroInitialPosition: (x: 2, y: 6))
 
     lazy var hero: Hero = Hero(currentPosition: self.level.heroInitialPosition)
 
     var myCamera = SKCameraNode()
+
+    var heroPosition: (x: Int, y: Int)?
     
 
     override func didMove(to view: SKView) {
-        self.name = "TransitionRoom"
+        if heroPosition != nil {
+            self.hero = Hero(currentPosition: heroPosition!)
+        }
         addChild(level.map)
         addChild(hero)
         addChild(myCamera)
