@@ -19,19 +19,21 @@ class InteractibleItem: SKSpriteNode{
     private var actionType: InteractionType
     var nextScene: SKScene?
     var unlockedTexture: SKTexture?
+    var pickedTexture: SKTexture?
     var isRemovable: Bool = false
 
-    init(identifier: String, texture: SKTexture, unlockedTexture: SKTexture? = nil, position: Point, pickableItem: PickableItem?) {
+    init(identifier: String, texture: SKTexture, unlockedTexture: SKTexture? = nil, pickedTexture: SKTexture? = nil, position: Point, pickableItem: PickableItem?) {
         self.identifier = identifier
         self.tileMapPosition = position
         self.tileMapColision.append(tileMapPosition)
         self.storedPickableItem = pickableItem
         self.actionType = .PickItem
         self.unlockedTexture = unlockedTexture
+        self.pickedTexture = pickedTexture
         super.init(texture: texture, color: .clear, size: texture.size())
     }
     
-    init(identifier: String, texture: SKTexture, unlockedTexture: SKTexture? = nil, position: Point, pickableItem: PickableItem?, unlockableItem: PickableItem?) {
+    init(identifier: String, texture: SKTexture, unlockedTexture: SKTexture? = nil, pickedTexture: SKTexture? = nil, position: Point, pickableItem: PickableItem?, unlockableItem: PickableItem?) {
         self.identifier = identifier
         self.tileMapPosition = position
         self.tileMapColision.append(tileMapPosition)
@@ -39,20 +41,22 @@ class InteractibleItem: SKSpriteNode{
         self.compatibleUnlockableItem = unlockableItem
         self.actionType = .UseItem
         self.unlockedTexture = unlockedTexture
+        self.pickedTexture = pickedTexture
         super.init(texture: texture, color: .clear, size: texture.size())
     }
 
-    init(identifier: String, texture: SKTexture, unlockedTexture: SKTexture? = nil, position: Point, nextScene: SKScene) {
+    init(identifier: String, texture: SKTexture, unlockedTexture: SKTexture? = nil, pickedTexture: SKTexture? = nil, position: Point, nextScene: SKScene) {
         self.identifier = identifier
         self.tileMapPosition = position
         self.tileMapColision.append(tileMapPosition)
         self.nextScene = nextScene
         self.actionType = .ChangeRoom
         self.unlockedTexture = unlockedTexture
+        self.pickedTexture = pickedTexture
         super.init(texture: texture, color: .clear, size: texture.size())
     }
 
-    init(identifier: String, texture: SKTexture, unlockedTexture: SKTexture? = nil, position: Point, nextScene: SKScene, unlockableItem: PickableItem) {
+    init(identifier: String, texture: SKTexture, unlockedTexture: SKTexture? = nil, pickedTexture: SKTexture? = nil, position: Point, nextScene: SKScene, unlockableItem: PickableItem) {
         self.identifier = identifier
         self.tileMapPosition = position
         self.tileMapColision.append(tileMapPosition)
@@ -64,12 +68,13 @@ class InteractibleItem: SKSpriteNode{
         
     }
     
-    init(identifier: String, texture: SKTexture, unlockedTexture: SKTexture? = nil, position: Point) {
+    init(identifier: String, texture: SKTexture, unlockedTexture: SKTexture? = nil, pickedTexture: SKTexture? = nil, position: Point) {
         self.identifier = identifier
         self.tileMapPosition = position
         self.tileMapColision.append(tileMapPosition)
         self.actionType = .None
         self.unlockedTexture = unlockedTexture
+        self.pickedTexture = pickedTexture
         super.init(texture: texture, color: .clear, size: texture.size())
     }
 
@@ -95,8 +100,8 @@ class InteractibleItem: SKSpriteNode{
             print("usou: \(storedPickableItem!.name)")
 //            print(storedPickableItem!.name)
 
-            if self.unlockedTexture != nil {
-                self.run(SKAction.setTexture(unlockedTexture!, resize: true))
+            if self.pickedTexture != nil {
+                self.run(SKAction.setTexture(pickedTexture!, resize: true))
             }
 
             if isRemovable {
@@ -104,6 +109,9 @@ class InteractibleItem: SKSpriteNode{
             }
         case .UseItem:
             WorldPickableItems.shared.listPickableItems()
+            if compatibleUnlockableItem != nil {
+                print("> \(compatibleUnlockableItem!.name)")
+            }
             if compatibleUnlockableItem != nil && Inventory.shared.items.contains(where: {$0 == compatibleUnlockableItem}){
                 do {
                     try Inventory.shared.items.first(where: {$0 == compatibleUnlockableItem})!.use()
