@@ -135,6 +135,9 @@ class InteractibleItem: SKSpriteNode{
                 }
             }
         case .ChangeRoom:
+            if self.unlockedTexture != nil {
+                self.run(SKAction.setTexture(unlockedTexture!, resize: true))
+            }
             let transition = SKTransition.fade(withDuration: 1)
             nextScene!.scaleMode = .resizeFill
 //            (self.parent?.scene as! SceneProtocol).vc_reference!.presentScene(nextScene!, transition: transition)

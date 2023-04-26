@@ -96,8 +96,6 @@ struct BedroomLevel: levelMapProtocol {
 
     func insertDoorOnMap(object: InteractibleItem, isColumnWall: Bool, isSouthWall: Bool = false) {
         floor.addChild(object)
-        print((floor.children.first! as! InteractibleItem).tileMapPosition)
-
         object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)
         object.position.y += object.size.height/2
 
@@ -115,7 +113,6 @@ struct BedroomLevel: levelMapProtocol {
         } else {
             object.zPosition = 0
         }
-        print("Portas:",object.zPosition)
     }
     
     func insertWallOnMap(object: Wall, isColumnWall: Bool) {
@@ -134,8 +131,5 @@ struct BedroomLevel: levelMapProtocol {
             object.xScale *= -1
             object.position.x += 32
         }
-        print(object.tileMapPosition, object.zPosition)
-
-
     }
 }
