@@ -19,6 +19,7 @@ class InteractibleItem: SKSpriteNode{
     private var actionType: InteractionType
     var nextScene: SKScene?
     var unlockedTexture: SKTexture?
+    var isRemovable: Bool = false
 
     init(identifier: String, texture: SKTexture, unlockedTexture: SKTexture? = nil, position: Point, pickableItem: PickableItem?) {
         self.identifier = identifier
@@ -92,24 +93,26 @@ class InteractibleItem: SKSpriteNode{
         case .PickItem:
                 Inventory.shared.addItem(newItem: storedPickableItem!)
 
-            print("===============")
-            for item in Inventory.shared.items {
-                print(item.name)
-            }
-            print("===============")
             if self.unlockedTexture != nil {
                 self.run(SKAction.setTexture(unlockedTexture!, resize: true))
-                print("b")
             }
-            print("a")
+
+            if isRemovable {
+                self.removeFromParent()
+            }
         case .UseItem:
-            print("Usou:", compatibleUnlockableItem!.name)
             if compatibleUnlockableItem != nil && Inventory.shared.items.contains(where: {$0 == compatibleUnlockableItem}){
                 do {
                     try Inventory.shared.items.first(where: {$0 == compatibleUnlockableItem})!.use()
+
                     if self.unlockedTexture != nil {
                         self.run(SKAction.setTexture(unlockedTexture!, resize: true))
                     }
+
+                    if isRemovable {
+                        self.removeFromParent()
+                    }
+                    
                 } catch {
                     print(error)
                 }

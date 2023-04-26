@@ -47,10 +47,12 @@ struct BathroomLevel: levelMapProtocol {
 
         let bathroomSink = WorldInteractibleItems.shared.getInteractibleItem(name: "bathroomSink")
         insertOnMap(object: bathroomSink, isColumnWall: true)
-        
 
         let toilet = WorldInteractibleItems.shared.getInteractibleItem(name: "toilet")
         insertOnMap(object: toilet, isColumnWall: false)
+
+        let stool = WorldInteractibleItems.shared.getInteractibleItem(name: "stool")
+        insertOnMap(object: stool, isColumnWall: false)
     }
     
     func generateWalls() {

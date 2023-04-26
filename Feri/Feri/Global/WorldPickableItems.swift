@@ -48,6 +48,8 @@ class WorldPickableItems {
 
         let storageKey = PickableItem(name: "storageKey", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chave"))
 
+        let stool = PickableItem(name: "stool", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-banquinho"))
+
         return [
             balconyKey,
             bathroomKey,
@@ -55,7 +57,8 @@ class WorldPickableItems {
             ropes,
             lantern,
             plunger,
-            storageKey
+            storageKey,
+            stool
         ]
     }
     

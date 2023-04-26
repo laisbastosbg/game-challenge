@@ -113,7 +113,7 @@ struct BedroomLevel: levelMapProtocol {
             object.zPosition = CGFloat(object.tileMapPosition.y - object.tileMapPosition.x + numOfRows) + 1
             object.position.x -= 70
         } else {
-            object.zPosition = -1
+            object.zPosition = 1
         }
         print("Portas:",object.zPosition)
     }
