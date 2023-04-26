@@ -120,7 +120,7 @@ struct BedroomLevel: levelMapProtocol {
     
     func insertWallOnMap(object: Wall, isColumnWall: Bool) {
         floor.addChild(object)
-        object.xScale = 1.2
+        object.xScale = 1
         object.yScale = 1
 
         object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)

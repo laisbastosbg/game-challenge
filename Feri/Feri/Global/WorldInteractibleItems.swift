@@ -47,38 +47,38 @@ class WorldInteractibleItems {
 
         // Bathroom furniture
 
-        let bathroomToTransitionRoomDoor = InteractibleItem(identifier: "bathroomToTransitionRoomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:2), nextScene: TransitionRoomScene.shared)
+        let bathroomToTransitionRoomDoor = InteractibleItem(identifier: "bathroomToTransitionRoomDoor", texture: SKTexture(imageNamed: "TilePorta"), unlockedTexture: nil, position: (x:0,y:2), nextScene: TransitionRoomScene.shared)
 
-        let bathroomSink = InteractibleItem(identifier: "bathroomSink", texture: SKTexture(imageNamed: "TileSet-piaBanheiroFechada"), position: (x: 4, y: 2), pickableItem: plunger, unlockableItem: crowbar)
+        let bathroomSink = InteractibleItem(identifier: "bathroomSink", texture: SKTexture(imageNamed: "TileSet-piaBanheiroFechada"), unlockedTexture: nil, position: (x: 4, y: 2), pickableItem: plunger, unlockableItem: crowbar)
 
 
-        let toilet = InteractibleItem(identifier: "toilet", texture: SKTexture(imageNamed: "TileSet-vasoSujo"), position: (x: 3, y: 0), pickableItem: storageKey, unlockableItem: plunger)
+        let toilet = InteractibleItem(identifier: "toilet", texture: SKTexture(imageNamed: "TileSet-vasoSujo"), unlockedTexture: nil, position: (x: 3, y: 0), pickableItem: storageKey, unlockableItem: plunger)
 
         // Bedroom furniture
 
 
-        let bedroomToBalconyDoor = InteractibleItem(identifier: "bedroomToBalconyDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:4,y:2), nextScene: BathroomScene.shared, unlockableItem: balconyKey)
+        let bedroomToBalconyDoor = InteractibleItem(identifier: "bedroomToBalconyDoor", texture: SKTexture(imageNamed: "TilePorta"), unlockedTexture: nil, position: (x:4,y:2), nextScene: BathroomScene.shared, unlockableItem: balconyKey)
 
-        let bedsideTable = InteractibleItem(identifier: "bedsideTable", texture: SKTexture(imageNamed: "bedside_table"), position: (x: 4, y: 0), pickableItem: bathroomKey)
+        let bedsideTable = InteractibleItem(identifier: "bedsideTable", texture: SKTexture(imageNamed: "bedside_table"), unlockedTexture: SKTexture(imageNamed: "bedside_table_unlocked"), position: (x: 4, y: 0), pickableItem: bathroomKey)
 
-        let bed = InteractibleItem(identifier: "bed", texture: SKTexture(imageNamed: "TileSet-cama"), position: (x: 2, y: 4), pickableItem: crowbar, unlockableItem: lantern)
-        let chest = InteractibleItem(identifier: "storage", texture: SKTexture(imageNamed: "storage"), position: (x: 1, y: 0), pickableItem: ropes)
+        let bed = InteractibleItem(identifier: "bed", texture: SKTexture(imageNamed: "TileSet-cama"), unlockedTexture: nil, position: (x: 2, y: 4), pickableItem: crowbar, unlockableItem: lantern)
+        let chest = InteractibleItem(identifier: "storage", texture: SKTexture(imageNamed: "storage"), unlockedTexture: nil, position: (x: 1, y: 0), pickableItem: ropes)
 
-        let shelf = InteractibleItem(identifier: "shelf", texture: SKTexture(imageNamed: "TileSet-shelf"), position: (x: 0, y: 0), pickableItem: lantern)
+        let shelf = InteractibleItem(identifier: "shelf", texture: SKTexture(imageNamed: "TileSet-shelf"), unlockedTexture: nil, position: (x: 0, y: 0), pickableItem: lantern)
 
-        let bedroomToTransitionRoomDoor = InteractibleItem(identifier: "bedroomToTransitionRoomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:0,y:4), nextScene: TransitionRoomScene.shared)
+        let bedroomToTransitionRoomDoor = InteractibleItem(identifier: "bedroomToTransitionRoomDoor", texture: SKTexture(imageNamed: "TilePorta"), unlockedTexture: nil, position: (x:0,y:4), nextScene: TransitionRoomScene.shared)
 
 //        Transition room furniture
 
-        let transitionRoomToBedroomDoor = InteractibleItem(identifier: "transitionRoomToBedroomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:2,y:6), nextScene: BedroomScene.shared)
+        let transitionRoomToBedroomDoor = InteractibleItem(identifier: "transitionRoomToBedroomDoor", texture: SKTexture(imageNamed: "TilePorta"), unlockedTexture: nil, position: (x:2,y:6), nextScene: BedroomScene.shared)
 
-        let transitionRoomTable = InteractibleItem(identifier: "transitionRoomTable", texture: SKTexture(imageNamed: "bedside_table"), position: (x: 2, y: 4), pickableItem: balconyKey, unlockableItem: crowbar)
+        let transitionRoomTable = InteractibleItem(identifier: "transitionRoomTable", texture: SKTexture(imageNamed: "bedside_table"), unlockedTexture: nil, position: (x: 2, y: 4), pickableItem: balconyKey, unlockableItem: crowbar)
 
-        let stairEnd = InteractibleItem(identifier: "stairEnd", texture: SKTexture(imageNamed: "StairEnd"), position: (x:0,y:1))
+        let stairEnd = InteractibleItem(identifier: "stairEnd", texture: SKTexture(imageNamed: "StairEnd"), unlockedTexture: nil, position: (x:0,y:1))
 
-        let window = InteractibleItem(identifier: "window", texture: SKTexture(imageNamed: "TileJanela"), position: (x:1,y:0))
+        let window = InteractibleItem(identifier: "window", texture: SKTexture(imageNamed: "TileJanela"), unlockedTexture: nil, position: (x:1,y:0))
 
-        let transitionRoomToBathroomDoor = InteractibleItem(identifier: "transitionRoomToBathroomDoor", texture: SKTexture(imageNamed: "TilePorta"), position: (x:2,y:1), nextScene: BathroomScene.shared, unlockableItem: bathroomKey)
+        let transitionRoomToBathroomDoor = InteractibleItem(identifier: "transitionRoomToBathroomDoor", texture: SKTexture(imageNamed: "TilePorta"), unlockedTexture: nil, position: (x:2,y:1), nextScene: BathroomScene.shared, unlockableItem: bathroomKey)
 
         return [
             bathroomToTransitionRoomDoor,

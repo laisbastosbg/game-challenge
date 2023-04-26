@@ -60,12 +60,12 @@ struct TransitionRoomLevel: levelMapProtocol {
     
     func generateWalls() {
         for i in 0..<numOfRows {
-            let wall = Wall(texture: SKTexture(imageNamed: "TileSet-Pare"), position: (x:i,y:0))
+            let wall = Wall(texture: SKTexture(imageNamed: "wall-darkColor"), position: (x:i,y:0))
             insertWallOnMap(object: wall, isColumnWall: true)
 
         }
         for i in 0..<numOfColumns {
-            let wall = Wall(texture: SKTexture(imageNamed: "TileSet-Pare"), position: (x:numOfRows-1,y:i))
+            let wall = Wall(texture: SKTexture(imageNamed: "wall-mediumColor"), position: (x:numOfRows-1,y:i))
             insertWallOnMap(object: wall, isColumnWall: false)
 
         }
@@ -106,7 +106,7 @@ struct TransitionRoomLevel: levelMapProtocol {
     }
     func insertWallOnMap(object: Wall, isColumnWall: Bool) {
         floor.addChild(object)
-        object.xScale = 1.2
+        object.xScale = 1
         object.yScale = 1
 
         object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)

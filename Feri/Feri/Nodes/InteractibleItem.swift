@@ -17,52 +17,58 @@ class InteractibleItem: SKSpriteNode{
     private(set) var tileMapPosition: Point
     private(set) var tileMapColision: [Point] = []
     private var actionType: InteractionType
-    var nextScene: SKScene? = nil
+    var nextScene: SKScene?
+    var unlockedTexture: SKTexture?
 
-    init(identifier: String, texture: SKTexture, position: Point, pickableItem: PickableItem?) {
+    init(identifier: String, texture: SKTexture, unlockedTexture: SKTexture? = nil, position: Point, pickableItem: PickableItem?) {
         self.identifier = identifier
         self.tileMapPosition = position
         self.tileMapColision.append(tileMapPosition)
         self.storedPickableItem = pickableItem
         self.actionType = .PickItem
+        self.unlockedTexture = unlockedTexture
         super.init(texture: texture, color: .clear, size: texture.size())
     }
     
-    init(identifier: String, texture: SKTexture, position: Point, pickableItem: PickableItem?, unlockableItem: PickableItem?) {
+    init(identifier: String, texture: SKTexture, unlockedTexture: SKTexture? = nil, position: Point, pickableItem: PickableItem?, unlockableItem: PickableItem?) {
         self.identifier = identifier
         self.tileMapPosition = position
         self.tileMapColision.append(tileMapPosition)
         self.storedPickableItem = pickableItem
         self.compatibleUnlockableItem = unlockableItem
         self.actionType = .UseItem
+        self.unlockedTexture = unlockedTexture
         super.init(texture: texture, color: .clear, size: texture.size())
     }
 
-    init(identifier: String, texture: SKTexture, position: Point, nextScene: SKScene) {
+    init(identifier: String, texture: SKTexture, unlockedTexture: SKTexture? = nil, position: Point, nextScene: SKScene) {
         self.identifier = identifier
         self.tileMapPosition = position
         self.tileMapColision.append(tileMapPosition)
         self.nextScene = nextScene
         self.actionType = .ChangeRoom
+        self.unlockedTexture = unlockedTexture
         super.init(texture: texture, color: .clear, size: texture.size())
     }
 
-    init(identifier: String, texture: SKTexture, position: Point, nextScene: SKScene, unlockableItem: PickableItem) {
+    init(identifier: String, texture: SKTexture, unlockedTexture: SKTexture? = nil, position: Point, nextScene: SKScene, unlockableItem: PickableItem) {
         self.identifier = identifier
         self.tileMapPosition = position
         self.tileMapColision.append(tileMapPosition)
         self.nextScene = nextScene
         self.compatibleUnlockableItem = unlockableItem
         self.actionType = .UseItem
+        self.unlockedTexture = unlockedTexture
         super.init(texture: texture, color: .clear, size: texture.size())
         
     }
     
-    init(identifier: String, texture: SKTexture, position: Point) {
+    init(identifier: String, texture: SKTexture, unlockedTexture: SKTexture? = nil, position: Point) {
         self.identifier = identifier
         self.tileMapPosition = position
         self.tileMapColision.append(tileMapPosition)
         self.actionType = .None
+        self.unlockedTexture = unlockedTexture
         super.init(texture: texture, color: .clear, size: texture.size())
     }
 
@@ -91,11 +97,20 @@ class InteractibleItem: SKSpriteNode{
                 print(item.name)
             }
             print("===============")
+            if self.unlockedTexture != nil {
+                self.run(SKAction.setTexture(unlockedTexture!, resize: true))
+                print("b")
+            }
+            print("a")
         case .UseItem:
             print("Usou:", compatibleUnlockableItem!.name)
             if compatibleUnlockableItem != nil && Inventory.shared.items.contains(where: {$0 == compatibleUnlockableItem}){
-                do {try Inventory.shared.items.first(where: {$0 == compatibleUnlockableItem})!.use()}
-                catch {
+                do {
+                    try Inventory.shared.items.first(where: {$0 == compatibleUnlockableItem})!.use()
+                    if self.unlockedTexture != nil {
+                        self.run(SKAction.setTexture(unlockedTexture!, resize: true))
+                    }
+                } catch {
                     print(error)
                 }
                 compatibleUnlockableItem = nil
