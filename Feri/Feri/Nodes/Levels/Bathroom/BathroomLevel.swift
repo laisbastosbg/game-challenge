@@ -46,7 +46,7 @@ struct BathroomLevel: levelMapProtocol {
         insertDoorOnMap(object: transitionRoomDoor, isColumnWall: false, isSouthWall: true)
 
         let bathroomSink = WorldInteractibleItems.shared.getInteractibleItem(name: "bathroomSink")
-        insertOnMap(object: bathroomSink, isColumnWall: false)
+        insertOnMap(object: bathroomSink, isColumnWall: true)
         
 
         let toilet = WorldInteractibleItems.shared.getInteractibleItem(name: "toilet")

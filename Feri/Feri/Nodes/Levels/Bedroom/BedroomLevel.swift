@@ -70,12 +70,12 @@ struct BedroomLevel: levelMapProtocol {
     
     func generateWalls() {
         for i in 0..<numOfRows {
-            let wall = Wall(texture: SKTexture(imageNamed: "TileSet-Pare"), position: (x:i,y:0))
+            let wall = Wall(texture: SKTexture(imageNamed: "wall-darkColor"), position: (x:i,y:0))
             insertWallOnMap(object: wall, isColumnWall: true)
 
         }
         for i in 0..<numOfColumns {
-            let wall = Wall(texture: SKTexture(imageNamed: "TileSet-Pare"), position: (x:numOfRows-1,y:i))
+            let wall = Wall(texture: SKTexture(imageNamed: "wall-mediumColor"), position: (x:numOfRows-1,y:i))
             insertWallOnMap(object: wall, isColumnWall: false)
 
         }
