@@ -45,7 +45,7 @@ struct TransitionRoomLevel: levelMapProtocol {
         insertDoorOnMap(object: bedroomDoor, isColumnWall: false)
 
         let transitionRoomTable = WorldInteractibleItems.shared.getInteractibleItem(name: "transitionRoomTable")
-        insertOnMap(object: transitionRoomTable)
+        insertOnMap(object: transitionRoomTable, isColumnWall: true)
 
         let stairEnd = WorldInteractibleItems.shared.getInteractibleItem(name: "stairEnd")
         insertOnMap(object: stairEnd, isColumnWall: true)
@@ -87,7 +87,7 @@ struct TransitionRoomLevel: levelMapProtocol {
         print((floor.children.first! as! InteractibleItem).tileMapPosition)
 
         object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)
-        object.position.y += object.size.height/3 + 8
+        object.position.y += object.size.height/2
 
         if isColumnWall {
             object.position.x -= 26
@@ -101,7 +101,7 @@ struct TransitionRoomLevel: levelMapProtocol {
             object.zPosition = CGFloat(object.tileMapPosition.y - object.tileMapPosition.x + numOfRows) + 1
             object.position.x -= 70
         } else {
-            object.zPosition = -1
+            object.zPosition = 0
         }
     }
     func insertWallOnMap(object: Wall, isColumnWall: Bool) {

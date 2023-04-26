@@ -38,7 +38,7 @@ class WorldPickableItems {
 
         let bathroomKey = PickableItem(name: "bathroomKey", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-chaveBanheiro"))
 
-        let crowbar = PickableItem(name: "crowbar", remainingUses: 2, texture: SKTexture(imageNamed: "objetos"))
+        let crowbar = PickableItem(name: "crowbar", remainingUses: 2, texture: SKTexture(imageNamed: "crowbar"))
 
         let ropes = PickableItem(name: "ropes", remainingUses: 1, texture: SKTexture(imageNamed: "TileSet-corda"))
 

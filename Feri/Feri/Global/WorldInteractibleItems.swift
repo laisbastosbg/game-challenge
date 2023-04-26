@@ -17,14 +17,6 @@ class WorldInteractibleItems {
         print("b")
     }
 
-    func listInteractibleItems() {
-        print("------------")
-        for e in WorldInteractibleItems.shared.items {
-            print(e.identifier)
-        }
-        print("------------")
-    }
-
     func getInteractibleItem(name: String) -> InteractibleItem {
         print(">>>>> \(name)")
         let items = WorldInteractibleItems.shared.items.filter { $0.identifier == name}
@@ -52,7 +44,7 @@ class WorldInteractibleItems {
 
         let bathroomSink = InteractibleItem(identifier: "bathroomSink", texture: SKTexture(imageNamed: "TileSet-piaBanheiroFechada"), unlockedTexture: nil, position: (x: 4, y: 2), pickableItem: plunger, unlockableItem: crowbar)
 
-        let toilet = InteractibleItem(identifier: "toilet", texture: SKTexture(imageNamed: "TileSet-vasoSujo"), unlockedTexture: nil, position: (x: 3, y: 0), pickableItem: storageKey, unlockableItem: plunger)
+        let toilet = InteractibleItem(identifier: "toilet", texture: SKTexture(imageNamed: "TileSet-vasoSujo"), unlockedTexture: SKTexture(imageNamed: "TileSet-vasoLimpo"), position: (x: 3, y: 0), pickableItem: storageKey, unlockableItem: plunger)
 
         let interactibleStool = InteractibleItem(identifier: "stool", texture: SKTexture(imageNamed: "TileSet-banquinho"), unlockedTexture: SKTexture(), position: (x: 2, y: 2), pickableItem: pickableStool)
         interactibleStool.isRemovable = true
@@ -64,11 +56,10 @@ class WorldInteractibleItems {
 
         let bedsideTable = InteractibleItem(identifier: "bedsideTable", texture: SKTexture(imageNamed: "bedside_table"), unlockedTexture: SKTexture(imageNamed: "bedside_table_unlocked"), position: (x: 4, y: 0), pickableItem: bathroomKey)
 
-        let bed = InteractibleItem(identifier: "bed", texture: SKTexture(imageNamed: "TileSet-cama"), unlockedTexture: nil, position: (x: 2, y: 4), pickableItem: crowbar, unlockableItem: lantern)
-        let chest = InteractibleItem(identifier: "storage", texture: SKTexture(imageNamed: "storage"), unlockedTexture: nil, position: (x: 1, y: 0), pickableItem: ropes)
+        let bed = InteractibleItem(identifier: "bed", texture: SKTexture(imageNamed: "bed"), unlockedTexture: SKTexture(imageNamed: "bed_unlocked"), position: (x: 2, y: 4), pickableItem: crowbar, unlockableItem: lantern)
+        let chest = InteractibleItem(identifier: "storage", texture: SKTexture(imageNamed: "storage"), unlockedTexture: SKTexture(imageNamed: "storage_unlocked"), position: (x: 2, y: 0), pickableItem: ropes)
 
-        let shelf = InteractibleItem(identifier: "shelf", texture: SKTexture(imageNamed: "TileSet-shelf"), unlockedTexture: nil, position: (x: 0, y: 0), pickableItem: lantern)
-//        let interactibleLantern = InteractibleItem(identifier: "shelf", texture: SKTexture(imageNamed: "TileSet-shelf"), unlockedTexture: nil, position: (x: 0, y: 0), pickableItem: lantern)
+        let shelf = InteractibleItem(identifier: "shelf", texture: SKTexture(imageNamed: "shelf"), unlockedTexture: SKTexture(imageNamed: "shelf_unlocked"), position: (x: 0, y: 1), pickableItem: lantern)
 
         let bedroomToTransitionRoomDoor = InteractibleItem(identifier: "bedroomToTransitionRoomDoor", texture: SKTexture(imageNamed: "porta_fechada"), unlockedTexture: SKTexture(imageNamed: "porta_aberta"), position: (x:0,y:4), nextScene: TransitionRoomScene.shared)
 
@@ -78,7 +69,7 @@ class WorldInteractibleItems {
 
         let transitionRoomTable = InteractibleItem(identifier: "transitionRoomTable", texture: SKTexture(imageNamed: "bedside_table"), unlockedTexture: nil, position: (x: 2, y: 4), pickableItem: balconyKey, unlockableItem: crowbar)
 
-        let stairEnd = InteractibleItem(identifier: "stairEnd", texture: SKTexture(imageNamed: "StairEnd"), unlockedTexture: nil, position: (x:0,y:1))
+        let stairEnd = InteractibleItem(identifier: "stairEnd", texture: SKTexture(imageNamed: "stairEnd_collapsed"), unlockedTexture: nil, position: (x:0,y:1))
 
         let window = InteractibleItem(identifier: "window", texture: SKTexture(imageNamed: "TileJanela"), unlockedTexture: nil, position: (x:1,y:0))
 

@@ -92,6 +92,8 @@ class InteractibleItem: SKSpriteNode{
         switch actionType {
         case .PickItem:
                 Inventory.shared.addItem(newItem: storedPickableItem!)
+            print("usou: \(storedPickableItem!.name)")
+//            print(storedPickableItem!.name)
 
             if self.unlockedTexture != nil {
                 self.run(SKAction.setTexture(unlockedTexture!, resize: true))
@@ -101,6 +103,7 @@ class InteractibleItem: SKSpriteNode{
                 self.removeFromParent()
             }
         case .UseItem:
+            WorldPickableItems.shared.listPickableItems()
             if compatibleUnlockableItem != nil && Inventory.shared.items.contains(where: {$0 == compatibleUnlockableItem}){
                 do {
                     try Inventory.shared.items.first(where: {$0 == compatibleUnlockableItem})!.use()

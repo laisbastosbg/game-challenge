@@ -13,7 +13,7 @@ class TransitionRoomScene: SKScene, SceneProtocol {
 
     var touchLocation: TouchState = .None
 
-    var level: levelMapProtocol = TransitionRoomLevel(numOfRows: 3, numOfColumns: 8, heroInitialPosition: (x: 2, y: 6))
+    var level: levelMapProtocol = TransitionRoomLevel(numOfRows: 3, numOfColumns: 8, heroInitialPosition: (x: 1, y: 6))
 
     lazy var hero: Hero = Hero(currentPosition: self.level.heroInitialPosition)
 

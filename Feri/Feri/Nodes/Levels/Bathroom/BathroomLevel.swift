@@ -41,7 +41,7 @@ struct BathroomLevel: levelMapProtocol {
     }
 
     func generateFurniture() {
-        TransitionRoomScene.shared.heroPosition = (x: 2, y: 1)
+        TransitionRoomScene.shared.heroPosition = (x: 1, y: 1)
         let transitionRoomDoor = WorldInteractibleItems.shared.getInteractibleItem(name: "bathroomToTransitionRoomDoor")
         insertDoorOnMap(object: transitionRoomDoor, isColumnWall: false, isSouthWall: true)
 
@@ -86,7 +86,7 @@ struct BathroomLevel: levelMapProtocol {
         print((floor.children.first! as! InteractibleItem).tileMapPosition)
 
         object.position = floor.centerOfTile(atColumn: object.tileMapPosition.y, row: object.tileMapPosition.x)
-        object.position.y += object.size.height/3 + 8
+        object.position.y += object.size.height/2
 
         if isColumnWall {
             object.position.x -= 26
@@ -100,7 +100,7 @@ struct BathroomLevel: levelMapProtocol {
             object.zPosition = CGFloat(object.tileMapPosition.y - object.tileMapPosition.x + numOfRows) + 1
             object.position.x -= 70
         } else {
-            object.zPosition = -1
+            object.zPosition = 0
         }
     }
     
