@@ -76,7 +76,7 @@ class WorldInteractibleItems {
 
         // Balcony furniture
 
-        let balconyToBedroomDoor = InteractibleItem(identifier: "balconyToBedroomDoor", texture: SKTexture(imageNamed: "porta_fechada"), unlockedTexture: SKTexture(imageNamed: "porta_aberta"), position: (x:0,y:), nextScene: OutsideScene.shared, unlockableItem: balconyKey)
+        let balconyToBedroomDoor = InteractibleItem(identifier: "balconyToBedroomDoor", texture: SKTexture(imageNamed: "porta_fechada"), unlockedTexture: SKTexture(imageNamed: "porta_aberta"), position: (x:0,y: 1), nextScene: OutsideScene.shared, unlockableItem: balconyKey)
 
         return [
             bathroomToTransitionRoomDoor,
