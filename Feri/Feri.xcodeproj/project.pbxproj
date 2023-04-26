@@ -19,6 +19,7 @@
 		0BC136AF29DC6D9B00D535CD /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC136AE29DC6D9B00D535CD /* Inventory.swift */; };
 		29124DAD29E443DE0044497F /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29124DAC29E443DE0044497F /* Point.swift */; };
 		29124DB529E583680044497F /* InteractionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29124DB429E583680044497F /* InteractionTypes.swift */; };
+		2950264F29F9B4BE00EC4046 /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2950264E29F9B4BE00EC4046 /* InventoryView.swift */; };
 		29A0888B29F6F9D1006D9613 /* ViewPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A0888A29F6F9D1006D9613 /* ViewPresenterDelegate.swift */; };
 		29A0888D29F80F21006D9613 /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A0888C29F80F21006D9613 /* Wall.swift */; };
 		29A4458A29DAFE3300576D1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4458929DAFE3300576D1C /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 		0BC136AE29DC6D9B00D535CD /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		29124DAC29E443DE0044497F /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		29124DB429E583680044497F /* InteractionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionTypes.swift; sourceTree = "<group>"; };
+		2950264E29F9B4BE00EC4046 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
 		29A0888A29F6F9D1006D9613 /* ViewPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPresenterDelegate.swift; sourceTree = "<group>"; };
 		29A0888C29F80F21006D9613 /* Wall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		29A4458629DAFE3300576D1C /* Feri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Feri.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +172,14 @@
 			path = Global;
 			sourceTree = "<group>";
 		};
+		29A0889029F9654D006D9613 /* IInventoryView */ = {
+			isa = PBXGroup;
+			children = (
+				2950264E29F9B4BE00EC4046 /* InventoryView.swift */,
+			);
+			path = IInventoryView;
+			sourceTree = "<group>";
+		};
 		29A4457D29DAFE3200576D1C = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +206,7 @@
 				0BC136AA29DC6BD400D535CD /* Protocols */,
 				0BC136A929DC6B2800D535CD /* Nodes */,
 				29A4458929DAFE3300576D1C /* AppDelegate.swift */,
+				29A0889029F9654D006D9613 /* IInventoryView */,
 				29A4458F29DAFE3300576D1C /* GameScene.swift */,
 				29A4459129DAFE3300576D1C /* GameViewController.swift */,
 				29A4459329DAFE3300576D1C /* Main.storyboard */,
@@ -291,6 +302,7 @@
 				29124DAD29E443DE0044497F /* Point.swift in Sources */,
 				0B5F756429F6C3FC002CFC3D /* BathroomScene.swift in Sources */,
 				29A445A329DB016100576D1C /* Hero.swift in Sources */,
+				2950264F29F9B4BE00EC4046 /* InventoryView.swift in Sources */,
 				0B3D0F9B29E71D3900E9D547 /* TransitionRoomScene.swift in Sources */,
 				0BC136A629DC627200D535CD /* PickableItem.swift in Sources */,
 				29124DB529E583680044497F /* InteractionTypes.swift in Sources */,

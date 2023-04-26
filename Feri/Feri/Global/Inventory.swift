@@ -6,10 +6,10 @@
 //
 
 import Foundation
-
-class Inventory {
+class Inventory: ObservableObject {
+    
     static let shared = Inventory()
-    private(set) var items: [PickableItem] = []
+    @Published private(set) var items: [PickableItem] = []
 
     private init(items: [PickableItem] = []) {
         self.items = items

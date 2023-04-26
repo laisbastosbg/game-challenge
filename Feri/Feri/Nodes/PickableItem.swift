@@ -23,12 +23,14 @@ class PickableItem: Equatable {
         }
     }
 
+    var textureName: String
     var texture: SKTexture
 
-    init(name: String, remainingUses: Int, texture: SKTexture) {
+    init(name: String, remainingUses: Int, textureName: String) {
         self.name = name
         self.remainingUses = remainingUses
-        self.texture = texture
+        self.textureName = textureName
+        self.texture = SKTexture(imageNamed: textureName)
     }
 
     func use() throws {

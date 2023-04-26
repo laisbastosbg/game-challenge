@@ -8,24 +8,38 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import SwiftUI
 
 class GameViewController: UIViewController {
-
-    
     
     private lazy var interactButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "ActionButton"), for: .normal)
+        button.setImage(UIImage(named: "Botao-Pegar"), for: .normal)
         return button
     }()
-    
-    private lazy var DPad: UIView = {
+    private lazy var inventoryButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "ActionButton"), for: .normal)
         return button
     }()
+
+    lazy var InventoryView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named:"UI-Inventario")!)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    lazy var inventoryElements: UIView = {
+        let vc = UIHostingController(rootView: Feri.InventoryView(inventoryItems: Inventory.shared))
+        vc.view.translatesAutoresizingMaskIntoConstraints = false
+        vc.view.backgroundColor = .clear
+        return vc.view
+    }()
+    
+    
+
     
     var myView: SKView!
     var scene = BedroomScene.shared
@@ -34,20 +48,49 @@ class GameViewController: UIViewController {
     @objc func interact() {
         (myView.scene as! any SceneProtocol).hero.interactWithObject(on: (myView.scene as! any SceneProtocol).level)
     }
+    
+    @objc func openInventory() {
+        InventoryView.isHidden.toggle()
+    }
 
-//    let scene = GameScene(level: TransitionRoomLevel(numOfRows: 3, numOfColumns: 8, heroInitialPosition: (x: 2, y: 6)))
-//    let scene = BathroomScene.shared
-//    let scene = TransitionRoomScene.shared
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(interactButton)
+        view.addSubview(inventoryButton)
         
         NSLayoutConstraint.activate([
             interactButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
-            interactButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
+            interactButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            interactButton.widthAnchor.constraint(equalToConstant: 70),
+            interactButton.heightAnchor.constraint(equalToConstant: 70),
+            
+            inventoryButton.bottomAnchor.constraint(equalTo: interactButton.topAnchor,constant: -40),
+            inventoryButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40)
+        ])
+        view.addSubview(InventoryView)
+        InventoryView.addSubview(inventoryElements)
+
+
+        NSLayoutConstraint.activate([
+            InventoryView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            InventoryView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
+            InventoryView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 150),
+            InventoryView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -150),
+            
+            inventoryElements.topAnchor.constraint(equalTo: InventoryView.topAnchor, constant: 10),
+            inventoryElements.bottomAnchor.constraint(equalTo: InventoryView.bottomAnchor, constant: -10),
+            inventoryElements.leftAnchor.constraint(equalTo: InventoryView.leftAnchor, constant: 10),
+            inventoryElements.rightAnchor.constraint(equalTo: InventoryView.rightAnchor, constant: -10),
+            inventoryElements.centerXAnchor.constraint(equalTo: InventoryView.centerXAnchor),
+            inventoryElements.centerYAnchor.constraint(equalTo: InventoryView.centerYAnchor)
+
         ])
         
+        self.InventoryView.isHidden = true
+        
         interactButton.addTarget(self, action: #selector(interact), for: .touchUpInside)
+        inventoryButton.addTarget(self, action: #selector(openInventory), for: .touchUpInside)
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
         
