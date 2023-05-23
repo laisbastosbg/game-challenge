@@ -21,74 +21,53 @@ class BedroomScene: SKScene, SceneProtocol {
 
     var heroPosition: (x: Int, y: Int)?
 
-    func addChildren() {
-
-    }
     override func didMove(to view: SKView) {
         super.didMove(to: view)
 
+        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        setupHero()
+        let heroPosition = level.floor.centerOfTile(atColumn: hero.currentPosition.y, row: hero.currentPosition.x)
+
+        hero.setPosition(position: heroPosition)
+        setupLevelMap()
+        setupCamera()
+    }
+
+    func setupHero() {
         if heroPosition != nil {
             self.hero = Hero(currentPosition: heroPosition!)
         }
-        
-        addChild(level.map)
+
         addChild(hero)
-        addChild(myCamera)
+
+        hero.setScale(x: 0.3, y: 0.3)
+    }
+
+    func setupLevelMap() {
+        addChild(level.map)
         level.configLevel()
 
         level.map.xScale = 1
         level.map.yScale = 1
-        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+    }
 
-        hero.xScale = 0.3
-        hero.yScale = 0.3
-
-        hero.position = level.floor.centerOfTile(atColumn: hero.currentPosition.y, row: hero.currentPosition.x)
-        print(hero.frame.minY)
-        hero.position.y += hero.size.height/3
+    func setupCamera() {
+        addChild(myCamera)
         myCamera.position = hero.position
         myCamera.setScale(1)
-
         camera = myCamera
-
     }
+
     override func willMove(from view: SKView) {
         BedroomScene.shared.removeAllChildren()
     }
-    
-    
-
 
     func touchDown(atPoint pos : CGPoint) {
-        let location = pos
-        var coordinate: Point = hero.currentPosition
-        if location.x < CGRectGetMidX(myCamera.frame) && location.y > CGRectGetMidY(myCamera.frame) {
-            self.touchLocation = .TopLeft
-            if hero.currentPosition.y > 0 {
-                coordinate.y -= 1
-            }
-            hero.moveOnGrid(to: coordinate, on: level, direction: self.touchLocation)
-        } else if location.x > CGRectGetMidX(myCamera.frame) && location.y > CGRectGetMidY(myCamera.frame) {
-            self.touchLocation = .TopRight
-            if hero.currentPosition.x < level.numOfRows-1 {
-                coordinate.x += 1
-            }
-            hero.moveOnGrid(to: coordinate, on: level, direction: self.touchLocation)
-        } else if location.x < CGRectGetMidX(myCamera.frame) && location.y < CGRectGetMidY(myCamera.frame) {
-            self.touchLocation = .DownLeft
-            if hero.currentPosition.x > 0 {
-                coordinate.x -= 1
-            }
-            hero.moveOnGrid(to: coordinate, on: level, direction: self.touchLocation)
-        } else if location.x > CGRectGetMidX(myCamera.frame) && location.y < CGRectGetMidY(myCamera.frame) {
-            self.touchLocation = .DownRight
-            if hero.currentPosition.y < level.numOfColumns-1 {
-                coordinate.y += 1
-            }
-            hero.moveOnGrid(to: coordinate, on: level, direction: self.touchLocation)
+//        let location = pos
+        let oldPosition: Point = hero.currentPosition
 
-
-        }
+        let newPosition = HeroMovementHandler.shared.getValueOfNewPosition(touchLocation: pos, oldPosition: oldPosition, scene: self)
+        hero.moveOnGrid(to: newPosition, on: level, direction: self.touchLocation)
     }
 
     func touchMoved(toPoint pos : CGPoint) {

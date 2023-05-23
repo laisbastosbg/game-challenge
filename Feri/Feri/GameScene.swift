@@ -1,111 +1,120 @@
 //
-//  GameScene.swift
+//  BedroomScene.swift
 //  Feri
 //
-//  Created by Otávio Albuquerque on 03/04/23.
+//  Created by Lais Godinho on 12/04/23.
 //
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SceneProtocol {
 
-   var touchLocation: TouchState = .None
+    var touchLocation: TouchState = .None
 
-   var level: levelMapProtocol // = BedroomLevel(numOfRows: 5, numOfColumns: 5, heroInitialPosition: (x: 3, y: 3))
+    var level: levelMapProtocol
 
-   lazy var hero: Hero = Hero(currentPosition: self.level.heroInitialPosition)
+    lazy var hero: Hero
 
-   var myCamera = SKCameraNode()
+    var myCamera = SKCameraNode()
 
-   init(level: levelMapProtocol) {
-       self.level = level
-       super.init()
-   }
+    var heroPosition: (x: Int, y: Int)?
 
-   required init?(coder aDecoder: NSCoder) {
-       fatalError("init(coder:) has not been implemented")
-   }
+    func addChildren() {
 
-   override func didMove(to view: SKView) {
+    }
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
 
-       addChild(level.map)
-       level.configLevel()
-       level.map.xScale = 1
-       level.map.yScale = 1
-       self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        if heroPosition != nil {
+            self.hero = Hero(currentPosition: heroPosition!)
+        }
 
-       hero.xScale = 0.3
-       hero.yScale = 0.3
-       addChild(hero)
-       hero.position = level.floor.centerOfTile(atColumn: hero.currentPosition.y, row: hero.currentPosition.x)
-       print(hero.frame.minY)
-       hero.position.y += hero.size.height/3
-       myCamera.position = hero.position
-       myCamera.setScale(0.7)
-       addChild(myCamera)
-       camera = myCamera
+        addChild(level.map)
+        addChild(hero)
+        addChild(myCamera)
+        level.configLevel()
 
-   }
+        level.map.xScale = 1
+        level.map.yScale = 1
+        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
+        hero.xScale = 0.3
+        hero.yScale = 0.3
 
-   func touchDown(atPoint pos : CGPoint) {
-       let location = pos
-       var coordinate: Point = hero.currentPosition
-       if location.x < CGRectGetMidX(myCamera.frame) && location.y > CGRectGetMidY(myCamera.frame) {
-           self.touchLocation = .TopLeft
-           if hero.currentPosition.y > 0 {
-               coordinate.y -= 1
-           }
-           hero.moveOnGrid(to: coordinate, on: level, direction: self.touchLocation)
-       } else if location.x > CGRectGetMidX(myCamera.frame) && location.y > CGRectGetMidY(myCamera.frame) {
-           self.touchLocation = .TopRight
-           if hero.currentPosition.x < level.numOfRows-1 {
-               coordinate.x += 1
-           }
-           hero.moveOnGrid(to: coordinate, on: level, direction: self.touchLocation)
-       } else if location.x < CGRectGetMidX(myCamera.frame) && location.y < CGRectGetMidY(myCamera.frame) {
-           self.touchLocation = .DownLeft
-           if hero.currentPosition.x > 0 {
-               coordinate.x -= 1
-           }
-           hero.moveOnGrid(to: coordinate, on: level, direction: self.touchLocation)
-       } else if location.x > CGRectGetMidX(myCamera.frame) && location.y < CGRectGetMidY(myCamera.frame) {
-           self.touchLocation = .DownRight
-           if hero.currentPosition.y < level.numOfColumns-1 {
-               coordinate.y += 1
-           }
-           hero.moveOnGrid(to: coordinate, on: level, direction: self.touchLocation)
+        hero.position = level.floor.centerOfTile(atColumn: hero.currentPosition.y, row: hero.currentPosition.x)
+        print(hero.frame.minY)
+        hero.position.y += hero.size.height/3
+        myCamera.position = hero.position
+        myCamera.setScale(1)
+
+        camera = myCamera
+
+    }
+    override func willMove(from view: SKView) {
+        BedroomScene.shared.removeAllChildren()
+    }
 
 
-       }
-   }
-
-   func touchMoved(toPoint pos : CGPoint) {
-
-   }
-
-   func touchUp(atPoint pos : CGPoint) {
-       self.touchLocation = .None
-   }
-
-   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-       for t in touches { self.touchDown(atPoint: t.location(in: self)) }
-   }
-
-   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-       for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-   }
-
-   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-       for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-   }
-
-   override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-       for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-   }
 
 
-   override func update(_ currentTime: TimeInterval) {
-       camera?.position = hero.position
-   }
+    func touchDown(atPoint pos : CGPoint) {
+        let location = pos
+        var coordinate: Point = hero.currentPosition
+        if location.x < CGRectGetMidX(myCamera.frame) && location.y > CGRectGetMidY(myCamera.frame) {
+            self.touchLocation = .TopLeft
+            if hero.currentPosition.y > 0 {
+                coordinate.y -= 1
+            }
+            hero.moveOnGrid(to: coordinate, on: level, direction: self.touchLocation)
+        } else if location.x > CGRectGetMidX(myCamera.frame) && location.y > CGRectGetMidY(myCamera.frame) {
+            self.touchLocation = .TopRight
+            if hero.currentPosition.x < level.numOfRows-1 {
+                coordinate.x += 1
+            }
+            hero.moveOnGrid(to: coordinate, on: level, direction: self.touchLocation)
+        } else if location.x < CGRectGetMidX(myCamera.frame) && location.y < CGRectGetMidY(myCamera.frame) {
+            self.touchLocation = .DownLeft
+            if hero.currentPosition.x > 0 {
+                coordinate.x -= 1
+            }
+            hero.moveOnGrid(to: coordinate, on: level, direction: self.touchLocation)
+        } else if location.x > CGRectGetMidX(myCamera.frame) && location.y < CGRectGetMidY(myCamera.frame) {
+            self.touchLocation = .DownRight
+            if hero.currentPosition.y < level.numOfColumns-1 {
+                coordinate.y += 1
+            }
+            hero.moveOnGrid(to: coordinate, on: level, direction: self.touchLocation)
+
+
+        }
+    }
+
+    func touchMoved(toPoint pos : CGPoint) {
+
+    }
+
+    func touchUp(atPoint pos : CGPoint) {
+        self.touchLocation = .None
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+    }
+
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+    }
+
+
+    override func update(_ currentTime: TimeInterval) {
+        camera?.position = hero.position
+    }
 }

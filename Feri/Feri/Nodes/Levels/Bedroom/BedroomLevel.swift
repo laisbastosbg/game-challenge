@@ -37,7 +37,7 @@ struct BedroomLevel: levelMapProtocol {
         
         if !alreadyLoaded{
             map.addChild(floor)
-            generateFurniture()
+//            generateFurniture()
             generateWalls()
             alreadyLoaded = true
         }
@@ -61,7 +61,7 @@ struct BedroomLevel: levelMapProtocol {
         let shelf = WorldInteractibleItems.shared.getInteractibleItem(name: "shelf")
         insertOnMap(object: shelf, isColumnWall: false)
 
-        TransitionRoomScene.shared.heroPosition = (x: 1, y: 6)
+//        TransitionRoomScene.shared.heroPosition = (x: 1, y: 6)
         let transitionRoomDoor = WorldInteractibleItems.shared.getInteractibleItem(name: "bedroomToTransitionRoomDoor")
         insertDoorOnMap(object: transitionRoomDoor, isColumnWall: false, isSouthWall: true)
         

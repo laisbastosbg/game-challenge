@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0B3D0F9529E6F80800E9D547 /* TransitionRoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0F9429E6F80800E9D547 /* TransitionRoomLevel.swift */; };
 		0B3D0F9B29E71D3900E9D547 /* TransitionRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3D0F9A29E71D3900E9D547 /* TransitionRoomScene.swift */; };
+		0B4A52362A1D2CA00003CD64 /* TouchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4A52352A1D2CA00003CD64 /* TouchHandler.swift */; };
+		0B4A52382A1D30080003CD64 /* HeroMovementHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4A52372A1D30080003CD64 /* HeroMovementHandler.swift */; };
 		0B5BCF6129F9626A008463EC /* WorldInteractibleItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5BCF6029F9626A008463EC /* WorldInteractibleItems.swift */; };
 		0B5BCF6629F9BC07008463EC /* OutsideScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5BCF6529F9BC07008463EC /* OutsideScene.swift */; };
 		0B5BCF6829F9BC21008463EC /* OutsideLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5BCF6729F9BC21008463EC /* OutsideLevel.swift */; };
@@ -26,7 +28,6 @@
 		29A0888B29F6F9D1006D9613 /* ViewPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A0888A29F6F9D1006D9613 /* ViewPresenterDelegate.swift */; };
 		29A0888D29F80F21006D9613 /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A0888C29F80F21006D9613 /* Wall.swift */; };
 		29A4458A29DAFE3300576D1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4458929DAFE3300576D1C /* AppDelegate.swift */; };
-		29A4459029DAFE3300576D1C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4458F29DAFE3300576D1C /* GameScene.swift */; };
 		29A4459229DAFE3300576D1C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A4459129DAFE3300576D1C /* GameViewController.swift */; };
 		29A4459529DAFE3300576D1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29A4459329DAFE3300576D1C /* Main.storyboard */; };
 		29A4459729DAFE3300576D1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29A4459629DAFE3300576D1C /* Assets.xcassets */; };
@@ -42,6 +43,8 @@
 		0B3D0F9429E6F80800E9D547 /* TransitionRoomLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionRoomLevel.swift; sourceTree = "<group>"; };
 		0B3D0F9729E71C7E00E9D547 /* BedroomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedroomScene.swift; sourceTree = "<group>"; };
 		0B3D0F9A29E71D3900E9D547 /* TransitionRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionRoomScene.swift; sourceTree = "<group>"; };
+		0B4A52352A1D2CA00003CD64 /* TouchHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchHandler.swift; sourceTree = "<group>"; };
+		0B4A52372A1D30080003CD64 /* HeroMovementHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroMovementHandler.swift; sourceTree = "<group>"; };
 		0B5BCF6029F9626A008463EC /* WorldInteractibleItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldInteractibleItems.swift; sourceTree = "<group>"; };
 		0B5BCF6529F9BC07008463EC /* OutsideScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutsideScene.swift; sourceTree = "<group>"; };
 		0B5BCF6729F9BC21008463EC /* OutsideLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutsideLevel.swift; sourceTree = "<group>"; };
@@ -60,7 +63,6 @@
 		29A0888C29F80F21006D9613 /* Wall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		29A4458629DAFE3300576D1C /* Feri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Feri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29A4458929DAFE3300576D1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		29A4458F29DAFE3300576D1C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		29A4459129DAFE3300576D1C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		29A4459429DAFE3300576D1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		29A4459629DAFE3300576D1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -185,6 +187,8 @@
 				29124DAC29E443DE0044497F /* Point.swift */,
 				0B5F758129F8085C002CFC3D /* WorldPickableItems.swift */,
 				0B5BCF6029F9626A008463EC /* WorldInteractibleItems.swift */,
+				0B4A52352A1D2CA00003CD64 /* TouchHandler.swift */,
+				0B4A52372A1D30080003CD64 /* HeroMovementHandler.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -224,7 +228,6 @@
 				0BC136A929DC6B2800D535CD /* Nodes */,
 				29A4458929DAFE3300576D1C /* AppDelegate.swift */,
 				29A0889029F9654D006D9613 /* IInventoryView */,
-				29A4458F29DAFE3300576D1C /* GameScene.swift */,
 				29A4459129DAFE3300576D1C /* GameViewController.swift */,
 				29A4459329DAFE3300576D1C /* Main.storyboard */,
 				29A4459829DAFE3300576D1C /* LaunchScreen.storyboard */,
@@ -304,7 +307,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29A4459029DAFE3300576D1C /* GameScene.swift in Sources */,
 				0B5F758229F8085C002CFC3D /* WorldPickableItems.swift in Sources */,
 				29C04A1129F6C5BF005947E3 /* SceneProtocol.swift in Sources */,
 				29A4459229DAFE3300576D1C /* GameViewController.swift in Sources */,
@@ -324,9 +326,11 @@
 				29A445A329DB016100576D1C /* Hero.swift in Sources */,
 				2950264F29F9B4BE00EC4046 /* InventoryView.swift in Sources */,
 				0B3D0F9B29E71D3900E9D547 /* TransitionRoomScene.swift in Sources */,
+				0B4A52382A1D30080003CD64 /* HeroMovementHandler.swift in Sources */,
 				0BC136A629DC627200D535CD /* PickableItem.swift in Sources */,
 				29124DB529E583680044497F /* InteractionTypes.swift in Sources */,
 				29A0888D29F80F21006D9613 /* Wall.swift in Sources */,
+				0B4A52362A1D2CA00003CD64 /* TouchHandler.swift in Sources */,
 				0B3D0F9529E6F80800E9D547 /* TransitionRoomLevel.swift in Sources */,
 				0BC136A829DC660B00D535CD /* InteractibleItem.swift in Sources */,
 			);

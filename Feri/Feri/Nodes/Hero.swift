@@ -30,6 +30,15 @@ class Hero: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func setScale(x: CGFloat, y: CGFloat) {
+        self.xScale = x
+        self.yScale = y
+    }
+
+    func setPosition(position: CGPoint) {
+        self.position = position
+    }
     
     func moveOnGrid(to position: Point, on map: levelMapProtocol, direction: TouchState) {
         let children = map.floor.children.compactMap { child in
